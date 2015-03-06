@@ -1,0 +1,276 @@
+%%%%%%%%%%%%%%
+%% PACKAGES %%
+%%%%%%%%%%%%%%
+
+\usepackage{fontspec}
+%     \usepackage{libertineotf}
+
+\usepackage{xcolor,graphicx}
+
+\usepackage{hyphenat} % Can allow wordbreaks anywhere using -> \hyphenation{none}
+
+% \usepackage[english]{babel}
+% \usepackage[latin1]{inputenc}
+% 
+% % font definitions, try \usepackage{ae} instead of the following
+% % three lines if you don't like this look
+% \usepackage{mathptmx}
+% \usepackage[scaled=.90]{helvet}
+% \usepackage{courier}
+
+\usepackage{ifluatex,ifxetex}
+
+% \usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%
+%% COMMANDS %%
+%%%%%%%%%%%%%%
+
+
+%% FONT %%
+
+
+\newfontfamily\tifont{TI83_font.ttf}
+% \newcommand\tibutton{\usefont{T1}{TI83}{m}{n}}
+\newfontfamily\TIbutton{TI83_button.ttf}
+\DeclareTextFontCommand{\TI}{\TIbutton}
+\ifluatex
+ \def\tibutton#1{\TI{\directlua{fonts.otf.char("#1")}}}
+ \newcommand{\tibuttonnum}[1]{\TI{#1}}% Does not work! I use XeTeX, I don't know about Lua.
+\fi
+\ifxetex
+ \def\tibutton#1{\TI{\XeTeXglyph\the\XeTeXglyphindex"#1"}}
+%  \def\tibuttonnum#1{\TI{\XeTeXglyph#1}}
+ \newcommand{\tibuttonnum}[1]{\TI{\XeTeXglyph#1}}
+\fi
+
+\newsavebox{\selvestebox}
+\newenvironment{ticalc}
+{
+	% Define characters
+	\catcode`\;12 \catcode`\:12 \catcode`\!12 \catcode`\?12 \catcode`\^^M12 \catcode`\ 12
+	\def\>{\hbox{-\llap{\lower0.122em\hbox{`}\llap{\lower0.366em\hbox{\reflectbox{`}}\kern0.122em }\kern-0.122em }}}%
+	\def\!{\hbox{=\llap{/}}}
+	% Define environment
+	\tifont\addfontfeature{LetterSpace=0.0}
+	\begin{lrbox}{\selvestebox}%
+	\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
+	\begin{flushleft}
+}
+{
+	\end{flushleft}
+	\end{minipage}\end{lrbox}%
+	\begin{center}
+	\fboxrule2pt\fboxsep2pt
+	\fcolorbox{black}{green!30!black!25}{
+		\hyphenation{none}\usebox{\selvestebox}
+	}
+	\end{center}
+}
+    
+%%%%%%%%%%%%%%%%%%
+%% TI Shortcuts %%
+%%%%%%%%%%%%%%%%%%
+
+% Test/Logic
+\newcommand{\tiGT}			{\tibuttonnum{20}}
+\newcommand{\tiMGT}			{\tibuttonnum{21}}
+\newcommand{\tiGTO}			{\tibuttonnum{22}}
+
+% Menu buttons
+\newcommand{\tiQUIT}		{\tibuttonnum{24}}
+\newcommand{\tiINS}			{\tibuttonnum{25}}
+\newcommand{\tiALOCK}		{\tibuttonnum{26}}
+\newcommand{\tiLINK}		{\tibuttonnum{27}}
+\newcommand{\tiLIST}		{\tibuttonnum{28}}
+\newcommand{\tiTEST}		{\tibuttonnum{29}}
+\newcommand{\tiANGLE}		{\tibuttonnum{30}}
+\newcommand{\tiDRAW}		{\tibuttonnum{31}}
+\newcommand{\tiDISTR}		{\tibuttonnum{32}}
+\newcommand{\tiMATRIX}		{\tibuttonnum{33}}
+\newcommand{\tiMATRX}		{\tibuttonnum{52}}
+\newcommand{\tiMEM}			{\tibuttonnum{47}} % Memory
+\newcommand{\tiCATALOG}		{\tibuttonnum{49}} % Catalog
+\newcommand{\tiFINANCE}		{\tibuttonnum{56}} % Finance
+\newcommand{\tiMODE}		{\tibuttonnum{93}}
+\newcommand{\tiSTAT}		{\tibuttonnum{103}}
+\newcommand{\tiAPPS}		{\tibuttonnum{110}}
+\newcommand{\tiMATH}		{\tibuttonnum{111}}
+\newcommand{\tiMATHRX}		{\tibuttonnum{112}}
+\newcommand{\tiPRGM}		{\tibuttonnum{113}}
+\newcommand{\tiVARS}		{\tibuttonnum{114}}
+\newcommand{\tiYVARS}		{\tibuttonnum{212}} % Y-VARS
+
+% Formula buttons (sqrt, etc.)
+\newcommand{\tiSIN}			{\tibuttonnum{122}}
+\newcommand{\tiCOS}			{\tibuttonnum{123}}
+\newcommand{\tiTAN}			{\tibuttonnum{124}}
+\newcommand{\tiASIN}		{\tibuttonnum{34}}
+\newcommand{\tiACOS}		{\tibuttonnum{35}}
+\newcommand{\tiATAN}		{\tibuttonnum{36}}
+\newcommand{\tipi}			{\tibuttonnum{37}} % Small pi with [] around it
+\newcommand{\tiPI}			{\tibuttonnum{51}} % Capital PI (Product sign)
+\newcommand{\tiSIGMA}		{\tibuttonnum{54}} % Capital sigma (Sum sign)
+
+\newcommand{\tiLCB}			{\tibuttonnum{40}} % Left curly bracket  {
+\newcommand{\tiLPAREN}		{\tibuttonnum{40}} % Left Parenthesis (=LCB)
+\newcommand{\tiRCB}			{\tibuttonnum{41}} % Right curly bracket }
+\newcommand{\tiRPAREN}		{\tibuttonnum{41}} % Right Parenthesis (=RCB)
+\newcommand{\tiLSB}			{\tibuttonnum{43}} % Left square bracket:  [
+\newcommand{\tiRSB}			{\tibuttonnum{44}} % Right square bracket: ]
+\newcommand{\tiLRB}			{\tibuttonnum{133}} % Left round bracket: (
+\newcommand{\tiRRB}			{\tibuttonnum{134}} % Right round bracket: )
+
+\newcommand{\tiEE}			{\tibuttonnum{39}} % 1E2 = 100
+\newcommand{\tiTENPOWER}	{\tibuttonnum{42}} % 10^x
+\newcommand{\tiEPOWER}		{\tibuttonnum{45}} % e^x
+\newcommand{\tiXInv}		{\tibuttonnum{121}} % x^-1 -> Inverse of x
+\newcommand{\tiLOG}			{\tibuttonnum{141}} % log
+\newcommand{\tiLN}			{\tibuttonnum{151}} % ln
+
+\newcommand{\tiNeg}			{\tibuttonnum{174}} % (-) -> negative number
+\newcommand{\tiDot}			{\tibuttonnum{173}} % .
+\newcommand{\tii}			{\tibuttonnum{57}} % Imaginary number (button)
+\newcommand{\tiiScreen}		{\tibuttonnum{185}} % Imaginary number (on-screen)
+
+\newcommand{\tiTimes}		{\tibuttonnum{145}} % a x b -> product
+\newcommand{\tiProduct}		{\tibuttonnum{145}} % a x b -> product
+\newcommand{\tiMultiply}	{\tibuttonnum{145}} % a x b -> product
+\newcommand{\tiMinus}		{\tibuttonnum{155}} % a - b -> subtraction
+\newcommand{\tiPlus}		{\tibuttonnum{165}} % a + b -> addition
+\newcommand{\tiDivide}		{\tibuttonnum{135}} % a / b -> division
+\newcommand{\tiDivision}	{\tibuttonnum{135}} % a / b -> division
+\newcommand{\tiOver}		{\tibuttonnum{135}} % a / b -> division
+\newcommand{\tiPower}		{\tibuttonnum{125}} % a ^ b -> power
+
+% Numbers
+\newcommand{\tiZero}		{\tibuttonnum{172}}
+\newcommand{\tiOne}			{\tibuttonnum{162}}
+\newcommand{\tiTwo}			{\tibuttonnum{163}}
+\newcommand{\tiThree}		{\tibuttonnum{164}}
+\newcommand{\tiFour}		{\tibuttonnum{152}}
+\newcommand{\tiFive}		{\tibuttonnum{153}}
+\newcommand{\tiSix}			{\tibuttonnum{154}}
+\newcommand{\tiSeven}		{\tibuttonnum{142}}
+\newcommand{\tiEight}		{\tibuttonnum{143}}
+\newcommand{\tiNine}		{\tibuttonnum{144}}
+
+% Other buttons
+\newcommand{\tiRCL}			{\tibuttonnum{46}} % Recall variable
+\newcommand{\tiOFF}			{\tibuttonnum{48}}
+\newcommand{\tiON}			{\tibuttonnum{171}}
+\newcommand{\tiONHALT}		{\tibuttonnum{147}} % ON/HALT
+\newcommand{\tiANS}			{\tibuttonnum{61}}
+\newcommand{\tiDEL}			{\tibuttonnum{94}}
+\newcommand{\tiCLEAR}		{\tibuttonnum{115}}
+
+\newcommand{\tiLeft}		{\tibuttonnum{95}}
+\newcommand{\tiUp}			{\tibuttonnum{96}}
+\newcommand{\tiRight}		{\tibuttonnum{97}}
+\newcommand{\tiDown}		{\tibuttonnum{104}}
+
+\newcommand{\tiSpace}		{\tibuttonnum{10}} % Visible spacebar
+\newcommand{\tiSpaceButton}	{\tibuttonnum{50}} % Visible spacebar with [] around it
+
+\newcommand{\tiSecond}		{\tibuttonnum{92}} % 2nd
+\newcommand{\tiALPHA}		{\tibuttonnum{101}}
+
+\newcommand{\tiENTER}		{\tibuttonnum{175}}
+\newcommand{\tiENTRY}		{\tibuttonnum{62}}
+\newcommand{\tiSOLVE}		{\tibuttonnum{63}}
+
+\newcommand{\tiXTn}			{\tibuttonnum{102}} % X, T, Theta, n
+
+\newcommand{\tiTRIGGER}		{\tibuttonnum{146}}
+
+\newcommand{\tiSTO}			{\tibuttonnum{161}} % STO> button (store number into a var)
+
+\newcommand{\tiCONT}		{\tibuttonnum{209}}
+
+\newcommand{\tin}			{\tibuttonnum{213}} % small n (parameter of recursion)
+\newcommand{\tiunmOne}		{\tibuttonnum{214}} % small u_n-1 (parameter of recursion)
+\newcommand{\tivnmOne}		{\tibuttonnum{215}} % small v_n-1 (parameter of recursion)
+
+% List
+\newcommand{\tiLOne}		{\tibuttonnum{71}}
+\newcommand{\tiLTwo}		{\tibuttonnum{72}}
+\newcommand{\tiLThree}		{\tibuttonnum{73}}
+\newcommand{\tiLFour}		{\tibuttonnum{74}}
+\newcommand{\tiLFive}		{\tibuttonnum{75}}
+\newcommand{\tiLSix}		{\tibuttonnum{76}}
+
+% F buttons
+\newcommand{\tiFOne}		{\tibuttonnum{65}}
+\newcommand{\tiFTwo}		{\tibuttonnum{66}}
+\newcommand{\tiFThree}		{\tibuttonnum{67}}
+\newcommand{\tiFFour}		{\tibuttonnum{68}}
+\newcommand{\tiFFive}		{\tibuttonnum{69}}
+
+% Graphing
+\newcommand{\tiYEquals}		{\tibuttonnum{82}} % Y=
+\newcommand{\tiWINDOW}		{\tibuttonnum{83}}
+\newcommand{\tiZOOM}		{\tibuttonnum{84}}
+\newcommand{\tiTRACE}		{\tibuttonnum{85}}
+\newcommand{\tiGRAPH}		{\tibuttonnum{86}}
+\newcommand{\tiSTATPLOT}	{\tibuttonnum{15}}
+\newcommand{\tiTBLSET}		{\tibuttonnum{16}}
+\newcommand{\tiFORMAT}		{\tibuttonnum{17}}
+\newcommand{\tiCALC}		{\tibuttonnum{18}}
+\newcommand{\tiTABLE}		{\tibuttonnum{19}}
+
+\newcommand{\tiBarGraph}	{\tibuttonnum{180}} % Icon for a bar graph
+\newcommand{\tiLineGraph}	{\tibuttonnum{181}} % Icon for a line graph
+\newcommand{\tiLinearGraph}	{\tibuttonnum{182}} % Linear line graph
+\newcommand{\tiSpreadGraph}	{\tibuttonnum{183}} % Spread graph
+\newcommand{\tiDoubleSpreadGraph}{\tibuttonnum{184}} % Spread graph with quadrants
+
+\newcommand{\tiDotGraph}	{\tibuttonnum{5}} % Graph icon showing separate dots
+
+\newcommand{\tiGraphIsLine}		{\tibuttonnum{201}} % Normal graph line
+\newcommand{\tiGraphIsThick}	{\tibuttonnum{202}} % Thick line graph
+\newcommand{\tiGraphIsFillUp}	{\tibuttonnum{203}} % Fill above the line
+\newcommand{\tiGraphIsFillDown}	{\tibuttonnum{204}} % Fill beneath the line
+\newcommand{\tiGraphIsLineTracer}{\tibuttonnum{205}} % Normal graph line + tracer O
+\newcommand{\tiGraphIsTracer}	{\tibuttonnum{206}} % Graph is just a tracer
+\newcommand{\tiGraphIsDotLine}	{\tibuttonnum{207}} % Normal graph line, but less sampling points
+
+% Other characters
+\newcommand{\tiitphat}		{\tibuttonnum{169}} % ^p italic
+\newcommand{\tiphat}		{\tibuttonnum{217}} % ^p
+\newcommand{\tiL}			{\tibuttonnum{187}} % L (from List->Ops)
+\newcommand{\tiN}			{\tibuttonnum{188}} % N
+\newcommand{\tiF}			{\tibuttonnum{189}} % F
+\newcommand{\tiFBold}		{\tibuttonnum{190}} % F (bold)
+\newcommand{\tiE}			{\tibuttonnum{196}} % E
+\newcommand{\tiEBold}		{\tibuttonnum{199}} % E (bold)
+\newcommand{\tiQuote}		{\tibuttonnum{197}} % ''
+\newcommand{\tiStar}		{\tibuttonnum{198}} % * (a star)
+\newcommand{\tiIPerc}		{\tibuttonnum{200}} % I%
+\newcommand{\tiEx}			{\tibuttonnum{220}} % E[x]
+\newcommand{\tiEy}			{\tibuttonnum{221}} % E[y]
+\newcommand{\tiExAlt}		{\tibuttonnum{222}} % E[x] (other font)
+\newcommand{\tiEyAlt}		{\tibuttonnum{223}} % E[y] (other font)
+
+
+% Cursor
+\newcommand{\tiCursor}		{\tibuttonnum{7}} % Normal Cursor
+\newcommand{\tiCursorAlpha}	{\tibuttonnum{186}} % Alpha Cursor
+\newcommand{\tiCursorSecond}{\tibuttonnum{192}} % 2nd Cursor
+
+% Other icons
+\newcommand{\tiNewPage}		{\tibuttonnum{59}} % New page icon
+\newcommand{\tiPNewPage}	{\tibuttonnum{79}} % New page icon with a P inside
+
+\newcommand{\tiLandscape}	{\tibuttonnum{179}} % No idea. Looks like a landscape.
+
+\newcommand{\tiCDot}		{\tibuttonnum{130}} % A round dot (Circular Dot)
+
+\newcommand{\tiFourArrow}	{\tibuttonnum{210}} % Arrows in all four directions pointing outwards and a dot in the middle
+
+\newcommand{\tiMatrixDots}	{\tibuttonnum{6}}
+
+\newcommand{\tiArrow}		{\tibuttonnum{4}} % Arrow to right
+\newcommand{\tiReturnArrow}	{\tibuttonnum{193}} % Return (arrow to bottom left at right angle)
+
+
+    
