@@ -7,6 +7,10 @@
 
 \usepackage{xcolor,graphicx}
 
+\usepackage{sty/onimage}
+	\usetikzlibrary{positioning}
+
+
 \usepackage{hyphenat} % Can allow wordbreaks anywhere using -> \hyphenation{none}
 
 % \usepackage[english]{babel}
@@ -25,6 +29,11 @@
 %%%%%%%%%%%%%%
 %% COMMANDS %%
 %%%%%%%%%%%%%%
+
+%% FIGURES %%
+
+% http://tex.stackexchange.com/questions/53998/beamer-how-text-wrapping-around-a-graphic-right-aligned
+\newcommand{\lenitem}[2][.7\linewidth]{\parbox[t]{#1}{\strut #2\strut}} % Wrap text in a fixed-size parbox environment.
 
 
 %% FONT %%
@@ -89,6 +98,7 @@
 \newcommand{\tiDISTR}		{\tibuttonnum{32}}
 \newcommand{\tiMATRIX}		{\tibuttonnum{33}}
 \newcommand{\tiMATRX}		{\tibuttonnum{52}}
+\newcommand{\tiMATRXBut}	{\tibuttonnum{112}}
 \newcommand{\tiMEM}			{\tibuttonnum{47}} % Memory
 \newcommand{\tiCATALOG}		{\tibuttonnum{49}} % Catalog
 \newcommand{\tiFINANCE}		{\tibuttonnum{56}} % Finance
@@ -96,7 +106,6 @@
 \newcommand{\tiSTAT}		{\tibuttonnum{103}}
 \newcommand{\tiAPPS}		{\tibuttonnum{110}}
 \newcommand{\tiMATH}		{\tibuttonnum{111}}
-\newcommand{\tiMATHRX}		{\tibuttonnum{112}}
 \newcommand{\tiPRGM}		{\tibuttonnum{113}}
 \newcommand{\tiVARS}		{\tibuttonnum{114}}
 \newcommand{\tiYVARS}		{\tibuttonnum{212}} % Y-VARS
@@ -273,4 +282,18 @@
 \newcommand{\tiReturnArrow}	{\tibuttonnum{193}} % Return (arrow to bottom left at right angle)
 
 
-    
+
+%% Background alignment lines %%
+
+\usebackgroundtemplate%
+{%
+\begin{tikzpicture}[overlay,remember picture,opacity=0.5]
+\node[] (A) at (current page.south east){ };
+\node[] (B) at (current page.north west){ };
+\node[] (C) at (current page.south west){ };
+\node[] (D) at (current page.north east){ };
+\node[red] (CC) at (current page.center){*};
+\draw[step=.5cm,gray,thin] (A) grid (B);     % Use 0.5cm will be easier to find coordinates (xx,yy)
+\draw[step=.5cm,green,thin] (C) grid (D);     % Use 0.5cm will be easier to find coordinates (xx,yy)
+\end{tikzpicture}
+}
