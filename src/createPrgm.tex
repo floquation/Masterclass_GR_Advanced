@@ -1,42 +1,67 @@
 \section{Hoe open je een programma?}
 
 \begin{frame}
-\frametitle{{\tifont NEW} \tiPRGM}
+\frametitle{\tifontbigtxt{NEW} \tiPRGM}
 
-\begin{tikzpicture}[overlay,remember picture]
-	\node[] (TR) at (current page.north east){ };
-	\node [anchor=north east,xshift=0.1cm,yshift=-1.4cm] at (TR)
-	{
-	\begin{tikzonimage}[height=0.5\textheight]{TI84_buttons.png}%[tsx/show help lines]
-		\draw [green, line width=1pt] (0.502,0.615) circle [radius=0.021\textheight];
-	\end{tikzonimage}
-	};
-\end{tikzpicture}
+\visible<1-2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}}
+\visible<3>{\ticalcfig{\ticalcfigCircleEnter\ticalcfigCircleRight}}
+\visible<4>{\ticalcfig{\ticalcfigCircleEnter \ticalcfigCircleAlpha\ticalcfigCircleSecond}}
+\visible<5>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColTwo}{0.81}}}
 
-
-\lenitem[0.7\linewidth]{We gaan ons eerste programma openen. Druk op \tiPRGM.}
-\pause
-
-\lenitem[0.7\linewidth]{We gaan ons eerste programma openen. Druk op \tiPRGM.}
-\pause
-
-\lenitem[0.7\linewidth]{We gaan ons eerste programma openen. Druk op \tiPRGM.}
-\pause
-
-\lenitem[0.7\linewidth]{We gaan ons eerste programma openen. Druk op \tiPRGM.}
-\pause
-
-
-% \begin{wrapfigure}{r}{0.3\textwidth}
-% 	\begin{tikzonimage}[height=0.5\textheight]{TI84_buttons.png}%[tsx/show help lines]
-%     	\draw [green, line width=1pt] (0.502,0.615) circle [radius=0.021\textheight];
-% 	\end{tikzonimage}
-% \end{wrapfigure}
-
-
+We gaan ons eerste programma aanmaken.
+\begin{itemize}
+  \item Druk op \tiPRGM.
+  \pause %1
+  \item \lenitem{Tenzij je eerder een programma hebt gemaakt, zie je alleen \inlineticalc{EXEC \, EDIT \, NEW}.}
+  \pause %2
+  \item Blader met \tiRight\,naar \tifonttxt{NEW} en druk op \tiENTER.
+  \pause %3
+  \item \lenitem{Type een naam in. Een prgm naam is maximaal 8 karakters. Druk vervolgens op \tiENTER.}
+	  \begin{ticalc}[3.25cm]
+	  	PROGRAM\\
+	  	NAME=MYPRGM01
+	  \end{ticalc}
+  
+  Merk op dat je een \tiCursorAlpha-cursor hebt: \tiALOCK\,is geactiveerd.
+  \pause %4
+  \item Sluit het programma nu met \tiQUIT.
+\end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{\tifontbigtxt{EDIT} \tiPRGM}
 
+\visible<1-2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}}
+\visible<3>{\ticalcfig{\ticalcfigCircleRight}}
+\visible<4>{\ticalcfig{\ticalcfigCircleDown\ticalcfigCircleEnter}}
+\visible<5>{\ticalcfig{}}
+\visible<6>{\ticalcfig{\ticalcfigCircleAlpha}}
+
+Om het programma nu weer te openen, doe:
+\begin{itemize}
+  \item Druk op \tiPRGM.
+  \pause %1
+  \item \lenitem{Je ziet nu een lijst met alle programmas die je kunt uitvoeren.}
+	  \begin{ticalc}[3.25cm]
+	  	EXEC \, EDIT \, NEW
+	  	1:MYPRGM01
+	  \end{ticalc}
+  \pause %2
+  \item Blader met \tiRight\,naar \tifonttxt{EDIT}.
+  \pause %3
+  \item Hier zie je dezelfde lijst. Gebruik \tiDown\, om naar je programma te bladeren en druk op \tiENTER.
+  \pause %4
+  \item Als alternatief, kun je ook het nummer intoetsen wat voor je programma staat. Dit is een hotkey om je programma te openen.
+  \pause %5
+  		Ook kun je met \tiALPHA\, de eerste letter van je programmanaam intoetsen om snel je programma te vinden
+  		(indien je later een grotere lijst met programmas hebt dan 1).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Deleten/Archiveren van een \tiPRGM}
+	TODO?
+\end{frame}
 
 
 

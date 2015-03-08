@@ -1,7 +1,0 @@
-% http://xpt.sourceforge.net/techdocs/language/latex/latex33-LaTeXAndTrueTypeFont/ar01s03.html
-
-\ProvidesFile{t1TI83.fd}
-\DeclareFontFamily{T1}{TI83}{}
-\DeclareFontShape{T1}{TI83}{m}{n}{ <-> TI83}{}
-\pdfmapline{+TI83\space <TI83.ttf\space <T1-WGL4.enc}
-

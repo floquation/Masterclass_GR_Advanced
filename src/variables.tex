@@ -1,40 +1,43 @@
-\section{Introduction}
-
-\subsection[Introduction]{Introduction Masterclass GR-Advanced}
-
-\begin{frame}
-\frametitle{}
-\framesubtitle{Subtitles are optional}
-
-\begin{itemize}
-  \item
-  \item
-\end{itemize}
-\end{frame}
+\section{Variabelen en Datatypes}
+\subsection{Getallen}
 
 \begin{frame}
-\frametitle{}
+\frametitle{\tifontbigtxt{Ans}}
 
-% You can create overlays
+\visible<2>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircleEnter}}
+\visible<3>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColFour}{0.055}}}
+
 \begin{itemize}
-  \item using the \texttt{pause} command:
-  \begin{itemize}
-    \item First item.
-    \pause
-    \item Second item.
-  \end{itemize}
-  \item using overlay specifications:
-  \begin{itemize}
-    \item<3-> First item.
-    \item<4-> Second item.
-  \end{itemize}
-  \item using the general \texttt{uncover} command:
-  \begin{itemize}
-    \uncover<5->{\item First item.}
-    \uncover<6->{\item Second item.}
-  \end{itemize}
+  \item \lenitem{Wanneer je een som intyped op je rekenmachine, zie je bijvoorbeeld:
+\begin{ticalc}[3.25cm]
+	\sqrt(3\sq+4\sq)\\
+	\hfill 5
+\end{ticalc}}
+\pause%1
+  \item \lenitem{Met \tiENTER\,herhalen we de laatste som.\\
+  		Met \tiENTRY=\tiSecond\tiENTER\,halen we de som terug op ons scherm.}
+\pause%2
+  \item Met \tiANS\tiENTER\,printen we ook hetzelfde antwoord.
+		\tifonttxt{Ans} is een variabele waarin het antwoord van de vorige bewerking is opgeslagen.
+\pause%3
+  \item Bijvoorbeeld, wat is hiervan de uitkomst?
+ 
+\begin{ticalc}[3.25cm]
+	\sqrt(3\sq+4\sq)\\
+	\hfill 5\\
+	(Ans-4)\^Ans+1
+	\visible<5->{\\\hfill 2}
+\end{ticalc}
+\pause%4
 \end{itemize}
 \end{frame}
 
 
-%% END %%
+\subsection{Strings}
+
+
+
+\subsection{Overige}
+
+
+

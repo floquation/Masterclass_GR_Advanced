@@ -26,6 +26,9 @@
 
 % \usepackage[T1]{fontenc}
 
+\usepackage{xargs} % Allows for more than 1 optional argument in a command
+\usepackage{xifthen}% provides \isempty test
+
 %%%%%%%%%%%%%%
 %% COMMANDS %%
 %%%%%%%%%%%%%%
@@ -33,15 +36,100 @@
 %% FIGURES %%
 
 % http://tex.stackexchange.com/questions/53998/beamer-how-text-wrapping-around-a-graphic-right-aligned
-\newcommand{\lenitem}[2][.7\linewidth]{\parbox[t]{#1}{\strut #2\strut}} % Wrap text in a fixed-size parbox environment.
+\newcommand{\lenitem}[2][.8\linewidth]{\parbox[t]{#1}{\strut #2\strut}} % Wrap text in a fixed-size parbox environment.
+
+    
+    
+    
+%% TI Calculator top-right corner %%
+
+\def\ticalcfigCircleButtonsize{0.021\textheight}
+\def\ticalcfigCircleNumButtonsize{0.0255\textheight}
+\def\ticalcfigCircleEnterButtonsize{0.028\textheight}
+\def\ticalcfigCircleBigButtonsize{0.05\textheight}
+% #1 (optional) = radius of circle
+% #2 (obligatory) = x of circle center
+% #3 (obligatory) = y of circle center
+\newcommand{\ticalcfigCircle}[3][\ticalcfigCircleButtonsize]{\draw [green, line width=1pt] (#2,#3) circle [radius=#1];}
+\def\ticalcfigCircleColOne{0.130}
+\def\ticalcfigCircleColTwo{0.316}
+\def\ticalcfigCircleColThree{0.502}
+\def\ticalcfigCircleColFour{0.690}
+\def\ticalcfigCircleColFive{0.878}
+\def\ticalcfigCircleAlpha{\ticalcfigCircle{\ticalcfigCircleColOne}{0.739}}
+\def\ticalcfigCircleSecond{\ticalcfigCircle{\ticalcfigCircleColOne}{0.816}}
+\def\ticalcfigCircleEnter{\ticalcfigCircle[\ticalcfigCircleEnterButtonsize]{0.868}{0.128}}
+\def\ticalcfigCircleLeft{\ticalcfigCircle{0.695}{0.79}}
+\def\ticalcfigCircleDown{\ticalcfigCircle{0.815}{0.733}}
+\def\ticalcfigCircleRight{\ticalcfigCircle{0.916}{0.79}} % This circle is shifted to the left ... Otherwise it would fall out of the image, which would shift the entire image to the left on the slide. TODO: Better alternative?
+\def\ticalcfigCircleUp{\ticalcfigCircle{0.815}{0.85}}
+\def\ticalcfigCircleArrowkeys{\ticalcfigCircle[\ticalcfigCircleBigButtonsize]{0.815}{0.79}}
+
+
+% #1 (optional) = figure height
+% #2 (obligatory) = body of tikzonimage environment. Use \ticalcfigCircle zero or more times.
+% #3 (optional) = activate grid for debugging? Empty = no, Something = yes.
+\newcommandx{\ticalcfig}[3][1=0.5\textheight, 3=]{
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (TR) at (current page.north east){ };
+	\node [anchor=north east,xshift=0.05cm,yshift=-1.4cm] at (TR)
+	{\ifthenelse{\isempty{#3}}{% if #3 is empty
+		\begin{tikzonimage}[height=#1]{TI84_buttons.png}
+			#2
+		\end{tikzonimage}
+	}{% if #3 is not empty
+		\begin{tikzonimage}[height=#1]{TI84_buttons.png}[tsx/show help lines]
+			#2
+		\end{tikzonimage}
+	}};
+\end{tikzpicture}
+}
+
 
 
 %% FONT %%
 
+% This heavily uses the 'graphicx' package.
+\def\tidefinechars{\catcode`\;12 \catcode`\:12 \catcode`\!12 \catcode`\?12 \catcode`\^^M12 \catcode`\ 12%
+	\def\>{-\llap{\lower0.122em\hbox{`}\llap{\lower0.366em\hbox{\reflectbox{`}}\kern0.122em }\kern-0.122em}}% Sto ->
+	\def\!{=\llap{/}}% Unequal
+	\def\sqrt{\XeTeXglyph95\llap{\lower0.5em\hbox{`}\kern0em}\llap{\lower-0.377em\hbox{\scalebox{0.5}[1]{-}}\kern-0.170em}}% Sqrt
+	\def\sq{\XeTeXglyph101}% Square (2)
+	\def\cube{\XeTeXglyph102}% Cube (3)
+	\def\deg{\XeTeXglyph100}% degree symbol
+	\def\Delta{\XeTeXglyph153}% Delta
+	\def\theta{\XeTeXglyph154}% theta
+	\def\Sigma{\XeTeXglyph155}% Sigma
+	\def\Omega{\XeTeXglyph156}% Omega
+	\def\alpha{\XeTeXglyph157}% alpha
+	\def\beta{\XeTeXglyph158}% beta
+	\def\gamma{\XeTeXglyph159}% gamma
+	\def\delta{\XeTeXglyph160}% delta
+	\def\eps{\XeTeXglyph161}% epsilon
+	\def\ci{\XeTeXglyph162}% complex i / iota
+	\def\iota{\XeTeXglyph162}% complex i / iota
+	\def\lambda{\XeTeXglyph163}% lambda
+	\def\mu{\XeTeXglyph164}% mu
+	\def\pi{\XeTeXglyph165}% pi
+	\def\rho{\XeTeXglyph166}% rho
+	\def\sigma{\XeTeXglyph167}% sigma
+	\def\tau{\XeTeXglyph168}% tau
+	\def\phi{\XeTeXglyph169}% phi
+	\def\xi{\XeTeXglyph170}% xi
+	\def\ldots{\XeTeXglyph171}% ldots
+	\def\percent{\XeTeXglyph8}% %
+	\def\dollar{\XeTeXglyph7}% $
+	\def\and{\XeTeXglyph9}% &
+	\def\function{\XeTeXglyph0}% f with black-white inverted
+	\def\~{\XeTeXglyph97}% ~
+	\def\^{\XeTeXglyph65}% ^
+}
 
-\newfontfamily\tifont{TI83_font.ttf}
-% \newcommand\tibutton{\usefont{T1}{TI83}{m}{n}}
-\newfontfamily\TIbutton{TI83_button.ttf}
+\newfontfamily\tifont[Path=font/]{TI83_font.ttf}
+\newcommand{\tifonttxt}[1]{{\tifont\tidefinechars\scriptsize#1}}
+\newcommand{\tifontbigtxt}[1]{{\tifont\tidefinechars\normalsize#1}}
+
+\newfontfamily\TIbutton[Path=font/]{TI83_button.ttf}
 \DeclareTextFontCommand{\TI}{\TIbutton}
 \ifluatex
  \def\tibutton#1{\TI{\directlua{fonts.otf.char("#1")}}}
@@ -54,28 +142,36 @@
 \fi
 
 \newsavebox{\selvestebox}
-\newenvironment{ticalc}
-{
-	% Define characters
-	\catcode`\;12 \catcode`\:12 \catcode`\!12 \catcode`\?12 \catcode`\^^M12 \catcode`\ 12
-	\def\>{\hbox{-\llap{\lower0.122em\hbox{`}\llap{\lower0.366em\hbox{\reflectbox{`}}\kern0.122em }\kern-0.122em }}}%
-	\def\!{\hbox{=\llap{/}}}
+\newenvironment{ticalc}[1][1=\dimexpr\columnwidth-2\fboxsep\relax]{%
 	% Define environment
-	\tifont\addfontfeature{LetterSpace=0.0}
+	\tifont\tidefinechars\scriptsize%\addfontfeature{LetterSpace=0.0}
 	\begin{lrbox}{\selvestebox}%
-	\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
+	\begin{minipage}{#1}
 	\begin{flushleft}
-}
-{
+}{
 	\end{flushleft}
 	\end{minipage}\end{lrbox}%
-	\begin{center}
-	\fboxrule2pt\fboxsep2pt
+	\begin{centering}
+	\fboxrule1pt\fboxsep2pt
 	\fcolorbox{black}{green!30!black!25}{
 		\hyphenation{none}\usebox{\selvestebox}
 	}
-	\end{center}
+	\end{centering}
 }
+
+\newcommand{\inlineticalc}[1]{{%
+	% Define environment
+	\tifont\tidefinechars\scriptsize%\addfontfeature{LetterSpace=0.0}
+	\fboxrule0.8pt\fboxsep1pt
+	\fcolorbox{black}{green!30!black!25}{
+		#1
+	}
+}}
+
+
+
+
+
     
 %%%%%%%%%%%%%%%%%%
 %% TI Shortcuts %%
@@ -293,7 +389,7 @@
 \node[] (C) at (current page.south west){ };
 \node[] (D) at (current page.north east){ };
 \node[red] (CC) at (current page.center){*};
-\draw[step=.5cm,gray,thin] (A) grid (B);     % Use 0.5cm will be easier to find coordinates (xx,yy)
-\draw[step=.5cm,green,thin] (C) grid (D);     % Use 0.5cm will be easier to find coordinates (xx,yy)
+% \draw[step=.5cm,gray,thin] (A) grid (B);     % Use 0.5cm will be easier to find coordinates (xx,yy)
+\draw[step=.5cm,gray,thin] (C) grid (D);     % Use 0.5cm will be easier to find coordinates (xx,yy)
 \end{tikzpicture}
 }
