@@ -3,7 +3,7 @@
 \begin{frame}
 \frametitle{\tifontbigtxt{NEW} \tiPRGM}
 
-\visible<1-2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}}
+\visible<1-2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm
 \visible<3>{\ticalcfig{\ticalcfigCircleEnter\ticalcfigCircleRight}}
 \visible<4>{\ticalcfig{\ticalcfigCircleEnter \ticalcfigCircleAlpha\ticalcfigCircleSecond}}
 \visible<5>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColTwo}{0.81}}}
@@ -12,11 +12,12 @@ We gaan ons eerste programma aanmaken.
 \begin{itemize}
   \item Druk op \tiPRGM.
   \pause %1
-  \item \lenitem{Tenzij je eerder een programma hebt gemaakt, zie je alleen \inlineticalc{EXEC \, EDIT \, NEW}.}
+  \item \lenitem{Tenzij je eerder een programma hebt gemaakt, zie je alleen
+  		\inlineticalc{\only<1-2>{\select{EXEC}}\only<3->{EXEC}\,EDIT\,\only<3->{\select{NEW}}\only<1-2>{NEW}}.}
   \pause %2
   \item Blader met \tiRight\,naar \tifonttxt{NEW} en druk op \tiENTER.
   \pause %3
-  \item \lenitem{Type een naam in. Een prgm naam is maximaal 8 karakters. Druk vervolgens op \tiENTER.}
+  \item \lenitem{Typ een naam in. Een prgm naam is maximaal 8 karakters. Druk vervolgens op \tiENTER.}
 	  \begin{ticalc}[3.25cm]
 	  	PROGRAM\\
 	  	NAME=MYPRGM01
@@ -41,10 +42,10 @@ Om het programma nu weer te openen, doe:
 \begin{itemize}
   \item Druk op \tiPRGM.
   \pause %1
-  \item \lenitem{Je ziet nu een lijst met alle programmas die je kunt uitvoeren.}
+  \item \lenitem{Je ziet nu een lijst met alle programma's die je kunt uitvoeren.}
 	  \begin{ticalc}[3.25cm]
-	  	EXEC \, EDIT \, NEW
-	  	1:MYPRGM01
+	  	\only<1-2>{\select{EXEC}}\only<3->{EXEC}\,\only<3->{\select{EDIT}}\only<1-2>{EDIT}\,NEW
+	  	\selectitem{1\:}MYPRGM01
 	  \end{ticalc}
   \pause %2
   \item Blader met \tiRight\,naar \tifonttxt{EDIT}.
@@ -54,7 +55,7 @@ Om het programma nu weer te openen, doe:
   \item Als alternatief, kun je ook het nummer intoetsen wat voor je programma staat. Dit is een hotkey om je programma te openen.
   \pause %5
   		Ook kun je met \tiALPHA\, de eerste letter van je programmanaam intoetsen om snel je programma te vinden
-  		(indien je later een grotere lijst met programmas hebt dan 1).
+  		(indien je later een grotere lijst met programma's hebt dan 1).
 \end{itemize}
 \end{frame}
 

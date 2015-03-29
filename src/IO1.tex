@@ -1,6 +1,52 @@
 \section{Basic IO}
-\subsection{Prompt}
-
 
 \subsection{Disp}
+
+\begin{frame}
+\frametitle{Hoe laat je een programma tekst weergeven?}
+\framesubtitle{Het \tifonttxt{PRGM-I/O} menu.}
+
+\visible<2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm
+\visible<3>{\ticalcfig{\ticalcfigCircleRight\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm + right
+\visible<4->{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm
+
+We gaan nu een programma tekst laten weergeven.
+\begin{itemize}
+  \item<2-> \lenitem{Maak zelf een nieuw programma aan, \tifonttxt{DISP1}.}
+  \item<3-> \lenitem{Open het programma (\tiPRGM\tiRight\tifonttxt{DISP1}).}
+  \item<4-> \lenitem{Druk op \tiPRGM\,om het programmeermenu te openen.}
+  \item<5-> \lenitem{Bij menu \tifonttxt{I/O} staat alle Input en Output.}
+  \item<6-> We zijn nu geinteresseerd in \tifonttxt{Disp}: ``Display''.
+\end{itemize}
+
+\only<4>{
+	\begin{ticalc}
+		\select{CTL}\,I/O\,EXEC \\
+		\selectitem{1\+\:}If \\
+		2\:Then \\
+		3\:Else \\
+		4\:For( \\
+		5\:While \\
+		6\:Repeat( \\
+		7\arrowdown End
+	\end{ticalc}
+}
+\visible<5->{
+	\begin{ticalc}
+		CTL\,\select{I/O}\,EXEC \\
+		1\+\:Input \\
+		2\:Prompt \\
+		\selectitem{3\:}Disp \\
+		4\:DispGraph \\
+		5\:DispTable \\
+		6\:Output( \\
+		7\arrowdown getKey
+	\end{ticalc}
+}
+
+\end{frame}
+
+
+
+\subsection{Prompt}
 

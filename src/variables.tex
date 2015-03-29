@@ -2,10 +2,29 @@
 \subsection{Getallen}
 
 \begin{frame}
+\frametitle{Datatype: Wat is een getal?}
+
+Onder het datatype `getal', verstaan we alle numerieke waarden:
+\pause%1
+\begin{enumerate}
+  \item Gehele getallen / Integers - E.g., \tifonttxt{-4}
+\pause%2
+  \item Reele getallen / Real Numbers - E.g., \tifonttxt{3.141592654}%TODO: Reële met accent of e
+\pause%3
+  \item Complexe getallen / Complex Numbers - E.g., \tifonttxt{2+3\ci}
+\end{enumerate}
+
+\pause%4
+Voor je rekenmachine zijn al deze getallen hetzelfde datatype (in tegenstelling tot op de computer!),
+en daarom kan dezelfde variabele gebruikt worden voor elk van bovenstaande voorbeelden.
+
+\end{frame}
+
+\begin{frame}
 \frametitle{\tifontbigtxt{Ans}}
 
 \visible<2>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircleEnter}}
-\visible<3>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColFour}{0.055}}}
+\visible<3>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColFour}{0.055}}} % Ans
 
 \begin{itemize}
   \item \lenitem{Wanneer je een som intyped op je rekenmachine, zie je bijvoorbeeld:
@@ -15,10 +34,11 @@
 \end{ticalc}}
 \pause%1
   \item \lenitem{Met \tiENTER\,herhalen we de laatste som.\\
-  		Met \tiENTRY=\tiSecond\tiENTER\,halen we de som terug op ons scherm.}
+  		Met \tiENTRY=\tiSecond\tiENTER\,halen we de som terug op ons scherm. (Probeer het!)}
 \pause%2
   \item Met \tiANS\tiENTER\,printen we ook hetzelfde antwoord.
-		\tifonttxt{Ans} is een variabele waarin het antwoord van de vorige bewerking is opgeslagen.
+		\tifonttxt{Ans} is een ``variabele'' waarin het antwoord van de vorige bewerking is opgeslagen.
+		Hier geldt dat \tifonttxt{Ans} een andere naam is voor \tifonttxt{5}.
 \pause%3
   \item Bijvoorbeeld, wat is hiervan de uitkomst?
  
@@ -29,15 +49,409 @@
 	\visible<5->{\\\hfill 2}
 \end{ticalc}
 \pause%4
+\visible<5->{Vervang alle \tifonttxt{Ans} door 5!}
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{\tifontbigtxt{Ans}}
+\framesubtitle{Meer voorbeelden}
+
+Om te testen of je het begrijpt, wat zijn van de volgende sommen de uitkomsten?
+
+\pause%1
+\begin{ticalc}[3.25cm]
+	3+4\\
+	\hfill 7\\
+	Ans-Ans*2
+	\visible<3->{\\\hfill -7}
+\end{ticalc}
+\pause%2
+\pause%3
+\begin{ticalc}[3.25cm]
+	0\\
+	\hfill 0\\
+	e\^Ans
+	\visible<5->{\\\hfill 1}
+\end{ticalc}
+\pause%4
+\pause%5
+
+\vspace{5pt}
+En wat moeilijker:
+
+\begin{ticalc}[3.25cm]
+	3\\
+	\hfill 3\\
+	Ans+2
+	\visible<7->{\\\hfill 5}\\
+	Ans-2
+	\visible<7->{\\\hfill 3}
+\end{ticalc}
+\pause%6
+
+\visible<7>{Merk op dat hierbij \tifonttxt{Ans} eerst gelijk is aan \tifonttxt{3}, maar vervolgens wordt overschreven door de nieuwe uitkomst: \tifonttxt{5}!
+			
+			Hierdoor evalueert de laatste som als \tifonttxt{5-2=3}.}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\tifontbigtxt{Ans}}
+\framesubtitle{Meer voorbeelden}
+
+En een laatste moeilijke:
+
+\begin{ticalc}[3.25cm]
+	\sqrt(9)\\
+	\hfill 3\\
+	Ans/3
+	\visible<2->{\\\hfill 1}\\
+	cos(\pi Ans)
+	\visible<2->{\\\hfill -1}\\
+	Ans+3
+	\visible<2->{\\\hfill 2}
+\end{ticalc}
+\pause%1
+
+\visible<2->{Net als de vorige opgave, \tifonttxt{Ans} is eerst \tifonttxt{3}, en wordt overschreven door \tifonttxt{1}.
+
+\pause%2
+			De volgende som is dan \tifonttxt{cos(\pi*1)}.
+			Merk hierbij op dat, net zoals je met $2x$ eigenlijk bedoelt $2*x$, hetzelfde op je rekenmachine geldt:
+			\tifonttxt{\pi Ans}$=$\tifonttxt{\pi*Ans}.
+			
+\pause%3
+			Als laatste stap is \tifonttxt{Ans} gelijk aan -1, waardoor de laatste som op \tifonttxt{2} eindigt.}
+\end{frame}
+
+\begin{frame}
+\frametitle{Andere variabelen voor getallen}
+\framesubtitle{Variabelen zijn doosjes.}
+
+
+\begin{itemize}
+  \item In het algemeen geldt dat een variabele een doosje is.
+  		\pause%1
+  		In dat doosje kan je iets stoppen (een getal), en je kunt het er later weer uithalen.
+  		\pause%2
+  		Een variabele is dus niets anders dan een `container' voor een getal.
+  		\pause%3
+  \item Net zagen we dat de inhoud van het doosje \tifonttxt{Ans} automatisch
+  		vervangen werd, elke keer dat we een berekening uit voerde.
+  		\pause%4
+  \item Alle andere doosjes moeten we met de hand openen en vullen.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Andere variabelen voor getallen}
+\framesubtitle{Het lezen van variabelen}
+
+\visible<1>{\ticalcfig{\ticalcfigCircleAlpha}} % Alpha
+\visible<2>{\ticalcfig{\ticalcfigCircleAlpha\ticalcfigCircle{\ticalcfigCircleColOne}{0.635}}} % Alpha Math = A
+\visible<3-4>{\ticalcfig{\ticalcfigCircleAlpha\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColTwo}{0.161}}} % Alpha 1 = Y
+\visible<5>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColOne}{0.952}}} % Y=
+\visible<6->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColOne}{0.227}}} % 2nd Sto = RCL
+
+\begin{itemize}
+  \item \lenitem{Met \tiALPHA\,kunnen we alle letters, inclusief \tifonttxt{\theta}, bereiken.
+  		Dit zijn alle variabelen die voor getallen bedoeld zijn.}
+  		\pause%1
+  \item	Bijvoorbeeld, \tiALPHA\tiMATH$=$\tifonttxt{A}.
+  		\pause%2
+  \item \lenitem{Je kunt de waarde van een variabele zien door de variabele te evalueren met \tiENTER:}
+  
+  		\begin{ticalc}[3.25cm]
+  			Y\\
+  			\hfill 2.585786438
+  		\end{ticalc}
+  		\pause%3
+  		\underline{Probeer zelf wat variabelen}!
+  		
+  		\pause%4
+  		Merk op dat \tifonttxt{X} en \tifonttxt{Y} variabelen zijn die door de grafische functies (\tiYEquals) worden gebruikt.
+  		\pause%5
+  \item	Als alternatief, kun je \tiRCL($=$\tiSecond\tiSTO)$+$\tifonttxt{Y}$+$\tiENTER\,gebruiken:
+  
+  		\begin{ticalc}[3.25cm]
+  			Rcl \ Y
+  		\end{ticalc}
+  		\begin{ticalc}[3.25cm]
+  			2.585786438\tiCursor
+  		\end{ticalc}
+  
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Andere variabelen voor getallen}
+\framesubtitle{Het storen van getallen in variabelen}
+
+\visible<1->{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColOne}{0.227}}} % Sto
+
+Je kunt iets met \tiSTO\,als volgt in een doosje stoppen:
+
+\pause%1
+\inlineticalc{6\>A} stored het getal \tifonttxt{6} in de variabele \tifonttxt{A}.
+
+\pause%2
+\vspace{10pt}
+\lenitem{``Store into a variable'' is de programmeerjargon voor een getal in een doosje stoppen.}
+
+\pause%3
+\vspace{30pt}
+\visible<4->{En dat is alles wat je nodig hebt\ldots!}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Andere variabelen voor getallen}
+\framesubtitle{Voorbeelden}
+
+% \begin{minipage}{0.39\textwidth}%
+	\begin{ticalc}[3.25cm]
+		3\>A\\
+		\hfill 3\\
+		2\>B\\
+		\hfill 2\\
+		A\^B
+		\visible<2->{\\\hfill 9}
+	\end{ticalc}
+
+	\pause%1
+	\visible<2->{Vervang \tifonttxt{A} door \tifonttxt{3} en \tifonttxt{B} door \tifonttxt{2} en de som is simpelweg $3^2=9$.}
+% \end{minipage} ~
+
+\pause%2
+% \begin{minipage}{0.57\textwidth}%
+	\begin{ticalc}[3.25cm]
+		3\>A\\
+		\hfill 3\\
+		2\>A\\
+		\hfill 2\\
+		A\^A
+		\visible<4->{\\\hfill 4}
+	\end{ticalc}
+
+	\pause%3
+	\visible<4->{Vervang \tifonttxt{A} door \tifonttxt{2} en de som is simpelweg $2^2=4$.
+	Merk hierbij op dat alleen het \emph{laatste} wat je in een doosje stopt in het doosje zit!}
+% \end{minipage}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Andere variabelen voor getallen}
+\framesubtitle{Ultiem voorbeeld}
+
+	\begin{ticalc}[3.25cm]
+		3\>A\\
+		\hfill 3\\
+		A\>B\\
+		\hfill 3\\
+		B+A\>C
+		\visible<2->{\\\hfill 6}\\
+		0\>A
+		\visible<2->{\\\hfill 0}\\
+		A+B+C
+		\visible<2->{\\\hfill 9}
+	\end{ticalc}
+
+	\pause%1
+	\visible<2->{Merk op dat op het moment dat \tifonttxt{C} wordt uitgerekend, \tifonttxt{A} nog gelijk is aan \tifonttxt{3} (en niet \tifonttxt{0}).}
+	
+	\pause%2
+	\vspace{5pt}
+	\visible<3->{Speel zelf ook met wat gecompliceerde voorbeelden en kijk of je begrijpt wat je rekenmachine uitrekent!}	
+\end{frame}
 
 \subsection{Strings}
 
+\begin{frame}
+\frametitle{Datatype: Wat is een string?}
 
+Volgens ``www.thefreedictionary.com":
+
+\pause%1
+\begin{enumerate}
+  \item Material made of drawn-out, twisted fiber, used for fastening, tying, or lacing.
+  \pause%2
+  \item (Music) A cord stretched on an instrument and struck, plucked, or bowed to produce tones.
+  \pause%3
+  \item (Physics) One of the extremely minute objects that form the basis of string theory.
+  \pause%4
+  \item A number of objects arranged in a line: a string of islands.
+  \pause%5
+  \item \visible<6->{(Computers) A linear sequence of characters, words, or other data.}
+\end{enumerate}
+
+\pause%6
+\visible<6->{Een `string' is gewoon een regel tekst!}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Waar heb je een string voor nodig?}
+
+\visible<6>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColOne}{0.952}}} % Y=
+
+Er zijn twee relevante toepassingen:
+\pause%1
+\begin{enumerate}
+  \item \lenitem{Het weergeven van tekst aan de gebruiker van je programma.}
+\pause%2
+  		\begin{enumerate}
+  		  \item De gebruiker uitleggen wat hij moet inputten.
+\pause%3
+  		  \item De gebruiker een resultaat in woorden laten zien.
+\pause%4
+  		  \item Etc.: Communiceren!
+ 	 	\end{enumerate}
+\pause%5
+  \item Vergelijkingen bij \tiYEquals\, zijn ook tekstregels:
+
+		\inlineticalc{\qt X\sq\qt\>Y\_{1}} verandert de \tifonttxt{Y\_{1}} grafiek naar de functie $y=x^2$.
+
+  		Daar gaan we in een later college op in.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Het storen van een string in een variabele}
+
+\visible<1>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColOne}{0.227}}} % Sto
+\visible<2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColFour}{0.62}}} % Vars
+\visible<3->{\ticalcfig{\ticalcfigCircleAlpha
+		\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColTwo}{0.055} % 0/Catalog/VisibleSpace
+		\ticalcfigCircle{\ticalcfigCircleColFive}{0.227} % Quote/+/mem 
+}}
+
+\begin{itemize}
+  \item Gebruik dezelfde knop als voor getallen: \tiSTO.
+  \pause%1
+  \item \lenitem{Voor het string datatype, moeten we de \tifonttxt{Str\#} variabelen gebruiken.
+  
+  		Deze staan in het \tiVARS-menu onder ``\tifonttxt{String...}''.}
+  \pause%2
+  \item Bijvoorbeeld:
+  
+  		\begin{ticalc}[5cm]
+  			\qt HELLO\,WORLD\qt\>Str1
+  		\end{ticalc}
+  \pause%3
+  \item Merk hierbij op dat een string tussen quotatie-tekens (\tifonttxt{\qt}) moet staan: \tiQuote$=$\tiALPHA\tiPlus.
+  
+  		De spatie maak je met \tiSpace$=$\tiALPHA\tiZero.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Strings}
+\framesubtitle{Voorbeelden}
+
+	\begin{ticalc}[6.5cm]
+		\qt HELLO\,WORLD\qt\>Str1\\
+		HELLO\,WORLD\\
+		Str1+\qt ?\qt
+		\visible<2->{\\ HELLO\,WORLD?}
+	\end{ticalc}
+
+	\pause%1
+	\visible<2->{De tekst \tifonttxt{HELLO\,WORLD} wordt opgeslagen in \tifonttxt{Str1}.
+				 Vervolgens voegen we er een vraagteken, \tifonttxt{?}, aan toe en weergeven we de uitkomst.}
+	
+	\vspace{8pt}
+	\pause%2
+	\begin{ticalc}[6.5cm]
+		\qt HELLO\,WORLD\qt\>Str1\\
+		HELLO\,WORLD\\
+		\qt Str1\,=\,\qt+Str1
+		\visible<4->{\\ Str1\,=\,HELLO\,WORLD}
+	\end{ticalc}
+
+	\pause%3
+	\visible<4->{Merk op dat we ook \emph{functies en variabelen} tussen quotatie-tekens kunnen zetten,
+				om de naam van die functie of variabele om te zetten naar een string.}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Strings}
+\framesubtitle{Opdrachten}
+
+	\begin{minipage}{0.35\textwidth}%
+		\begin{ticalc}[3.25cm]
+			2+2\\
+			\hfill 4\\
+			2+2\\
+			\hfill 5
+		\end{ticalc}		
+	\end{minipage}%
+	~
+	\begin{minipage}{0.62\textwidth}%
+		Hoe kun je deze tekst op je scherm weergeven?
+		
+		\visible<2->{De eerste regel is de standaard output van de rekenmachine voor de som \tifonttxt{2+2}.
+		De tweede regel is een string met genoeg spaties om \tifonttxt{5} rechts te zetten.}
+	\end{minipage}%
+	
+	\vspace{12pt}	
+	\begin{minipage}{0.35\textwidth}%
+		\begin{ticalc}[3.25cm]
+			\qt Hi\qt\>Str1 \\
+			\qt 3*2=\qt\>Str2 \\
+			Str1+\qt ,\,Kevin\qt
+			\visible<3->{\\ Hi,\,Kevin}\\
+			Str2+6
+			\visible<4->{\\ ERR:\,DATA\,TYPE}
+		\end{ticalc}
+	\end{minipage}%
+	~
+	\begin{minipage}{0.62\textwidth}%
+		Wat is de output van je rekenmachine voor deze som? En waarom?
+				
+		\visible<4->{\tifonttxt{6} is een getal, niet een string.
+		Je kunt een string en een getal niet bij elkaar optellen.
+		\inlineticalc{Str2+\qt 6\qt} had wel gewerkt.}
+	\end{minipage}%
+	
+	\pause%1
+	\pause%2
+	\pause%3
+\end{frame}
 
 \subsection{Overige}
 
+\begin{frame}
+\frametitle{Andere datatypen}
+
+Andere datatypen verdienen ook een korte benoeming:
+\begin{itemize}
+  \pause%1
+  \item \textbf{Lists.} Een collectie getallen.
+  
+  		Nuttig om een berekening in 1 keer op heel veel getallen tegelijk uit te voeren.
+  		Ook kun je gebruik maken van functies van de rekenmachine, zoals \tifonttxt{mean} (gemiddelde), op lijsten.
+  \pause%2
+  \item \textbf{Matrix.} Een soort 2D list. Geen middelbare school wiskunde.
+  \pause%3
+  \item \textbf{Picture.} Je kunt met de functies in het \tiDRAW-menu tekeningen op je rekenmachine maken.
+  		Deze kun je in \tifonttxt{Pic\#} variabelen opslaan.
+  \pause%4
+  \item \textbf{Graph.} Je kunt alle functies die je bij \tiYEquals\, hebt staan opslaan in een \tifonttxt{GDB\#} variabele
+  		(GDB = Graph Database).
+  		
+  		Daarmee kun je op een later tijdstip de functies/grafieken weer tevoorschijn toveren.
+\end{itemize}
+
+Deze datatypen/variabelen zullen we deels later behandelen.
+
+\end{frame}
 
 
