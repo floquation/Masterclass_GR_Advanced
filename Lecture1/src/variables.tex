@@ -108,21 +108,23 @@ En een laatste moeilijke:
 	Ans/3
 	\visible<2->{\\\hfill 1}\\
 	cos(\pi Ans)
-	\visible<2->{\\\hfill -1}\\
+	\visible<2->{\\\hfill \min1}\\
 	Ans+3
 	\visible<2->{\\\hfill 2}
 \end{ticalc}
 \pause%1
 
-\visible<2->{Net als de vorige opgave, \tifonttxt{Ans} is eerst \tifonttxt{3}, en wordt overschreven door \tifonttxt{1}.
-
+\visible<2->{
+	Net als in de vorige opgave, \tifonttxt{Ans} begint op \tifonttxt{3} en wordt daarna overschreven met de waarde \tifonttxt{1}.
+		
 \pause%2
-			De volgende som is dan \tifonttxt{cos(\pi*1)}.
-			Merk hierbij op dat, net zoals je met $2x$ eigenlijk bedoelt $2*x$, hetzelfde op je rekenmachine geldt:
-			\tifonttxt{\pi Ans}$=$\tifonttxt{\pi*Ans}.
-			
+	De derde som is dan \tifonttxt{cos(\pi*1)}.
+	Merk hierbij op dat, net zoals je met $2x$ eigenlijk bedoelt $2*x$, hetzelfde op je rekenmachine geldt:
+	\tifonttxt{\pi Ans}$=$\tifonttxt{\pi*Ans}.
+	
 \pause%3
-			Als laatste stap is \tifonttxt{Ans} gelijk aan -1, waardoor de laatste som op \tifonttxt{2} eindigt.}
+	Als laatste stap is \tifonttxt{Ans} gelijk aan \tifonttxt{\min1}, waardoor de laatste som gelijk is aan \tifonttxt{2}.
+}
 \end{frame}
 
 \begin{frame}
@@ -404,10 +406,10 @@ Er zijn twee relevante toepassingen:
 	\vspace{12pt}	
 	\begin{minipage}{0.35\textwidth}%
 		\begin{ticalc}[3.25cm]
-			\qt Hi\qt\>Str1 \\
+			\qt HI\qt\>Str1 \\
 			\qt 3*2=\qt\>Str2 \\
-			Str1+\qt ,\,Kevin\qt
-			\visible<3->{\\ Hi,\,Kevin}\\
+			Str1+\qt ,\,KEVIN\qt
+			\visible<3->{\\ HI,\,KEVIN}\\
 			Str2+6
 			\visible<4->{\\ ERR:\,DATA\,TYPE}
 		\end{ticalc}

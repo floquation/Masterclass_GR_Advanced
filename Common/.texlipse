@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Mon Apr 06 11:34:48 CEST 2015
+markTmpDer=true
+builderNum=7
+outputDir=../out/
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=../tmp
+mainTexFile=main.tex
+outputFile=AllLectures.pdf
+langSpell=en
+markDer=true
+srcDir=src/

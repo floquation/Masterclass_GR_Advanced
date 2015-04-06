@@ -1,0 +1,173 @@
+\section{Basic IO}
+
+\subsection{Disp}
+
+\begin{frame}
+\frametitle{Het \tifonttxt{PRGM-I/O} menu: input \& output.}
+
+\visible<2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm
+\visible<3>{\ticalcfig{\ticalcfigCircleRight\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm + right
+\visible<4->{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm
+
+We gaan nu een programma tekst laten weergeven.
+\begin{itemize}
+  \item<2-> \lenitem{Maak zelf een nieuw programma aan: \tifonttxt{DISP1}.}
+  \item<3-> \lenitem{Open het programma (\tiPRGM\tiRight\tifonttxt{DISP1}).}
+  \item<4-> \lenitem{Druk op \tiPRGM\,om het programmeermenu te openen.}
+  \item<5-> \lenitem{Bij menu \tifonttxt{I/O} staat alle Input en Output.}
+  \item<6-> We zijn nu geinteresseerd in \tifonttxt{Disp}: ``Display''.
+\end{itemize}
+
+\only<4>{
+	\begin{ticalc}
+		\select{CTL}\,I/O\,EXEC \\
+		\selectitem{1\+\:}If \\
+		2\:Then \\
+		3\:Else \\
+		4\:For( \\
+		5\:While \\
+		6\:Repeat( \\
+		7\arrowdown End
+	\end{ticalc}
+}
+\visible<5->{
+	\begin{ticalc}
+		CTL\,\select{I/O}\,EXEC \\
+		1\+\:Input \\
+		2\:Prompt \\
+		\selectitem{3\:}Disp \\
+		4\:DispGraph \\
+		5\:DispTable \\
+		6\:Output( \\
+		7\arrowdown getKey
+	\end{ticalc}
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Hello World!!}
+
+\visible<1-2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm
+\visible<3>{\ticalcfig{\ticalcfigCircleAlpha\ticalcfigCircleSecond}} % Alpha + 2nd
+\visible<4->{\ticalcfig{\ticalcfigCircleAlpha\ticalcfigCircle{\ticalcfigCircleColFive}{0.227}}} % Quote / Mem
+
+We maken nu een ``Hello World'' programma:
+\begin{itemize}
+  \item<2-> \lenitem{Kies de \tifonttxt{Disp} functie uit het \tifonttxt{I/O} menu.}
+  \item<3-> \lenitem{Zet je rekenmachine op \tiALOCK, zodat je letters kunt typen,
+  			zonder herhaaldelijk op \tiALPHA\, te drukken.}
+  \item<4-> \lenitem{Typ vervolgens \tifonttxt{\qt HELLO\,WORLD\qt} achter \tifonttxt{Disp}.}
+  \item<5-> \lenitem{Done! Execute het programma om te testen!}
+\end{itemize}
+
+\visible<2->{
+	\begin{ticalc}
+		CTL\,\select{I/O}\,EXEC \\
+		1\+\:Input \\
+		2\:Prompt \\
+		\selectitem{3\:}Disp \\
+		4\:DispGraph \\
+		5\:DispTable \\
+		6\:Output( \\
+		7\arrowdown getKey
+	\end{ticalc}
+}
+\visible<1->{
+	\begin{ticalc}[5cm]
+		PROGRAM\:DISP1 \\%
+		\:\visible<2->{Disp\,\only<4->{\qt HELLO\,WORLD\qt}\only<3->{\tiCursorAlpha}}%
+	\end{ticalc}
+}
+
+\end{frame}
+
+
+\subsection{Prompt}
+
+\begin{frame}
+\frametitle{Input: \tifontbigtxt{Prompt}}
+
+\begin{itemize}
+  \item<1-> Nice\ldots Maar het is veel leuker als de rekenmachine iets meer kan dan alleen ``Hello World'' zeggen.
+  \item<2-> \tifonttxt{Prompt} vertelt de rekenmachine iets: Input.
+  \item<3-> Bijvoorbeeld, \inlineticalc{Prompt\,A} vraagt de gebruiker om de waarde van de variabele \tifonttxt{A}: een getal.
+  \item<4-> Bijvoorbeeld, \inlineticalc{Prompt\,Str1} vraagt de gebruiker om de waarde van de variabele \tifonttxt{Str1}: een string.
+\end{itemize}
+
+\visible<2->{
+	\begin{ticalc}
+		CTL\,\select{I/O}\,EXEC \\
+		1\+\:Input \\
+		\selectitem{2\:}Prompt \\
+		3\:Disp \\
+		4\:DispGraph \\
+		5\:DispTable \\
+		6\:Output( \\
+		7\arrowdown getKey
+	\end{ticalc}
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Input: \tifontbigtxt{Prompt}}
+\framesubtitle{Meerdere argumenten}
+
+\begin{itemize}
+  \item<1-> Merk op dat je meerdere argumenten aan \tifonttxt{Prompt} kunt geven.
+  \item<2-> \inlineticalc{Prompt\,X\comma Y\comma Z} vraagt de gebruiker om de waarde van de variabelen \tifonttxt{X}, \tifonttxt{Y} en \tifonttxt{Z}.
+  \item<3-> Dit geeft een kleiner, overzichtelijker programma dan drie aparte \tifonttxt{Prompt} commando's.
+  \item<4-> Hetzelfde geldt voor \tifonttxt{Disp}.
+\end{itemize}
+
+\begin{ticalc}
+	PROGRAM\:BAD \\%
+	\:Prompt\,X \\%
+	\:Prompt\,Y \\%
+	\:Prompt\,Z
+\end{ticalc}
+\begin{ticalc}
+	PROGRAM\:GOOD \\%
+	\:Prompt\,X\comma Y\comma Z
+\end{ticalc}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{``Hello World'' is zo onpersoonlijk\ldots}
+
+We breiden ``Hello World'' uit: ``Hello {`naam'}''
+\begin{itemize}
+  \item<2-> Maak een nieuw programma aan: \tifonttxt{DISP2}.
+  \item<3-> Vraag de gebruiker om zijn naam en sla deze op in \tifonttxt{Str1}.
+  \item<4-> Print vervolgens de \tifonttxt{Str1} variabele met \tifonttxt{Disp}, samen met de tekst ``\tifonttxt{HELLO\,}''.
+  \item<5-> Run het programma en laat het jouw naam weergeven. \\ Let op: Zet je naam tussen quotes (\tifonttxt{\qt}).
+\end{itemize}
+
+\visible<1->{
+	\begin{ticalc}%
+		CTL\,\select{I/O}\,EXEC \\%
+		1\+\:Input \\%
+		\selectitem{2\:}Prompt \\%
+		3\:Disp \\%
+		4\:DispGraph \\%
+		5\:DispTable \\%
+		6\:Output( \\%
+		7\arrowdown getKey%
+	\end{ticalc}
+}
+\visible<2->{
+	\begin{ticalc}[5cm]
+		PROGRAM\:DISP2 \\%
+		\:\visible<3->{Prompt\,Str1}\\%
+		\:\visible<4->{Disp\,\qt HELLO\,\qt+Str1}
+	\end{ticalc}
+}
+
+\end{frame}
+
+
+
+

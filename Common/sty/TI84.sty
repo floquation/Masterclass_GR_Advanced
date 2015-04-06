@@ -1,3 +1,4 @@
+% \ProvidesPackage{TI84}
 %%%%%%%%%%%%%%
 %% PACKAGES %%
 %%%%%%%%%%%%%%
@@ -10,7 +11,7 @@
 
 \usepackage{xcolor,graphicx}
 
-\usepackage{sty/onimage}
+\RequirePackage{../../Common/sty/onimage} %TODO: How to get the link working...?
 	\usetikzlibrary{positioning}
 
 
@@ -85,11 +86,11 @@
 	\node[] (TR) at (current page.north east){ };
 	\node [anchor=north east,xshift=0.05cm,yshift=-1.4cm] at (TR)
 	{\ifthenelse{\isempty{#3}}{% if #3 is empty
-		\begin{tikzonimage}[height=#1]{TI84_buttons.png}
+		\begin{tikzonimage}[height=#1]{../../Common/figures/TI84_buttons.png} %TODO: How to get the link working...?
 			#2
 		\end{tikzonimage}
 	}{% if #3 is not empty
-		\begin{tikzonimage}[height=#1]{TI84_buttons.png}[tsx/show help lines]
+		\begin{tikzonimage}[height=#1]{../../Common/figures/TI84_buttons.png}[tsx/show help lines] %TODO: How to get the link working...?
 			#2
 		\end{tikzonimage}
 	}};
@@ -103,13 +104,19 @@
 % This heavily uses the 'graphicx' package.
 % Define all custom characters (like unequals) and characters not accessible by the keyboard (like sigma).
 \def\tidefinechars{\catcode`\;12 \catcode`\:12 \catcode`\!12 \catcode`\?12 \catcode`\^^M12 \catcode`\ 12%
-	\def\>{-\llap{\lower0.131em\hbox{`}\llap{\lower0.374em\hbox{\reflectbox{`}}\kern0.125em }\kern-0.122em}\kern0.18em}% Sto ->
+	\def\>{\kern-0.025em\scalebox{0.83}[1]{-}\llap{\lower0.131em\hbox{`}\llap{\lower0.374em\hbox{\reflectbox{`}}\kern0.125em}\kern-0.122em}\kern0.13em}% Sto ->
 	\def\!{=\llap{/}}% Unequal
-	\def\sqrt{\XeTeXglyph95\llap{\lower0.5em\hbox{`}\kern0em}\llap{\lower-0.377em\hbox{\scalebox{0.5}[1]{-}}\kern-0.170em}}% Sqrt
-	\def\arrowdown{\kern-0.5em\lower-0.88em\hbox{\scalebox{0.75}[1]{\scalebox{1.2}{\rotatebox{-90}{\>\kern-0.18em}}}}\kern0.2em}% Arrow pointing downwards (used in menus to indicate that there is something below)
+	\def\sqrt{\XeTeXglyph95\llap{\lower0.5em\hbox{`}\kern0em}\llap{\lower-0.377em\hbox{\scalebox{0.5}[1]{-}}\kern-0.130em}\kern0.1em}% Sqrt
+	\def\arrowdown{\kern-0.5em\lower-0.85em\hbox{\scalebox{0.98}{%
+		\rotatebox{-90}{\kern-0.025em\scalebox{1.35}[1]{-}\llap{\kern-0.2em\hbox{\lower0.131em\hbox{`}\llap{\lower0.374em\hbox{\reflectbox{`}}\kern0.125em}}}}%
+		}}\kern0.1em}% Arrow pointing downwards (used in menus to indicate that there is something below)
 	\def\arrowup{\kern-0.01em\lower-0.86em\hbox{\reflectbox{\rotatebox{180}{\arrowdown}}}}% Arrow pointing downwards (used in menus to indicate that there is something below)
-	\def\:{:\kern0.2em}% Increase kerning behind the colon (:)
+	\def\:{\kern-0.05em:\kern0.25em}% Increase kerning behind the colon (:)
 	\def\+{\kern0.13em}% Increase spacing between previous and next character: 'kerning'.
+	\def\one{1\+}% 1 with increased kerning
+	\def\E{\kern0.25ex\hbox{\scalebox{0.75}{E}}}% EE (10 to the power ...)
+	\def\.{\kern0.05em\hbox{.}\kern0.2em}% . shifted to the left, since the default is too far to the right
+	\def\comma{\kern0.05em\hbox{,}\kern0.2em}% comma (,) shifted to the left, since the default is too far to the right
 	\def\sq{{\XeTeXglyph101}}% Square (power 2)
 	\def\cube{{\XeTeXglyph102}}% Cube (power 3)
 	\def\deg{{\XeTeXglyph100}}% degree symbol
@@ -137,14 +144,15 @@
 	\def\dollar{{\XeTeXglyph7}}% $
 	\def\and{{\XeTeXglyph9}}% &
 	\def\qt{{\XeTeXglyph5}}% quote "
-	\def\quote{{\XeTeXglyph5}}% quote "
+	\def\quote{\qt}% quote "
 	\def\function{{\XeTeXglyph0}}% f with black-white inverted
 	\def\~{{\XeTeXglyph97}}% ~
 	\def\^{{\XeTeXglyph65}}% ^
 	\def\#{{\XeTeXglyph6}}% #
  	\def\_##1{\scalebox{0.6}{##1}\scalebox{0.4}{ }}% subscript, e.g. to create Y1 with a small 1.
+ 	\def\min{\hbox{\kern0.29em\scalebox{0.5}[1]{\lower-0.13em\hbox{-}\kern0.18em}}}% The minus sign below ANS, used for negative numbers.
 %  	\setlength{\columnsep}{15pt}
- 	\def\,{\hspace{1ex}}% Custom spacebar size, useful for strings.
+ 	\def\,{\hspace{1.2ex}}% Custom spacebar size, useful for strings.
  	\def\select##1{\fboxrule0pt\fboxsep0.2pt% Select the text
 		\fcolorbox{black}{green!0!black!100}{%
 			\color{TIBG}{##1}%
@@ -155,11 +163,11 @@
 		}\kern0.15em}% Colors the background as the text and text as the background: 'selection box'.
 }%
 
-\newfontfamily\tifont[Path=font/]{TI83_font.ttf}
+\newfontfamily\tifont[Path=../../Common/font/]{TI83_font.ttf} %TODO: How to get the link working...?
 \newcommand{\tifonttxt}[1]{{\tifont\tidefinechars\scriptsize#1}}
 \newcommand{\tifontbigtxt}[1]{{\tifont\tidefinechars\normalsize#1}}
 
-\newfontfamily\TIbutton[Path=font/]{TI83_button.ttf}
+\newfontfamily\TIbutton[Path=../../Common/font/]{TI83_button.ttf} %TODO: How to get the link working...?
 \DeclareTextFontCommand{\TI}{\TIbutton}
 \ifluatex
  \def\tibutton#1{\TI{\directlua{fonts.otf.char("#1")}}}
@@ -423,3 +431,5 @@
 \draw[step=.5cm,gray,thin] (C) grid (D);     % Use 0.5cm will be easier to find coordinates (xx,yy)
 \end{tikzpicture}
 }
+
+\endinput

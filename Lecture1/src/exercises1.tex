@@ -1,0 +1,149 @@
+\section{Exercises}
+
+\begin{frame}
+\frametitle{Exercises}
+
+\begin{enumerate}
+  \item \tifonttxt{DISP2} is nu onduidelijk voor de gebruiker\ldots
+  		Laat de gebruiker m.b.v. \tifonttxt{Disp} weten wat hij moet doen!
+  \item Schrijf een programma, \tifonttxt{NATCNSTS}, dat enkele natuurconstanten in variabelen stored (\tiSTO).
+  		Bijvoorbeeld, store $6.67384\cdot10^{-11}$($\mathrm{N}\mathrm{m}^2\mathrm{kg}^{-2}$) in \tifonttxt{G}.
+  		Bedenk zelf welke je wilt storen. (Gebruik de Binas.) Doe er minstens 5.
+  \item Schrijf een programma, \tifonttxt{DIST2P}, wat de afstand tussen twee punten uitrekent. \\
+  		Input: $P_1=(x_1,y_1)$ en $P_2=(x_2,y_2)$. Output: $d(P_1,P_2)$.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercises}
+
+\begin{enumerate}
+  \item Schrijf een programma, \tifonttxt{ABCPD}, die de oplossing geeft van de vergelijking $ax^2+bx+c=0$.
+  		Gebruik de ABC-formule en ga ervanuit dat $a$, $b$ en $c$ een \emph{positieve} discriminant $D=b^2-4ac>0$ geven.
+  		(Volgend college zullen we rekening houden met een negatieve discriminant.) \\
+  		Input: $a$, $b$ en $c$. Output: $x_1$ en $x_2$ (twee oplossingen!).
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercises (optioneel)}
+
+\begin{enumerate}
+  \item Schrijf ook een programma, \tifonttxt{DISTPL}, wat de afstand tussen een punt en een lijn uitrekent. \\
+  		Input: $P=(x,y)$ en $a$, $b$ in $l:y=ax+b$. Output: $d(P,l)$.
+  \item Schrijf een programma wat de gebruiker in de maling neemt: \tifonttxt{FOOLYOU}.
+  		Genereer de volgende output: \\
+		\begin{ticalc}[3.25cm]
+			2+2\\
+			\hfill 4\\
+			2+2\\
+			\hfill 5
+		\end{ticalc}
+		
+		Om het interessant te maken: Doe dit zonder gebruik te maken van de spatie (\tiSpace)!
+  \item Breid \tifonttxt{FOOLYOU} uit (\tifonttxt{FOOLYOU2}) zodat hij input van de gebruiker accepteert, zodat de gebruiker kan bepalen waar $2+2$ gelijk aan is. Leef je uit!
+  		Gebruik nu gerust de spatie (\tiSpace) weer, mocht je met strings willen werken.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Antwoorden}
+
+Hieronder staan mogelijke antwoorden.
+Uiteraard is het mogelijk om een programma op oneindig veel manieren te schrijven.
+Zo lang als het programma dezelfde functie volbrengt, is het correct.
+
+\vspace{0.3cm}
+
+\begin{ticalc}[5cm]
+	PROGRAM\:DISP2 \\%
+	\:Disp\,\qt HOE\,HEET\,JE?\qt\\%
+	\:Prompt\,Str1\\%
+	\:Disp\,\qt HELLO\,\qt+Str1
+\end{ticalc}
+
+\vspace{0.3cm}
+
+\begin{ticalc}[5cm]
+	PROGRAM\:NATCNSTS \\%
+	\:6\.67384\E\min\one\one\>G\\%
+	\:\one\.602\one76565\E\min\one9\>E\\%
+	\:9\.\one09382\one5\E\min3\one\>M\\%
+	\:6\.022\one4\one29\E\min23\>N\\%
+	\:299792458\>C\\%
+	\:6\.62606896\E\min34\>H\\%
+	\:\one\.3806488\E\min23\>K%
+\end{ticalc}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Antwoorden}
+
+\begin{ticalc}[4.2cm]
+	PROGRAM\:DIST2P \\%
+	\:Disp\,\qt POINT\,1\:\qt \\%
+	\:Prompt\,X\comma Y \\%
+	\:X\>A\:Y\>B \\%
+	\:Disp\,\qt POINT\,2\:\qt \\%
+	\:Prompt\,X\comma Y \\%
+	\:\sqrt((X-A)\sq+(Y-B)\sq)\>D \\%
+	\:Disp\,\qt DISTANCE=\qt\comma D%
+\end{ticalc}
+Pythagoras!
+
+\vspace{0.3cm}
+
+\begin{ticalc}[6.7cm]
+	PROGRAM\:ABCPD \\%
+	\:Disp\,\qt SOLVING\,AX\sq+BX+C=0\qt \\%
+	\:Prompt\,A\comma B\comma C \\%
+	\:B\sq-4AC\>D \\%
+	\:Disp\,\qt THERE\,ARE\,TWO\,SOLUTIONS:\qt \\%
+	\:(\min B+\sqrt(D))/(2A)\>X \\%
+	\:Disp\,X \\%
+	\:(\min B-\sqrt(D))/(2A)\>X \\%
+	\:Disp\,X%
+\end{ticalc}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Antwoorden (optioneel)}
+
+\begin{ticalc}[5cm]
+	PROGRAM\:DISTPL \\%
+	\:Disp\,\qt POINT\:\qt \\%
+	\:Prompt\,X\comma Y \\%
+	\:Disp\,\qt LINE\,Y=AX+B\:\qt \\%
+	\:Prompt\,A\comma B \\%
+	\:abs(\min AX+Y-B)/\sqrt(A\sq+1)\>D \\%
+	\:Disp\,\qt DISTANCE=\qt\comma D%
+\end{ticalc}
+\begin{minipage}{5cm}
+	Vrijwel hetzelfde als \tifonttxt{DIST2P}, maar een andere formule.
+\end{minipage}
+
+\vspace{0.3cm}
+
+\begin{ticalc}[4.5cm]
+	PROGRAM\:FOOLYOU \\%
+	\:Disp\,\qt2+2\qt\comma4 \\%
+	\:Disp\,\qt2+2\qt\comma5
+\end{ticalc}
+\begin{ticalc}[4.5cm]
+	PROGRAM\:FOOLYOU2 \\%
+	\:Disp\,\qt WAT\,IS\,2+2\,VOLGENS\,JOU?\qt \\%
+	\:Prompt\,Str1 \\%
+	\:Disp\,\qt2+2\qt\comma4 \\%
+	\:Disp\,\qt2+2\qt\comma Str1 \\%
+	\:Disp\,\qt\qt\comma\qt\qt
+\end{ticalc}
+
+
+\end{frame}
+

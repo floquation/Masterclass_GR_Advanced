@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Masterclass_GR_Advanced_Lecture5</name>
+	<comment></comment>
+	<projects>
+		<project>Masterclass_GR_Advanced_Common</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>net.sourceforge.texlipse.builder.TexlipseBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>net.sourceforge.texlipse.builder.TexlipseNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>sty</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Common/sty</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
