@@ -58,9 +58,10 @@ Condities zijn statements zoals:
 
 \inlineticalc{C=2} \inlineticalc{\pi\!3} \inlineticalc{A>6} \inlineticalc{A<B} \inlineticalc{X\ge42} \inlineticalc{0\le A}
 
-\uncover<2->{Vraag: Wanneer zijn deze 6 condities ``true''?}
+\uncover<2->{Vraag: Wanneer zijn deze 6 condities ``true'' (juist)?}
 
 \visible<3->{
+De 6 mogelijke boolean operatoren zijn:
 \begin{itemize}
   \item \tifonttxt{=} Gelijk aan.
   \item \tifonttxt{\!} Ongelijk aan.
@@ -74,6 +75,41 @@ Condities zijn statements zoals:
 \end{frame}
 
 
+
+
+
+\begin{frame}
+\frametitle{Voorbeelden}
+
+	\begin{minipage}{0.48\textwidth}%
+		Welke conditie hebben we nodig om te eisen dat iemand minstens 12 jaar oud is?
+		(\tifonttxt{A} is de leeftijd van de gebruiker.)
+		
+		\vspace{2pt}
+		\visible<2->{\inlineticalc{A\ge12}}
+	\end{minipage}%
+	~
+	\begin{minipage}{0.48\textwidth}%	
+		\begin{ticalc}[4.8cm]
+			PROGRAM\:OUDERDAN\\%
+			\:Disp\,\qt HOE\,OUD\,BEN\,JE?\qt\\%
+			\:Prompt\,A\\%
+			\hfill
+		\end{ticalc}	
+	\end{minipage}%
+	
+	\visible<3->{
+	\vspace{25pt}
+	Stel dat \tifonttxt{R} een getal in een programma is,
+	die slechts gelijk is aan \tifonttxt{0} of \tifonttxt{1}.
+	Het beschrijft of het wel (\tifonttxt{R=1}) of niet (\tifonttxt{R=0}) regent.
+
+	Welke conditie kunnen we gebruiken om te kijken of het regent?
+
+	\visible<4->{\inlineticalc{R\!0} ``Het regent niet niet''; Of \inlineticalc{R=1} ``Het regent wel''.}
+	}
+	
+\end{frame}
 
 
 

@@ -1,0 +1,192 @@
+\section{If-statements}
+
+
+\begin{frame}
+\frametitle{Hoe kunnen we condities gebruiken in een programma?}
+
+Allereerst\ldots Hoe gebruiken we condities in ons taalgebruik?
+
+\vspace{15pt}
+\visible<2->{``Als het regent, dan blijf ik binnen.''}
+
+\visible<3->{``Als ik later groot ben, dan wordt ik een brandweerman.''}
+
+\visible<4->{``Als ik die toets haal, dan ga ik over, of anders blijf ik zitten.''}
+
+\vspace{15pt}
+\visible<5->{In het algemeen:\\
+``\textbf{Als} <<CONDITIE>>, \textbf{dan} <<ACTIE>>, \textbf{of anders} <<ACTIE>>''}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Hoe kunnen we condities gebruiken in een programma?}
+
+\visible<1->{``\textbf{Als} <<CONDITIE>>, \textbf{dan} <<ACTIE>>, \textbf{of anders} <<ACTIE>>. \textbf{Klaar}.''}
+
+\vspace{3pt}
+\visible<2->{``\textbf{If} <<CONDITION>>, \textbf{then} <<ACTION>>, \textbf{else} <<ACTION>>. \textbf{End}.''}
+
+\vspace{15pt}
+\visible<3->{
+\begin{minipage}{0.43\textwidth}%
+	\begin{ticalc}[4.3cm]
+		PROGRAM\:FIRST IF\\%
+		\:If\,SOME\,CONDITION\\%
+		\:Then\\%
+		\:DO\,SOMETHING\\%
+		\:Else\\%
+		\:DO\,OTHER\,THING\\%
+		\:End
+	\end{ticalc}
+\end{minipage}%
+~
+\visible<4->{
+\begin{minipage}{0.53\textwidth}%
+	\begin{ticalc}[5.3cm]
+		PROGRAM\:FIRST IF\\%
+		\:If\,R=0\\%
+		\:Then\\%
+		\:Disp\,\qt IT\,IS\,DRY\,OUTSIDE\qt\\%
+		\:Else\\%
+		\:Disp\,\qt IT\,IS\,RAINY\,TODAY\qt\\%
+		\:End
+	\end{ticalc}
+\end{minipage}%	
+}
+}
+
+\vspace{5pt}
+\visible<5->{Er ontstaan nu twee paden in het programma:\\}
+\visible<6->{Slechts de statement(s) tussen \tifonttxt{Then} en \tifonttxt{Else} wordt uitgevoerd,
+of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
+\visible<7->{Daarna gaat het programma verder met statements die onder \tifonttxt{End} staan.}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Waar staat het op de GR?}
+
+\visible<1-2,6->{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm
+\visible<3>{\ticalcfig{}} % nothing
+\visible<4-5>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColOne}{0.64}}} % test menu
+
+\begin{itemize}
+  \item<1-> Maak een nieuw programma: \inlineticalc{PROGRAM\:FIRSTIF}.
+  \item<2-> Druk op \tiPRGM\,en kies \tifonttxt{If}.
+  \item<3-> Type een letter.
+  \item<4-> Druk op \tiTEST=\tiSecond\tiMATH\,en kies \tifonttxt{=}.
+  \item<5-> Type \tifonttxt{0} gevolgd door \tiENTER.
+  \item<6-> Druk op \tiPRGM\,en kies \tifonttxt{Then}, daarna \tiENTER.
+  \item<7-> Druk op \tiPRGM\,en kies \tifonttxt{Else}, daarna \tiENTER.
+  \item<8-> Druk op \tiPRGM\,en kies \tifonttxt{End}, daarna \tiENTER.
+  \item<9-> Dit is de structuur van het \tifonttxt{if}-statement.
+\end{itemize}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm,yshift=0.6cm] at (BL)
+	{%
+	\only<1,3,5,9>{%
+		\begin{ticalc}
+			PROGRAM\:FIRSTIF\\%
+			\:\only<1>{\tiCursor}\visible<3->{If\,A\only<3>{\tiCursor}\visible<5->{=0\\%
+			\:\only<5>{\tiCursor}}}\visible<9->{Then\\%
+			\:Else\\%
+			\:End}
+		\end{ticalc}
+	}%
+	\only<2>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			\selectitem{1\+\:}If \\
+			2\:Then \\
+			3\:Else \\
+			4\:For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\arrowdown End
+		\end{ticalc}
+	}%
+	\only<4>{%
+		\begin{ticalc}
+			\select{TEST}\,LOGIC \\
+			\selectitem{1\+\:}= \\
+			2\:\! \\
+			3\:> \\
+			4\:\ge \\
+			5\:< \\
+			6\:\le
+		\end{ticalc}
+	}%
+	\only<6>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			1\+\:If \\
+			\selectitem{2\:}Then \\
+			3\:Else \\
+			4\:For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\arrowdown End
+		\end{ticalc}
+	}%
+	\only<7>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			1\+\:If \\
+			2\:Then \\
+			\selectitem{3\:}Else \\
+			4\:For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\arrowdown End
+		\end{ticalc}
+	}%
+	\only<8>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			1\+\:If \\
+			2\:Then \\
+			3\:Else \\
+			4\:For( \\
+			5\:While \\
+			6\:Repeat( \\
+			\selectitem{7\arrowdown} End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Intermezzo: Invoegen/Insert}
+
+\begin{ticalc}
+	PROGRAM\:FIRSTIF\\%
+	\:If\,A=0\\%
+	\:Then\\%
+	\:Else\\%
+	\:End
+\end{ticalc}
+
+\end{frame}
+
+
+
+
+
+
