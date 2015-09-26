@@ -175,13 +175,71 @@ of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
 \begin{frame}
 \frametitle{Intermezzo: Invoegen/Insert}
 
-\begin{ticalc}
-	PROGRAM\:FIRSTIF\\%
-	\:If\,A=0\\%
-	\:Then\\%
-	\:Else\\%
-	\:End
-\end{ticalc}
+\visible<3,5->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColThree}{0.8}}} % Ins
+\visible<4>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColThree}{0.8}\ticalcfigCircleEnter}} % Ins + Enter
+\visible<1,2>{\ticalcfig{}} % nothing
+
+\begin{itemize}
+  \item<2-> \lenitem{Plaats je cursor op \tifonttxt{Else}.}
+  \item<3-> \lenitem{Druk op \tiINS=\tiSecond\tiDEL. Je cursor is nu verandert.}
+  \item<4-> \lenitem{Druk op \tiENTER. Je hebt nu een regel \textit{boven} ingevoegd.}
+  \item<5-> \lenitem{\tiINS=\tiSecond\tiDEL\,of de cursor bewegen be\"eindigd de insert-modus.}
+\end{itemize}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm,yshift=0.6cm] at (BL)
+	{%
+	\only<1>{%
+		\begin{ticalc}
+			PROGRAM\:FIRSTIF\\%
+			\:If\,A=0\\%
+			\:Then\\%
+			\:Else\\%
+			\:End
+		\end{ticalc}
+	}%
+	\only<2>{%
+		\begin{ticalc}
+			PROGRAM\:FIRSTIF\\%
+			\:If\,A=0\\%
+			\:Then\\%
+			\:\tiCursor lse\\%
+			\:End
+		\end{ticalc}
+	}%
+	\only<3>{%
+		\begin{ticalc}
+			PROGRAM\:FIRSTIF\\%
+			\:If\,A=0\\%
+			\:Then\\%
+			\:\_lse\\%
+			\:End
+		\end{ticalc}
+	}%
+	\only<4>{%
+		\begin{ticalc}
+			PROGRAM\:FIRSTIF\\%
+			\:If\,A=0\\%
+			\:Then\\%
+			\:\\%
+			\:\_lse\\%
+			\:End
+		\end{ticalc}
+	}%
+	\only<5->{%
+		\begin{ticalc}
+			PROGRAM\:FIRSTIF\\%
+			\:If\,A=0\\%
+			\:Then\\%
+			\:\\%
+			\:Else\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
 
 \end{frame}
 
