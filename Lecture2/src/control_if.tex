@@ -33,26 +33,41 @@ Allereerst\ldots Hoe gebruiken we condities in ons taalgebruik?
 \vspace{15pt}
 \visible<3->{
 \begin{minipage}{0.43\textwidth}%
-	\begin{ticalc}[4.3cm]
-		PROGRAM\:FIRST IF\\%
-		\:If\,SOME\,CONDITION\\%
-		\:Then\\%
-		\:DO\,SOMETHING\\%
-		\:Else\\%
-		\:DO\,OTHER\,THING\\%
-		\:End
-	\end{ticalc}
+	\only<-4>{
+		\begin{ticalc}[4.3cm]
+			PROGRAM\:FIRST IF\\%
+			\:If\,SOME\,CONDITION\\%
+			\:Then\\%
+			\:DO\,SOMETHING\\%
+			\:Else\\%
+			\:DO\,OTHER\,THING\\%
+			\:End
+		\end{ticalc}
+	}\only<5->{
+% 		\begin{figure}
+% 			\hspace{-1.2cm}
+% 		  	\centering
+% 		    \includegraphics[width=1.2\textwidth]{../figures/IfDiagram.jpg}
+% 		\end{figure}
+		\begin{tikzpicture}[overlay,remember picture]
+			\node [anchor=west,xshift=-0.9cm,yshift=0cm]
+			{
+			\begin{tikzonimage}[width=1.2\textwidth]{../figures/IfDiagram.jpg}
+			\end{tikzonimage}
+			};
+		\end{tikzpicture}
+	}
 \end{minipage}%
 ~
 \visible<4->{
 \begin{minipage}{0.53\textwidth}%
 	\begin{ticalc}[5.3cm]
 		PROGRAM\:FIRST IF\\%
-		\:If\,R=0\\%
+		\:If\,G\ge60\\%
 		\:Then\\%
-		\:Disp\,\qt IT\,IS\,DRY\,OUTSIDE\qt\\%
+		\:Disp\,\qt PASSED.\qt\\%
 		\:Else\\%
-		\:Disp\,\qt IT\,IS\,RAINY\,TODAY\qt\\%
+		\:Disp\,\qt FAILED.\qt\\%
 		\:End
 	\end{ticalc}
 \end{minipage}%	
@@ -65,7 +80,19 @@ Allereerst\ldots Hoe gebruiken we condities in ons taalgebruik?
 of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
 \visible<7->{Daarna gaat het programma verder met statements die onder \tifonttxt{End} staan.}
 
+
+
+% \begin{tikzpicture}[overlay,remember picture]
+% 	\node[] (SE) at (current page.south east){ };
+% 	\node [anchor=south east,xshift=0.05cm,yshift=1.4cm] at (SE)
+% 	{
+% 	\begin{tikzonimage}[height=#1]{../figures/IfDiagram.jpg}
+% 	\end{tikzonimage}
+% 	};
+% \end{tikzpicture}
+
 \end{frame}
+
 
 
 
@@ -101,7 +128,8 @@ of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
 			\:\only<1>{\tiCursor}\visible<3->{If\,A\only<3>{\tiCursor}\visible<5->{=0\\%
 			\:\only<5>{\tiCursor}}}\visible<9->{Then\\%
 			\:Else\\%
-			\:End}
+			\:End}\\%
+			\visible<0>{.}
 		\end{ticalc}
 	}%
 	\only<2>{%
@@ -196,7 +224,8 @@ of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
 			\:If\,A=0\\%
 			\:Then\\%
 			\:Else\\%
-			\:End
+			\:End\\%
+			\visible<0>{.}
 		\end{ticalc}
 	}%
 	\only<2>{%
@@ -205,7 +234,8 @@ of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
 			\:If\,A=0\\%
 			\:Then\\%
 			\:\tiCursor lse\\%
-			\:End
+			\:End\\%
+			\visible<0>{.}
 		\end{ticalc}
 	}%
 	\only<3>{%
@@ -214,7 +244,8 @@ of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
 			\:If\,A=0\\%
 			\:Then\\%
 			\:\_lse\\%
-			\:End
+			\:End\\%
+			\visible<0>{.}
 		\end{ticalc}
 	}%
 	\only<4>{%
@@ -242,6 +273,17 @@ of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
 
 
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{Oefening!}
+
+TODO: OEFENINGEN IN DE KLAS
+%TODO
+
+\end{frame}
+
 
 
 
