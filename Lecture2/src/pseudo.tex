@@ -1,4 +1,4 @@
-\section{Pseudocode & Algoritmes}
+\section{Pseudocode \& Algoritmes}
 
 \begin{frame}
 \frametitle{Hoe zet je een probleem om in een programma?}
@@ -32,7 +32,7 @@
   	\end{itemize}
   	\item<4-> Pseudocode heeft niet zo'n strakke syntax,\\maar het is ``in eigen woorden''
   \end{itemize}
-  \item<5-> Pseudocode heeft echter wel de \textbf{structuur} van een algoritme
+  \item<5-> Pseudocode heeft echter wel de \textbf{structuur} van een stukje code
 \end{itemize}
 
 \end{frame}
@@ -69,6 +69,7 @@ Stel dat we een programma willen schrijven die ons vertelt of we vandaag een par
 \begin{minipage}{0.27\textwidth}%
 	\begin{ticalc}
 		PROGRAM\:PARAPLU\\%
+		\:Prompt\,R\\%
 		\:If\,R>40\\%
 		\:Then\\%
 		\:Disp\,\qt PARAPLU\,NODIG\qt\\%
@@ -110,17 +111,80 @@ Bijv. ``bereken het elektrisch veld'', zoals in de figuur hieronder.
 \begin{frame}
 \frametitle{Wat is een algoritme?}
 
-%TODO
+\begin{itemize}
+  \item<1-> Op voorgaande slides kwam het woord ``\textbf{Algorithm}'' voor (NL: Algoritme). Wat is dat?
+  \item<2-> Een algorithme is ``een stukje code''.
+  \item<3-> Dat ``stukje code'' heeft als doel om iets specifieks uit te rekenen.
+  \begin{itemize}
+    \item<4-> Bijvoorbeeld het uitrekenen van het zesde priemgetal\only<5->{ ($=13$)}.
+  \end{itemize}
+  \item<5-> Dus overal waar ``Algorithm'' staat, kun je simpelweg denken ``\emph{een stukje computercode om iets uit te rekenen}''.
+\end{itemize}
 
 \end{frame}
+
 
 
 \begin{frame}
 \frametitle{Wat is pseudocode?}
 \framesubtitle{Oefening}
 
-TODO: Oefening in de klas
-%TODO
+Wat voor een algoritme beschrijft deze pseudocode?
+
+\begin{algorithm}[H]
+\caption{Pseudocode ``WhatDoIDo?''}
+\begin{algorithmic}[1]
+\Function{WhatDoIDo}{$a$,$b$,$c$}
+	\State $D=\sqrt{b^2-4ac}$
+	\If{$D>0$}
+		\State Er zijn twee oplossingen
+		\State $x = -b\pm D / 2a$
+	\ElsIf{$D=0$}
+		\State Er is exact \'e\'en oplossing
+		\State $x = -b / 2a$
+	\Else \Comment{$D<0$}
+		\State Er zijn geen re\"ele oplossingen!
+	\EndIf
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Wat is pseudocode?}
+\framesubtitle{Oefening}
+
+% \begin{algorithm}[H]
+% \caption{Pseudocode ``WhatDoIDo2?''}
+% \begin{algorithmic}[1]
+% % Risk dobbelstenen
+% \end{algorithmic}
+% \end{algorithm}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Wat is pseudocode?}
+\framesubtitle{Oefening}
+
+% \begin{algorithm}[H]
+% \caption{Pseudocode ``WhatDoIDo3?''}
+% \begin{algorithmic}[1]
+% % Iets met een zoekmachine
+% \end{algorithmic}
+% \end{algorithm}
+
+%TODO: totaal drie oefeningen met ``wat doet de volgende pseudocode?''
+%TODO: daarna paar oefeningen met ``maak hiervoor een eigen pseudocode''
+%TODO: daarna het omzetten van pseudocode in een programma
 
 \end{frame}
 
