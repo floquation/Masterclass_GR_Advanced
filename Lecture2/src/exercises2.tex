@@ -3,13 +3,22 @@
 \begin{frame}
 \frametitle{Exercises}
 
-Maak de pseudocodes en implementeer alle algoritmes van slide \ref{frame:pseudo_exercises}
-(dat zijn de opdrachten aan het einde van ``pseudocode \& algoritmes''), voor in hoeverre je kunt.
-
-De pokeropdracht is optioneel. Ik raad aan om w\'el de pseudocode te maken, maar het niet te implementeren.
-Dat is gigantisch veel werk op je GR.
+\begin{itemize}
+  \item Redeneer m.b.v. formele logica:
+	\begin{enumerate}
+      \item Het regent. Ik heb een paraplu. Regent het \tifonttxt{and} heb ik een paraplu?
+      \item Het is bewolkt. Het is droog. Regent het \tifonttxt{or} is het bewolkt?
+      \item Het is bewolkt. Het regent. Regent het \tifonttxt{xor} is het bewolkt?
+      \item Het regent. Regent het niet niet niet?
+	\end{enumerate}
+  \item Maak de pseudocodes en implementeer alle algoritmes van slide \ref{frame:pseudo_exercises}
+	(dat zijn de opdrachten aan het einde van ``pseudocode \& algoritmes''), voor in hoeverre je kunt.
+  \item De pokeropdracht is optioneel. Ik raad aan om w\'el de pseudocode te maken, maar het niet te implementeren.
+	Dat is gigantisch veel werk op je GR.
 % Tip voor de pokeropdracht: Gebruik twee variabelen per kaart (dus 10 in totaal).
 % \'E\'en voor het nummer (1 tot 13), en \'e\'en voor de kleur (harten, ruiten, schoppen, klaveren).
+  \item Breid je \tifonttxt{ABCPD} programma uit voor de drie situaties van \tifonttxt{D}.
+\end{itemize}
 
 \end{frame}
 
@@ -31,6 +40,34 @@ Dat is gigantisch veel werk op je GR.
 % \end{enumerate}
 %
 
+\begin{frame}
+\frametitle{Antwoorden}
+
+\begin{enumerate}
+  \item Het regent. Ik heb een paraplu. Regent het \tifonttxt{and} heb ik een paraplu?
+	\begin{itemize}
+	  \item \inlineticalc{R=1}\inlineticalc{P=1} Gevraagd: \inlineticalc{R\,and\,P}
+	  \item Dit geeft \tifonttxt{1} (true)!
+	\end{itemize}
+  \item Het is bewolkt. Het is droog. Regent het \tifonttxt{or} is het bewolkt?
+	\begin{itemize}
+	  \item \inlineticalc{B=1}\inlineticalc{R=0} Gevraagd: \inlineticalc{B\,or\,R}
+	  \item Dit geeft \tifonttxt{1} (true)!
+	\end{itemize}
+  \item Het is bewolkt. Het regent. Regent het \tifonttxt{xor} is het bewolkt?
+	\begin{itemize}
+	  \item \inlineticalc{B=1}\inlineticalc{R=1} Gevraagd: \inlineticalc{B\,xor\,R}
+	  \item Dit geeft \tifonttxt{0} (false)!
+	\end{itemize}
+  \item Het regent. Regent het niet niet niet? 
+	\begin{itemize}
+	  \item \inlineticalc{R=1} Gevraagd: \inlineticalc{not(not(not(R)))}
+	  \item Redeneer van binnen naar buiten: \inlineticalc{not(R)=0} \inlineticalc{not(not(R))=1}
+	  	en dus is het antwoord \tifonttxt{0} (false)!
+	\end{itemize}
+\end{enumerate}
+
+\end{frame}
 
 \begin{frame}
 \frametitle{Antwoorden}
@@ -165,7 +202,8 @@ Later meer over dit soort gevallen (m.b.v. Lists).
 \begin{frame}
 \frametitle{Antwoorden}
 
-\begin{ticalc}[5cm]
+\begin{minipage}{0.48\textwidth}
+\begin{ticalc}[4.5cm]
 	PROGRAM\:RESTYDX\\%
 	\:Disp\,\qt REST(Y/X)\:\qt\\%
 	\:Input\,\qt Y=\qt\comma Y\\%
@@ -178,6 +216,32 @@ Later meer over dit soort gevallen (m.b.v. Lists).
 	\:Disp\,fPart(Y/X)*X\\%
 	\:Disp\,(Y/X-int(Y/X))*X%
 \end{ticalc}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+\begin{ticalc}[5.5cm]
+	PROGRAM\:ABC\\%
+	\:Disp\,\qt SOLVING\,AX\sq+BX+C=0\qt \\%
+	\:Prompt\,A\comma B\comma C \\%
+	\:B\sq-4AC\>D \\%
+	\:If\,D>0\:Then\\%
+	\:Disp\,\qt THERE\,ARE\,TWO\,SOLUTIONS\:\qt \\%
+	\:(\min B+\sqrt(D))/(2A)\>X \\%
+	\:Disp\,X \\%
+	\:(\min B-\sqrt(D))/(2A)\>X \\%
+	\:Disp\,X\\%
+	\:Else\:If\,D=0\:Then\\%
+	\:Disp\,\qt THERE\,IS\,ONE\,SOLUTION\:\qt \\%
+	\:(\min B)/(2A)\>X \\%
+	\:Disp\,X \\%
+	\:Else\\%
+	\:Disp\,\qt THERE\,IS\,NO\,SOLUTION!\qt \\%	
+	\:End\\%
+	\:End
+\end{ticalc}
+\end{minipage}
+
+
+
 
 \end{frame}
 

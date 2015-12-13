@@ -1,0 +1,220 @@
+\section{Goto \& Labels}
+
+\begin{frame}
+\frametitle{R-r-r-r-epeat: Herhaling}
+
+\begin{itemize}
+  \item<1-> In een programma komt het vaak voor dat je een opdracht wilt herhalen.
+  \item<2-> Kijk bijvoorbeeld naar \inlineticalc{PROGRAM\:WIEWINT} van de exercises van vorige les.
+  \item<3-> Soms wil je een opdracht een gegeven aantal keer herhalen.
+  	\visible<4->{Dit is heel vaak hetzelfde programmeren\ldots Stel je voor dat je iets 132x wilt doen!}
+  \item<5-> Soms wil je een opdracht een van-te-voren onbekend aantal keer herhalen\ldots
+  	\visible<6->{Dat is niet te programmeren\ldots}
+  \item<7-> Voor dit soort gevallen, bestaan er opdrachten die iets herhalen:
+  	\tifonttxt{For}, \tifonttxt{While} en \tifonttxt{Goto} met \tifonttxt{Label}.
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Het \tifonttxt{Lbl} (Label) statement}
+
+\begin{itemize}
+  \item<1-> Het \tifonttxt{Lbl} statement doet \emph{niets} op zichzelf.
+  \item<2-> Het markeert een locatie in het programma.
+  \item<3-> Deze locatie kan elders in het programma gebruikt worden.
+  \item<4-> \tifonttxt{Lbl} staat onder \tiPRGM\,in het \tifonttxt{CTL}-menu.
+  \item<5-> Blader daarvoor naar beneden \tiDown.
+\end{itemize}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm,yshift=0.6cm] at (BL)
+	{%
+	\only<4>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			\selectitem{1\+\:}If \\
+			2\:Then \\
+			3\:Else \\
+			4\:For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\arrowdown End
+		\end{ticalc}
+	}%
+	\only<5>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			4\arrowup For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\:End \\
+			8\:Pause \\
+			\selectitem{9\:}Lbl \\
+			0\arrowdown Goto
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Het \tifonttxt{Goto} (Ga naar) statement}
+
+\begin{itemize}
+  \item<1-> Het \tifonttxt{Goto} statement heeft \tifonttxt{Lbl} nodig.
+  \item<2-> Wanneer een programma bij de \tifonttxt{Goto}-regel aan komt,
+  	dan springt hij naar de bijbehorende \tifonttxt{Lbl} en gaat daar verder met het uitvoeren van het programma.
+  \item<3-> Je kunt zo dus door het hele programma heen springen!
+  \item<4-> \tifonttxt{Goto} staat onder \tiPRGM\,in het \tifonttxt{CTL}-menu.
+  \item<5-> Blader daarvoor naar beneden \tiDown.
+\end{itemize}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm,yshift=0.6cm] at (BL)
+	{%
+	\only<4>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			\selectitem{1\+\:}If \\
+			2\:Then \\
+			3\:Else \\
+			4\:For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\arrowdown End
+		\end{ticalc}
+	}%
+	\only<5>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			4\arrowup For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\:End \\
+			8\:Pause \\
+			9\:Lbl \\
+			\selectitem{0\arrowdown} Goto
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Het \tifonttxt{Goto} (Ga naar) statement}
+\framesubtitle{Voorbeeld}
+
+\begin{itemize}
+  \item<1-> Voorbeeld: Het programma slaat hier \inlineticalc{\:Disp\,\qt DIT WORDT NOOIT WEERGEVEN\qt} over
+  	en springt in \'e\'en keer naar \inlineticalc{\:Disp\,\qt DIT WORDT ALTIJD UITGEVOERD\qt}.
+  	Het negeert dus \inlineticalc{Stop}: Dat wordt nooit uitgevoerd.
+  \item<2-> Labels kunnen een naam hebben bestaande uit cijfers en letters, met maximaal 2 karakters.
+	  \begin{itemize}
+	    \item Bijvoorbeeld \tifonttxt{AB} of \tifonttxt{0A}, maar niet \tifonttxt{TUD2}.
+	  \end{itemize}
+\end{itemize}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm,yshift=0.6cm] at (BL)
+	{%
+	\only<1>{%
+		\begin{ticalc}
+			PROGRAM\:GOTOLBL0\\%
+			\:Goto\,0\\%
+			\:Disp\,\qt DIT WORDT NOOIT WEERGEVEN\qt\\%
+			\:Stop\\%
+			\:Lbl\,0\\%
+			\:Disp\,\qt DIT WORDT ALTIJD UITGEVOERD\qt
+		\end{ticalc}
+	}%
+	\only<2>{%
+		\begin{ticalc}
+			PROGRAM\:GOTOLBL1\\%
+			\:Goto\,TU\\%
+			\:Disp\,\qt DIT WORDT NOOIT WEERGEVEN\qt\\%
+			\:Stop\\%
+			\:Lbl\,TU\\%
+			\:Disp\,\qt DIT WORDT ALTIJD UITGEVOERD\qt
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Probeer \tifonttxt{Goto} zelf!}
+
+Schrijf zelf een klein \tifonttxt{prgm} met alleen \tifonttxt{Disp}, \tifonttxt{Lbl} en \tifonttxt{Goto} statements,
+om er een gevoel voor te krijgen.
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm,yshift=0.6cm] (BL2) at (BL)
+	{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			4\arrowup For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\:End \\
+			8\:Pause \\
+			9\:Lbl \\
+			\selectitem{0\arrowdown} Goto
+		\end{ticalc}
+	};
+	\node [anchor=east,xshift=-1.5cm] (BL3) at (BL2)
+	{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			4\arrowup For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\:End \\
+			8\:Pause \\
+			\selectitem{9\:}Lbl \\
+			0\arrowdown Goto
+		\end{ticalc}
+	};
+	\node [anchor=east,xshift=-1.5cm] (BL4) at (BL3)
+	{%
+		\begin{ticalc}
+			CTL\,\select{I/O}\,EXEC \\
+			1\+\:Input \\
+			2\:Prompt \\
+			\selectitem{3\:}Disp \\
+			4\:DispGraph \\
+			5\:DispTable \\
+			6\:Output( \\
+			7\arrowdown getKey
+		\end{ticalc}
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
