@@ -1,4 +1,5 @@
 \section{If-statements}
+\subsection{Uitleg}
 
 
 \begin{frame}
@@ -198,7 +199,7 @@ of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
 
 
 
-
+\subsection{Intermezzo: Invoegen/Insert}
 
 \begin{frame}
 \frametitle{Intermezzo: Invoegen/Insert}
@@ -274,13 +275,66 @@ of de statement(s) tussen \tifonttxt{Else} en \tifonttxt{End}.}
 
 \end{frame}
 
+\subsection{Zelf Oefenen}
 
 
 \begin{frame}
 \frametitle{Oefening!}
 
-TODO: OEFENINGEN IN DE KLAS
-%TODO
+Schrijf het volgende \tifonttxt{Prgm} op je GR (bedenk zelf een leuke naam):
+
+\begin{itemize}
+  \item Vraag de gebruiker om een cijfer, $G$.
+  \item Daarna: \textbf{Als} <<Cijfer 6 of hoger>>, \textbf{dan} <<Weergeef \tifonttxt{OK}>>, \textbf{of anders} <<Weergeef \tifonttxt{FAIL}>>.
+  \item Breid dit programma uit zodat een cijfer boven 8 \tifonttxt{GOOD} en boven 9.5 \tifonttxt{PERFECT} zegt.
+  \item Controleer of $G$ wel een cijfer is! (Waar moet een cijfer aan voldoen?) Geef een foutmelding indien $G$ geen cijfer kan zijn.
+  		\footnotesize{Tip: Je kunt gebruik maken van \inlineticalc{Stop} uit het \tiPRGM\inlineticalc{CTL} menu.}
+\end{itemize}
+
+\visible<2->{Merk op dat we het programma in stappen schreven, dit is volgens het `Scrum' programmeer-paradigma:
+``Maak eerst een werkend programma, voeg daarna nieuwe features toe!''}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Oefening! \tifonttxt{\>} Antwoord}
+
+\begin{minipage}{0.4\textwidth}
+\begin{ticalc}
+	PROGRAM\:GRADER\\%
+	\:Input\,\qt GRADE?\,\qt\comma G\\%
+	\:If\,G<1\,or\,G>10\\%
+	\:Then\\%
+	\:Disp\,\qt INVALID GRADE\qt\\%
+	\:Stop\\%
+	\:End\\%
+	\:If\,G\ge6
+	\:Then\\% >=6
+	\:If\,G\ge8
+	\:Then\\% >=8
+	\:If\,G\ge9.5
+	\:Then\\% >=9.5
+	\:Disp\,\qt PERFECT\qt\\%
+	\:Else\\% >=8 and <9.5
+	\:Disp\,\qt GOOD\qt\\%
+	\:End\\%
+	\:Else\\% >=6 and <8
+	\:Disp\,\qt OK\qt\\%
+	\:End\\%
+	\:Else\\% <6
+	\:Disp\,\qt FAIL\qt\\%
+	\:End
+\end{ticalc}
+\end{minipage}
+\begin{minipage}{0.58\textwidth}
+Dit is een mogelijk antwoord.
+Uiteraard zijn er meerdere mogelijkheden. Zolang het resultaat maar hetzelfde is!
+
+\vspace{1cm}
+Merk op dat ik hier \inlineticalc{Input} gebruik, i.p.v. \inlineticalc{Prompt}.
+Het werkt hetzelfde, maar heeft als eerste argument een string, hier: ``\tifonttxt{Grade?\,}''.
+\end{minipage}
 
 \end{frame}
 

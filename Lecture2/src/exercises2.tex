@@ -1,1 +1,187 @@
 \section{Exercises}
+
+\begin{frame}
+\frametitle{Exercises}
+
+Maak de pseudocodes en implementeer alle algoritmes van slide \ref{frame:pseudo_exercises}
+(dat zijn de opdrachten aan het einde van ``pseudocode \& algoritmes''), voor in hoeverre je kunt.
+
+De pokeropdracht is optioneel. Ik raad aan om w\'el de pseudocode te maken, maar het niet te implementeren.
+Dat is gigantisch veel werk op je GR.
+% Tip voor de pokeropdracht: Gebruik twee variabelen per kaart (dus 10 in totaal).
+% \'E\'en voor het nummer (1 tot 13), en \'e\'en voor de kleur (harten, ruiten, schoppen, klaveren).
+
+\end{frame}
+
+%
+% \begin{enumerate} 
+%   \item Bepaal of iemand genoeg geld, $g$, op zijn rekening heeft staan, indien hij een product voor $x$ euro wil kopen
+%   	en $r$ euro in het rood mag staan.
+%   \item Gegeven de huidige datum, $(y_t, m_t, d_t)$, en iemand's geboortedatum, $(y_g, m_g, d_g)$, bepaal zijn/haar leeftijd.
+%   \item Uit een set van 5 kaarten, bepaal wat de pokerset is.
+%   \begin{itemize}
+%     \item Bijvoorbeeld: ``pair of $5$'s, $K$ high'' or ``straight, $9$ high''
+%   \end{itemize}
+%   \item Er zijn vier spelers die elk punten hebben. Bepaal de winnaar, i.e. degene met de meeste punten.
+%   \item Bereken de `rest' van $y/x$.
+%   \begin{itemize}
+%     \item Bijvoorbeeld: $5/2 = 2$ `rest' $1$
+%     \item Tip: Kijk naar \tiMATH\inlineticalc{NUM}\inlineticalc{int(} of \tiMATH\inlineticalc{NUM}\inlineticalc{fPart(}
+%   \end{itemize}
+% \end{enumerate}
+%
+
+
+\begin{frame}
+\frametitle{Antwoorden}
+
+\begin{minipage}{0.4\textwidth}
+\begin{ticalc}
+	PROGRAM\:NUFMONEY\\%
+	\:Input\,\qt HOEVEEL\,GELD?\,\qt\comma G\\%
+	\:Input\,\qt HOEVEEL\,KOST\,HET?\,\qt\comma X\\%
+	\:Input\,\qt HOEVEEL\,KREDIET?\,\qt\comma R\\%
+	\:\\%
+	\:If\,G-X\ge0\:Then\\%
+	\:Disp\,\qt JE\,KUNT\,HET\,BETALEN\qt\\%
+	\:Else\\%
+	\:If\,X-G>R\:Then\\%
+	\:Disp\,\qt TE\,DUUR\qt\\%
+	\:Else\\%
+	\:Disp\,\qt OK,\,KOST\,KREDIET\qt\\%
+	\:End
+\end{ticalc}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{ticalc}[5cm]
+	PROGRAM\:BIRTHDAY\\%
+	\:Input\,\qt YOU\,Y\qt\comma Y\\%
+	\:Input\,\qt YOU\,M\qt\comma M\\%
+	\:Input\,\qt YOU\,D\qt\comma D\\%
+	\:Input\,\qt CUR\,Y\qt\comma Z\\%
+	\:Input\,\qt CUR\,M\qt\comma N\\%
+	\:Input\,\qt CUR\,D\qt\comma E\\%
+	\:\\%
+	\:Z-Y\>A\\%
+	\:If\,M>N\:Then\\%
+	\:A+1\>A\\%
+	\:Else\\%
+	\:If\,M=N\,and\,D>E\:Then\\%
+	\:A-1\>A\\%
+	\:End\\%
+	\:End\\%
+	\:Disp\,A
+\end{ticalc}
+\end{minipage}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Antwoorden}
+
+\begin{minipage}{0.48\textwidth}
+Dit negeert gelijkspel\ldots En is slecht leesbaar.
+Later meer over dit soort gevallen (m.b.v. Lists).
+
+\vspace{0.2cm}
+\begin{ticalc}
+	PROGRAM\:WIEWINT\\%
+	\:Prompt\,A\\%
+	\:Prompt\,B\\%
+	\:Prompt\,C\\%
+	\:Prompt\,D\\%
+	\:\\%
+	\:If\,A>B\:Then\\%
+		\:If\,A>C\:Then\\% A or D win
+			\:If\,A>D\:Then\\%
+				\:Disp\,\qt A\,WINS\qt\\%
+			\:Else\\%
+				\:Disp\,\qt D\,WINS\qt\\%
+			\:End\\%
+		\:Else\\% C or D win
+			\:If\,C>D\:Then\\%
+				\:Disp\,\qt C\,WINS\qt\\%
+\end{ticalc}
+\end{minipage}
+~
+\begin{minipage}{0.48\textwidth}
+\begin{ticalc}	
+			\:Else\\%
+				\:Disp\,\qt D\,WINS\qt\\%
+			\:End\\%		
+		\:End\\%
+	\:Else\\% A does not win
+		\:If\,B>C\:Then\\% B or D win
+			\:If\,B>D\:Then\\%
+				\:Disp\,\qt B\,WINS\qt\\%
+			\:Else\\%
+				\:Disp\,\qt D\,WINS\qt\\%
+			\:End\\%
+		\:Else\\% C or D win
+			\:If\,C>D\:Then\\%
+				\:Disp\,\qt C\,WINS\qt\\%
+			\:Else\\%
+				\:Disp\,\qt D\,WINS\qt\\%
+			\:End\\%
+		\:End\\%
+	\:End
+\end{ticalc}
+\end{minipage}
+
+\end{frame}
+
+
+
+
+% \begin{frame}
+% \frametitle{Antwoorden}
+% 
+% \begin{minipage}{0.4\textwidth}
+% \begin{ticalc}
+% 	PROGRAM\:POKER\\%
+% 	\,Input\,\qt NUM1\qt\comma A\\%
+% 	\,Input\,\qt COL1\qt\comma B\\%
+% 	\,Input\,\qt NUM2\qt\comma C\\%
+% 	\,Input\,\qt COL2\qt\comma D\\%
+% 	\,Input\,\qt NUM3\qt\comma E\\%
+% 	\,Input\,\qt COL3\qt\comma F\\%
+% 	\,Input\,\qt NUM4\qt\comma G\\%
+% 	\,Input\,\qt COL4\qt\comma H\\%
+% 	\,Input\,\qt NUM5\qt\comma I\\%
+% 	\,Input\,\qt COL5\qt\comma J\\%
+% \end{ticalc}
+% \end{minipage}
+% \begin{minipage}{0.4\textwidth}
+% \begin{ticalc}
+% \end{ticalc}
+% \end{minipage}
+% 
+% \end{frame}
+
+
+
+\begin{frame}
+\frametitle{Antwoorden}
+
+\begin{ticalc}[5cm]
+	PROGRAM\:RESTYDX\\%
+	\:Disp\,\qt REST(Y/X)\:\qt\\%
+	\:Input\,\qt Y=\qt\comma Y\\%
+	\:Input\,\qt X=\qt\comma X\\%
+	\:If\,X=0\\%
+	\:Then\\%
+	\:Disp\,\qt X\,CANNOT\,BE\,0\qt\\%
+	\:Stop\\%
+	\:End\\%
+	\:Disp\,fPart(Y/X)*X\\%
+	\:Disp\,(Y/X-int(Y/X))*X%
+\end{ticalc}
+
+\end{frame}
+
+
+
+
+

@@ -1,5 +1,6 @@
 \section{Datatype: Boolean}
 
+\subsection{True or False}
 
 \begin{frame}
 \frametitle{Wat is een Boolean?}
@@ -36,7 +37,7 @@ Neem bijvoorbeeld de ABC formule:
 \pause %2
 Afhankelijk van
 \only<5->{\underline{het teken van de discriminant}}\only<1-4>{het teken van de discriminant}
-zijn er nul, een of twee oplossingen.
+zijn er nul, \'e\'en of twee oplossingen.
 
 $D=b^2-4ac$
 
@@ -112,10 +113,76 @@ De 6 mogelijke boolean operatoren zijn:
 \end{frame}
 
 
+\subsection{Logica}
+
+\begin{frame}
+\frametitle{Logica}
+
+Booleans kunnen gebruikt worden om op een formele manier te redeneren: Logica.
+
+\pause
+De tabel laat zien wat de operatoren `and', `or', `xor' (exclusive or: A \'of B, maar niet allebei)
+en `not' doen met de booleans A en B.
+
+\begin{table}[h]
+\begin{tabular}{|c|c||c|c|c|c|}\hline
+A & B & A and B & A or B 	& A xor B 	& not(A)\\\hline\hline%
+0 & 0 & 0 		& 0 		& 0 		& 1\\\hline%
+0 & 1 & 0 		& 1 		& 1 		& 1\\\hline%
+1 & 0 & 0 		& 1 		& 1 		& 0\\\hline%
+1 & 1 & 1 		& 1 		& 0 		& 0\\\hline%
+\end{tabular}
+\caption{Logische operatoren}
+\label{table:logic_operators}
+\end{table}
 
 
+\end{frame}
 
+\begin{frame}
+\frametitle{Logica op de GR}
 
+% WAAR OP DE GR?
+% 0 is ``niet'', ``niet 0'' is wel
+
+\visible<1->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColOne}{0.64}}} % test menu
+
+\begin{itemize}
+  \item<1-> \lenitem{Druk op \tiTEST=\tiSecond\tiMATH.}
+  \item<2-> \lenitem{Blader naar rechts voor het \inlineticalc{LOGIC}-menu}\\
+	  \vspace{0.5cm}
+  \item<3-> \lenitem{Merk op dat op je GR \tifonttxt{0} `onjuist/false' is,
+  terwijl ieder ander getal (bijv. \tifonttxt{\pi}) `juist/true' is.}
+\end{itemize}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm,yshift=0.6cm] at (BL)
+	{%
+	\only<1>{%
+		\begin{ticalc}
+			\select{TEST}\,LOGIC \\
+			\selectitem{1\+\:}= \\
+			2\:\! \\
+			3\:> \\
+			4\:\ge \\
+			5\:< \\
+			6\:\le
+		\end{ticalc}
+	}%
+	\only<2->{%
+		\begin{ticalc}
+			TEST\,\select{LOGIC} \\
+			\selectitem{1\+\:}and \\
+			2\:or \\
+			3\:xor \\
+			4\:not(
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
 
 
 

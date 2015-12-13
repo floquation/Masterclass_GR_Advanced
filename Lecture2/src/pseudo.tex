@@ -1,4 +1,5 @@
 \section{Pseudocode \& Algoritmes}
+\subsection{Uitleg}
 
 \begin{frame}
 \frametitle{Hoe zet je een probleem om in een programma?}
@@ -124,21 +125,20 @@ Bijv. ``bereken het elektrisch veld'', zoals in de figuur hieronder.
 \end{frame}
 
 
+\subsection{Zelf Oefenen}
 
 \begin{frame}
-\frametitle{Wat is pseudocode?}
-\framesubtitle{Oefening}
-
-Wat voor een algoritme beschrijft deze pseudocode?
+\frametitle{Oefening: Wat doet deze pseudocode?}
 
 \begin{algorithm}[H]
 \caption{Pseudocode ``WhatDoIDo?''}
 \begin{algorithmic}[1]
+% ABC formule
 \Function{WhatDoIDo}{$a$,$b$,$c$}
 	\State $D=\sqrt{b^2-4ac}$
 	\If{$D>0$}
 		\State Er zijn twee oplossingen
-		\State $x = -b\pm D / 2a$
+		\State $x = (-b\pm D) / 2a$
 	\ElsIf{$D=0$}
 		\State Er is exact \'e\'en oplossing
 		\State $x = -b / 2a$
@@ -155,15 +155,27 @@ Wat voor een algoritme beschrijft deze pseudocode?
 
 
 \begin{frame}
-\frametitle{Wat is pseudocode?}
-\framesubtitle{Oefening}
+\frametitle{Oefening: Wat doet deze pseudocode?}
 
-% \begin{algorithm}[H]
-% \caption{Pseudocode ``WhatDoIDo2?''}
-% \begin{algorithmic}[1]
-% % Risk dobbelstenen
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}[H]
+\caption{Pseudocode ``WhatDoIDo2?''}
+\begin{algorithmic}[1]
+% Risk dobbelstenen
+\Function{WhatDoIDo2}{$N_{att}$}
+	\State Maak $N_{att}$ random getallen tussen $1$ en $6$
+	\State Vraag of $N_{def}$ $1$ of $2$ is
+	\State Maak $N_{def}$ random getallen tussen $1$ en $6$
+	\State Sorteer beide setten van hoog naar laag
+	\If{Getal 1 van set 1 > Getal 1 van set 2}  $p_1=p_1+1$
+	\Else \hspace{0.4cm} $p_2=p_2+1$
+	\EndIf
+	\If{Getal 2 van set 1 > Getal 2 van set 2}  $p_1=p_1+1$
+	\Else \hspace{0.4cm} $p_2=p_2+1$
+	\EndIf
+	\State Display de scores: $p_1$ en $p_2$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 
 \end{frame}
@@ -172,21 +184,75 @@ Wat voor een algoritme beschrijft deze pseudocode?
 
 
 \begin{frame}
-\frametitle{Wat is pseudocode?}
-\framesubtitle{Oefening}
+\frametitle{Oefening: Wat doet deze pseudocode?}
 
-% \begin{algorithm}[H]
-% \caption{Pseudocode ``WhatDoIDo3?''}
-% \begin{algorithmic}[1]
-% % Iets met een zoekmachine
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}[H]
+\caption{Pseudocode ``WhatDoIDo3?''}
+\begin{algorithmic}[1]
+% Spraakherkenning
+\Function{WhatDoIDo3}{geluid $g$}\Comment{Niet voor GR geschikt}
+\State Knip $g$ op in losse klanken, $k$.
+\State Laad een database in.
+\State Verwijder de stiltes uit $k$.
+\State Correleer $k$ met alle items in de database.
+\State Bereken een score voor alle klanken en vind daarmee de meest waarschijnlijke letter.
+\State Maak een lijst voor alle mogelijke woorden die $g$ kan zijn.
+\State Vergelijk de lijst met een woordenboek en kies het meest waarschijnlijke woord.
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
-%TODO: totaal drie oefeningen met ``wat doet de volgende pseudocode?''
-%TODO: daarna paar oefeningen met ``maak hiervoor een eigen pseudocode''
-%TODO: daarna het omzetten van pseudocode in een programma
 
 \end{frame}
+
+
+
+\begin{frame}\label{frame:pseudo_exercises}
+\frametitle{Nu jullie: Maak je eigen pseudocode!}
+
+\begin{enumerate} 
+  \item Bepaal of iemand genoeg geld, $g$, op zijn rekening heeft staan, indien hij een product voor $x$ euro wil kopen
+  	en $r$ euro in het rood mag staan.
+  \item Gegeven de huidige datum, $(y_t, m_t, d_t)$, en iemand's geboortedatum, $(y_g, m_g, d_g)$, bepaal zijn/haar leeftijd.
+  \item Uit een set van 5 kaarten, bepaal wat de pokerset is.
+  \begin{itemize}
+    \item Bijvoorbeeld: ``pair of $5$'s, $K$ high'' or ``straight, $9$ high''
+  \end{itemize}
+  \item Er zijn vier spelers die elk punten hebben. Bepaal de winnaar, i.e. degene met de meeste punten.
+  \item Bereken de `rest' van $y/x$.
+  \begin{itemize}
+    \item Bijvoorbeeld: $5/2 = 2$ `rest' $1$
+    \item Tip: Kijk naar \tiMATH\inlineticalc{NUM}\inlineticalc{int(} of \tiMATH\inlineticalc{NUM}\inlineticalc{fPart(}
+  \end{itemize}
+\end{enumerate}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Zet pseudocode om in een \tifonttxt{Prgm}!}
+
+Implementeer deze twee opdrachten van de vorige slide op je rekenmachine:
+
+\begin{enumerate} 
+  \item Bepaal of iemand genoeg geld, $g$, op zijn rekening heeft staan, indien hij een product voor $x$ euro wil kopen
+  	en $r$ euro in het rood mag staan.
+  \item Gegeven de huidige datum, $(y_t, m_t, d_t)$, en iemand's geboortedatum, $(y_g, m_g, d_g)$, bepaal zijn/haar leeftijd.
+  \begin{itemize}
+    \item Tip: Het is handig om voor jezelf duidelijk 6 variabelen te kiezen \emph{\'en} op te schrijven wat alles betekent.
+    	Immers, je kunt slechts \'e\'en letter gebruiken per variabele! Duidelijkheid is zeer belangrijk:
+    	Als je het overzicht verliest, dan weet je zeker dat je je \tifonttxt{Prgm} niet kunt schrijven.
+  \end{itemize}
+\end{enumerate}
+
+
+
+\end{frame}
+
 
 
 
