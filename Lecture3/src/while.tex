@@ -1,4 +1,319 @@
 \subsection{While-loops}
 
 
+\begin{frame}
+\frametitle{Wat is een \tifonttxt{While}-loop?}
+
+\begin{itemize}
+  \item<1-> \tifonttxt{For} is leuk indien je weet hoe vaak je iets wilt herhalen.
+  \item<2-> \tifonttxt{While} is leuk indien je dat \`a priori juist \emph{niet} weet.
+  \item<3-> Een \tifonttxt{While}-loop gaat door totdat een conditie (\tifonttxt{If}) onwaar wordt.
+  \item<4-> Bijvoorbeeld:
+  \begin{itemize}
+    \item<5-> ``Herhaal dit totdat het regent''
+    \item<6-> ``Herhaal dit totdat de berekening nauwkeurig genoeg is''
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Wat is een \tifonttxt{While}-loop?}
+
+\begin{itemize}
+  \item<1-> Op de rekenmachine ziet dit er zo uit:
+  \begin{itemize}
+    \item<1-> ``Herhaal dit totdat het regent''
+    \item<3-> \tifonttxt{int(rand*10)} genereert een willekeurige integer tussen \tifonttxt{0} en \tifonttxt{9}.
+    	Dit geeft een $10\%$ kans dat de loop breaks (=stopt) elke keer dat hij execute (=herhaalt).
+  \end{itemize}
+  \item<4-> De structuur is dus: \tifonttxt{While\,}<<conditie>>
+  \item<5-> \tifonttxt{While} staat onder \tiPRGM\,in het \tifonttxt{CTL}-menu.
+  \item<6-> De loop eindigt met de oude vertrouwde \tifonttxt{End}
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<1-4,6->{%
+		\begin{ticalc}
+			PROGRAM\:FRSTWHLE\\%
+			\:0\>R
+			\:While\,R\!1\\%
+			\:int(rand*10)\>R\\%
+			\:Disp\,\qt DROOG\qt\\%
+			\:\only<6>{\select{End}}\only<1-5>{End}\\%
+			\:Disp\,\qt REGEN\qt
+		\end{ticalc}
+	}%
+	\only<5>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			1\+\:If \\
+			2\:Then \\
+			3\:Else \\
+			4\:For( \\
+			\selectitem{5\:}While \\
+			6\:Repeat( \\
+			7\arrowdown End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.6cm] (BL3) at (BL)
+	{%
+	\only<2->{
+		\begin{ticalc}
+			DROOG\\%
+			DROOG\\%
+			DROOG\\%
+			DROOG\\%
+			REGEN\\%
+			\hfill Done
+		\end{ticalc}
+	}
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{\tifonttxt{While} zelf aan de slag \tifonttxt{End}}
+
+\begin{enumerate}
+  \item Maak \tifonttxt{FRSTWHLE} na. \tifonttxt{int(} en \tifonttxt{rand} staan onder \tiMATH.
+  \item Voer dit \tifonttxt{prgm} een aantal keer uit. Zie je altijd hetzelfde?
+  \item Hoe kun je het verwachtte aantal repetities veranderen?
+  \item Breid het programma nu uit met de zon: Pas als de zon stopt met schijnen, dan kan het gaan regenen.
+  \begin{itemize}
+    \item \underline{Tip}: Dit betekent dat je een (bijna) identieke \tifonttxt{While}-loop nodig hebt voor de zon,
+    binnenin de loop voor de regen.
+  \end{itemize}
+\end{enumerate}
+
+\vspace{2cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
+	{%
+		\begin{ticalc}[3.4cm]
+			MATH\,\select{NUM}\,CPX\,PRB \\
+			1\+\:abs( \\
+			2\:round( \\
+			3\:iPart( \\
+			4\:fPart( \\
+			\selectitem{5\:}int( \\
+			6\:min( \\
+			7\arrowdown max(
+		\end{ticalc}
+	};
+	\node [anchor=south east,xshift=-3.6cm] (BL3) at (BL)
+	{%
+		\begin{ticalc}[3.4cm]
+			MATH\,NUM\,CPX\,\select{PRB} \\
+			\selectitem{1\+\:}rand( \\
+			2\:nPr \\
+			3\:nCr \\
+			4\:! \\
+			5\:randInt( \\
+			6\:randNorm( \\
+			7\arrowdown randBin(
+		\end{ticalc}
+	};
+	\node [anchor=south east,xshift=-7.4cm] (BL4) at (BL)
+	{%
+		\begin{ticalc}
+			PROGRAM\:FRSTWHLE\\%
+			\:0\>R
+			\:While\,R\!1\\%
+			\:int(rand*10)\>R\\%
+			\:Disp\,\qt DROOG\qt\\%
+			\:End\\%
+			\:Disp\,\qt REGEN\qt
+		\end{ticalc}
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{\tifonttxt{While} zelf aan de slag \tifonttxt{End}}
+\framesubtitle{Antwoord}
+
+\begin{enumerate}
+  \item<1-> Voer dit \tifonttxt{prgm} een aantal keer uit. Zie je altijd hetzelfde?
+  \begin{itemize}
+    \item<1-> Hoe vaak de loop wordt uitgevoerd varieert!
+  \end{itemize}
+  \item<2-> Hoe kun je het verwachtte aantal repetities veranderen?
+  \begin{itemize}
+    \item<2-> Het getal `\tifonttxt{10}' moet verandert worden. Groter = meer repetities.
+  \end{itemize}
+  \item<3-> \lenitem[0.7\linewidth]{Breid het programma nu uit met de zon: Pas als de zon stopt met schijnen, dan kan het gaan regenen.}
+\end{enumerate}
+
+\vspace{2cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
+	{%
+	\only<3->{
+		\begin{ticalc}
+			PROGRAM\:SCNDWHLE\\%
+			\:0\>R
+			\:While\,R\!1\\%
+			\:0\>S
+			\:While\,S\!1\\%
+			\:int(rand*4)\>S\\%
+			\:Disp\,\qt ZON\qt\\%
+			\:End\\%
+			\:int(rand*10)\>R\\%
+			\:Disp\,\qt DROOG\qt\\%
+			\:End\\%
+			\:Disp\,\qt REGEN\qt
+		\end{ticalc}
+	}
+	\only<1-2>{
+		\begin{ticalc}
+			DROOG\\%
+			DROOG\\%
+			DROOG\\%
+			DROOG\\%
+			DROOG\\%
+			DROOG\\%
+			REGEN\\%
+			\hfill Done
+		\end{ticalc}
+	}
+	};
+	\node [anchor=south east,xshift=-3.6cm] (BL3) at (BL)
+	{%
+		\begin{ticalc}
+			PROGRAM\:FRSTWHLE\\%
+			\:0\>R
+			\:While\,R\!1\\%
+			\:int(rand*\only<2>{\select{10}}\only<1,3->{10})\>R\\%
+			\:Disp\,\qt DROOG\qt\\%
+			\:End\\%
+			\:Disp\,\qt REGEN\qt
+		\end{ticalc}
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\subsection{Pause}
+
+\begin{frame}
+\frametitle{Intermezzo: \tifonttxt{Pause}}
+
+\begin{itemize}
+  \item<1-> In de \tifonttxt{While}-\tifonttxt{Prgms} van de vorige slides, werd je beeldscherm behoorlijk vol geschreven.
+  \item<2-> Zo kan de gebruiker natuurlijk niet zien wat we \tifonttxt{Disp}en!
+  \item<3-> Met \tifonttxt{Pause} kun je de executie van het programma pauseren.
+  \item<4-> Executie gaat verder wanneer de gebruiker op \tiENTER\,drukt.
+  \item<5-> \tifonttxt{Pause} staat onder \tiPRGM\,in het \tifonttxt{CTL}-menu.
+  \item<6-> Blader daarvoor naar beneden \tiDown.
+  \item<7-> \lenitem[0.7\linewidth]{Speel ermee door \tifonttxt{Pause} toe te voegen in \tifonttxt{SCNDWHLE}!}
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
+	{%
+	\only<1-4>{%
+		\begin{ticalc}
+			PROGRAM\:SCNDWHLE\\%
+			\:0\>R
+			\:While\,R\!1\\%
+			\:0\>S
+			\:While\,S\!1\\%
+			\:int(rand*4)\>S\\%
+			\:Disp\,\qt ZON\qt\\%
+			\:End\\%
+			\:int(rand*10)\>R\\%
+			\:Disp\,\qt DROOG\qt\\%
+			\:End\\%
+			\:Disp\,\qt REGEN\qt
+		\end{ticalc}
+	}%
+	\only<7->{%
+		\begin{ticalc}
+			PROGRAM\:SCNDWHLE\\%
+			\:0\>R
+			\:While\,R\!1\\%
+			\:0\>S
+			\:While\,S\!1\\%
+			\:int(rand*4)\>S\\%
+			\:Disp\,\qt ZON\qt\\%
+			\:End\\%
+			\:int(rand*10)\>R\\%
+			\:Disp\,\qt DROOG\qt\\%
+			\:Pause\\%
+			\:End\\%
+			\:Disp\,\qt REGEN\qt
+		\end{ticalc}
+	}%
+	\only<5>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			\selectitem{1\+\:}If \\
+			2\:Then \\
+			3\:Else \\
+			4\:For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\arrowdown End
+		\end{ticalc}
+	}%
+	\only<6>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			4\arrowup For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\:End \\
+			\selectitem{8\:}Pause \\
+			9\:Lbl \\
+			0\arrowdown Goto
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.6cm] (BL3) at (BL)
+	{%
+		\begin{ticalc}
+			PROGRAM\:FRSTWHLE\\%
+			\:0\>R
+			\:While\,R\!1\\%
+			\:int(rand*10)\>R\\%
+			\:Disp\,\qt DROOG\qt\\%
+			\:End\\%
+			\:Disp\,\qt REGEN\qt
+		\end{ticalc}
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
 

@@ -7,13 +7,179 @@
 \frametitle{Wat is een \tifonttxt{For}-loop?}
 
 \begin{itemize}
-  \item<1-> Alhoewel \tifonttxt{Goto} en \tifonttxt{Lbl} gebruikt kan worden om statements te herhalen,
+  \item<1-> Alhoewel \tifonttxt{Goto} en \tifonttxt{Lbl} gebruikt kunnen worden om statements te herhalen,
   	zijn er krachtigere methodes.
-  \item<2-> 
+  \item<2-> Het \tifonttxt{For} statement herhaalt een stukje code `for (NL: voor)' bepaalde integers.
+  \begin{itemize}
+    \item<3-> Herinner je dat `integers' gehele getallen zijn
+  \end{itemize}
+  \item<4-> Hiermee kun je een gegeven aantal keren een stukje code herhalen.
+  \item<5-> Bijvoorbeeld: ``Herhaal dit voor de integers 1 tot 5'' = ``Herhaal dit 5 keer''
 \end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Wat is een \tifonttxt{For}-loop?}
+
+\begin{itemize}
+  \item<1-> Op de rekenmachine ziet dit er zo uit:
+  \begin{itemize}
+    \item<1-> ``Weergeef de integers 1 tot 5'' = ``Herhaal \tifonttxt{Disp} 5 keer''
+  \end{itemize}
+  \item<2-> Het is ook mogelijk getallen over te slaan:
+  \begin{itemize}
+    \item<2-> ``Weergeef de meervouden van 3 tot en met 9'' = ``Herhaal \tifonttxt{Disp} \only<-2>{<??>}\only<3->{3} keer''
+  \end{itemize}
+  \item<4-> De structuur is dus: \tifonttxt{For(}variable,start,end,increment\tifonttxt{)}
+  \item<5-> \tifonttxt{For(} staat onder \tiPRGM\,in het \tifonttxt{CTL}-menu.
+  \item<6-> De loop eindigt met de oude vertrouwde \tifonttxt{End}
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm,yshift=0.6cm] at (BL)
+	{%
+	\only<1,6>{%
+		\begin{ticalc}
+			PROGRAM\:FIRSTFOR\\%
+			\:For(I\comma 1\comma 5)\\%
+			\:Disp\,I\\%
+			\:End
+		\end{ticalc}
+	}%
+	\only<2-4>{%
+		\begin{ticalc}
+			PROGRAM\:FIRSTFOR\\%
+			\:For(I\comma 3\comma 9\comma 3)\\%
+			\:Disp\,I\\%
+			\:End
+		\end{ticalc}
+	}%
+	\only<5>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			1\+\:If \\
+			2\:Then \\
+			3\:Else \\
+			\selectitem{4\:}For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\arrowdown End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{\tifonttxt{For(} probeer het zelf!}
+
+Probeer de volgende \tifonttxt{Prgms} te schrijven:
+\begin{enumerate}
+  \item \tifonttxt{Disp} de getallen $1,2,3,4,5$
+  \item \tifonttxt{Disp} de getallen $-1,0,1$
+  \item \tifonttxt{Disp} de getallen $1,0,-1$ (in die volgorde!)
+  \item \tifonttxt{Disp} de getallen $1,2,3,4,5,11,12,13,14,15$
+  \item \tifonttxt{Disp} alle positieve even getallen tot en met 12.
+  \item \tifonttxt{Disp} alle positieve oneven getallen tot en met 11.
+\end{enumerate}
+
+\vspace{2cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
+	{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\
+			1\+\:If \\
+			2\:Then \\
+			3\:Else \\
+			\selectitem{4\:}For( \\
+			5\:While \\
+			6\:Repeat( \\
+			7\arrowdown End
+		\end{ticalc}
+	};
+	\node [anchor=south east,xshift=-3.5cm] (BL3) at (BL)
+	{%
+		\begin{ticalc}
+			PROGRAM\:FIRSTFOR\\%
+			\:For(I\comma 3\comma 9\comma 3)\\%
+			\:Disp\,I\\%
+			\:End
+		\end{ticalc}
+	};
+\end{tikzpicture}
 
 
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{\tifonttxt{For(} probeer het zelf!}
+\framesubtitle{Een paar antwoorden}
+
+\begin{enumerate}
+  \item \tifonttxt{Disp} de getallen $1,0,-1$ (in die volgorde!)
+  \item \tifonttxt{Disp} de getallen $1,2,3,4,5,11,12,13,14,15$
+  \item \tifonttxt{Disp} alle positieve oneven getallen tot en met 11.
+\end{enumerate}
+
+\hspace{-0.7cm}
+\begin{minipage}{0.25\textwidth}
+\begin{ticalc}
+	PROGRAM\:FORMIN1\\%
+	\:For(I\comma 1\comma -1\comma -1)\\%
+	\:Disp\,I\\%
+	\:End
+\end{ticalc}\\
+\begin{ticalc}
+	PROGRAM\:FORODD\\%
+	\:For(I\comma 1\comma 11\comma 2)\\%
+	\:Disp\,I\\%
+	\:End
+\end{ticalc}
+\end{minipage}
+\hspace{0.7cm}
+\begin{minipage}{0.25\textwidth}
+\begin{ticalc}
+	PROGRAM\:FORDUBLE\\%
+	\:For(I\comma 1\comma 5)\\%
+	\:Disp\,I\\%
+	\:End\\%
+	\:For(I\comma 11\comma 15)\\%
+	\:Disp\,I\\%
+	\:End
+\end{ticalc}
+\end{minipage}
+\hspace{0.7cm}
+\begin{minipage}{0.33\textwidth}
+\flushleft{Of als de volgorde\\ niet uitmaakt:}
+\begin{ticalc}
+	PROGRAM\:FORDBLE2\\%
+	\:For(I\comma 1\comma 5)\\%
+	\:Disp\,I\\%
+	\:Disp\,I+10\\%
+	\:End
+\end{ticalc}
+\end{minipage}
+
+
+\end{frame}
+
+
+
 
 
 
