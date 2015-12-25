@@ -1,18 +1,17 @@
 \section{Datatype: Lists}
 
+\subsection{List datatype}
 
 \begin{frame}
-\frametitle{Een nieuw datatype: Lists}
+\frametitle{Een nieuw datatype: List}
 
 \begin{itemize}
   \item<1-> Wat is beter dan \'e\'en getal?
-  \only<2->{
   \begin{itemize}
-    \item MEER GETALLEN!
+    \item<2-> \only<2->{MEER GETALLEN!}
   \end{itemize}
-  }
   \item<3-> Een list (NL: lijst) kan meerdere getallen in dezelfde variabele storen.
-  \item<4->
+  \item<4-> Dit maakt het makkelijk om over een lijst getallen te itereren (=loopen).
 \end{itemize}
 
 \end{frame}
@@ -20,6 +19,324 @@
 
 
 
+\begin{frame}
+\frametitle{Een nieuw datatype: List}
+
+\visible<1>{\ticalcfig{
+	\ticalcfigCircleSecond
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColTwo}{0.161}% 1
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColThree}{0.161}% 2
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColFour}{0.161}% 3
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColTwo}{0.27}% 4
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColThree}{0.27}% 5
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColFour}{0.27}% 6
+}} % List variables + 2nd
+\visible<2>{\ticalcfig{
+	\ticalcfigCircleSecond
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColTwo}{0.46}% , comma
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColThree}{0.46}% { accolade open
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColFour}{0.46}% } accolade close
+}} % Accolades { } and comma ,
+\visible<3>{\ticalcfig{
+	\ticalcfigCircleSecond
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColTwo}{0.161}% 1
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColFour}{0.161}% 3
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColThree}{0.46}% ( bracket open
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColFour}{0.46}% ) bracket close
+}} % L1(3)
 
 
-%TODO: Mention matrix als zijnde een 2D lijst
+\begin{itemize}
+  \item<1-> \lenitem{Een lijst store je in de \tifonttxt{L\sub{1}} to \tifonttxt{L\sub{6}} variables.}
+  \item<2-> \lenitem{Op het scherm van de rekenmachine definieer je een list tussen accolades (\tifonttxt{\{\}}). Probeer het zelf!}
+  \item<3-> \lenitem{Indien je het derde getal uit list \tifonttxt{L\sub{1}} wilt hebben, dan type je \tifonttxt{L\sub{1}(3)}.}
+\end{itemize}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
+	{%
+	\only<2->{%
+		\begin{ticalc}
+			\{5\comma3\comma2\}\>L\sub{1}\\%
+			\hfill\{5\comma3\comma2\}\\%
+			L\sub{1}\\%
+			\hfill\{5\comma3\comma2\}\\%
+			\visible<3->{L\sub{1}(3)}\\%
+			\visible<3->{\hfill 2}%
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\subsection{List hulpjes}
+
+
+\begin{frame}
+\frametitle{Nuttige hulpjes voor Lists}
+
+\visible<1->{\ticalcfig{
+	\ticalcfigCircleSecond
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColThree}{0.725}% List
+}} % 2nd Stat = List
+
+\begin{itemize}
+  \item<1-> \lenitem{Onder \tiSecond\tiSTAT=\tiLIST\,staan nuttige hulpjes voor Lists}
+  \item<2-> \lenitem{Onder \tifonttxt{NAMES} staan variabelen die je als List kunt gebruiken.
+  	Dit zijn de vertrouwde \tifonttxt{L\sub{1}} to \tifonttxt{L\sub{6}}, maar dan nog veel meer mogelijkheden.}
+  \item<3-> \lenitem{Onder \tifonttxt{OPS} staan list-operaties, zoals sorteren (\tifonttxt{SortA(}),
+    of het aantal elementen in een lijst opvragen (\tifonttxt{dim(}).}
+  \item<4-> \lenitem[0.7\linewidth]{Onder \tifonttxt{MATH} staan wiskundige operaties,
+    zoals het berekenen van het gemiddelde (\tifonttxt{mean(}).}
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
+	{%
+	\only<2>{%
+		\begin{ticalc}
+			\select{NAMES}\,OPS\,MATH\\%
+			\selectitem{1\+\:}L\sub{1}\\%
+			2\:L\sub{2}\\%
+			3\:L\sub{3}\\%
+			4\:L\sub{4}\\%
+			5\:L\sub{5}\\%
+			6\:L\sub{6}\\%
+			7\arrowdown A
+		\end{ticalc}
+	}%
+	\only<3>{%
+		\begin{ticalc}
+			NAMES\,\select{OPS}\,MATH\\%
+			\selectitem{1\+\:}SortA(\\%
+			2\:SortD(\\%
+			\selectitem{3\:}dim(\\%
+			4\:Fill(\\%
+			5\:seq(\\%
+			6\:cumSum(\\%
+			7\arrowdown \Delta List(
+		\end{ticalc}
+	}%
+	\only<4>{%
+		\begin{ticalc}
+			NAMES\,OPS\,\select{MATH}\\%
+			1\+\:min(\\%
+			2\:max(\\%
+			\selectitem{3\:}mean(\\%
+			4\:median(\\%
+			5\:sum(\\%
+			6\:prod(\\%
+			7\arrowdown stdDev(
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Nuttige hulpjes voor Lists}
+
+\visible<1->{\ticalcfig{
+	\ticalcfigCircleSecond
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColThree}{0.725}% List
+}} % 2nd Stat = List
+
+Laten we wat operaties uit proberen:
+\begin{itemize}
+  \item<2-> Wat doet \tifonttxt{SortA(}? \visible<3->{Sorteer oplopend (ascending)!}
+  \item<4-> Wat doet \tifonttxt{SortD(}? \visible<5->{Sorteer aflopend (descending)!}
+  \item<6-> Wat doet \tifonttxt{max(}? \visible<7->{Maximale waarde!}
+  \item<8-> \lenitem{Wat doet \tifonttxt{prod(}? \visible<9->{Vermenigvuldigt
+    alle getallen tussen index \tifonttxt{1} en \tifonttxt{3}!}}
+  \item<10-> Wat doet \tifonttxt{seq(}? \visible<11->{Het vult een list m.b.v. een formule!}
+  \item<12-> \lenitem[0.6\linewidth]{Wat doet \tifonttxt{\Delta List}? \visible<13->{Het geeft een list die \'e\'en korter
+    is en het verschil tussen opvolgende elementen heeft.}}
+  \item<14-> \lenitem[0.6\linewidth]{Dit is allemaal een stuk krachtiger dan rekenen met een enkel getal!}
+\end{itemize}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
+	{%
+	\only<1-5>{%
+		\begin{ticalc}
+			\visible<1->{\{5\comma2\comma3\comma0\}\>L\sub{1}}\\%
+			\visible<1->{\hfill\{5\,2\,3\,0\}}\\%
+			\visible<2->{SortA(L\sub{1})}\\%
+			\visible<2->{\hfill Done}\\%
+			\visible<3->{L\sub{1}}\\%
+			\visible<3->{\hfill\{0\,2\,3\,5\}}\\%
+			\visible<4->{SortD(L\sub{1})}\\%
+			\visible<4->{\hfill Done}\\%
+			\visible<5->{L\sub{1}}\\%
+			\visible<5->{\hfill\{5\,3\,2\,0\}}
+		\end{ticalc}
+	}%
+	\only<6-9>{%
+		\begin{ticalc}
+			\visible<6->{\{5\comma2\comma3\comma0\}\>L\sub{1}}\\%
+			\visible<6->{\hfill\{5\,2\,3\,0\}}\\%
+			\visible<6->{max(L\sub{1})}\\%
+			\visible<7->{\hfill 5}\\%
+			\visible<8->{prod(L\sub{1}\comma1\comma3)}\\%
+			\visible<9->{\hfill 30}
+		\end{ticalc}
+	}%
+	\only<10->{%
+		\begin{ticalc}[3.5cm]
+			\visible<10->{seq(X\sq\comma X\comma0\comma5\comma1)\>L\sub{1}}\\%
+			\visible<11->{\hfill\{0\,1\,4\,9\,16\,25\}}\\%
+			\visible<10->{\Delta List(L\sub{1})}\\%
+			\visible<13->{\hfill\{1\,3\,5\,7\,9\}}
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{\tifonttxt{WIEWINT} met Lists}
+
+\begin{minipage}{0.48\textwidth}
+Kun je je dit programma nog herinneren? Nasty\ldots
+
+\vspace{0.2cm}
+\begin{ticalc}
+	PROGRAM\:WIEWINT\\%
+	\:Prompt\,A\\%
+	\:Prompt\,B\\%
+	\:Prompt\,C\\%
+	\:Prompt\,D\\%
+	\:\\%
+	\:If\,A>B\:Then\\%
+		\:If\,A>C\:Then\\% A or D win
+			\:If\,A>D\:Then\\%
+				\:Disp\,\qt A\,WINS\qt\\%
+			\:Else\\%
+				\:Disp\,\qt D\,WINS\qt\\%
+			\:End\\%
+		\:Else\\% C or D win
+			\:If\,C>D\:Then\\%
+				\:Disp\,\qt C\,WINS\qt\\%
+\end{ticalc}
+\end{minipage}
+~
+\begin{minipage}{0.48\textwidth}
+\begin{ticalc}	
+			\:Else\\%
+				\:Disp\,\qt D\,WINS\qt\\%
+			\:End\\%		
+		\:End\\%
+	\:Else\\% A does not win
+		\:If\,B>C\:Then\\% B or D win
+			\:If\,B>D\:Then\\%
+				\:Disp\,\qt B\,WINS\qt\\%
+			\:Else\\%
+				\:Disp\,\qt D\,WINS\qt\\%
+			\:End\\%
+		\:Else\\% C or D win
+			\:If\,C>D\:Then\\%
+				\:Disp\,\qt C\,WINS\qt\\%
+			\:Else\\%
+				\:Disp\,\qt D\,WINS\qt\\%
+			\:End\\%
+		\:End\\%
+	\:End
+\end{ticalc}
+\end{minipage}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{\tifonttxt{WIEWINT} met Lists}
+
+\begin{minipage}{0.7\textwidth}%
+	\begin{algorithm}[H]
+	\caption{``WieWint? met Lists''}
+	\begin{algorithmic}[1]
+	\Function{WieWint}{list met scores}
+	  \visible<2->{\State Vindt punten van de winnaar: M}
+	  \visible<3->{\For{alle spelers}
+	  \visible<4->{\If{punten = M}
+	    \visible<5->{\State Deze speler wint!}
+	  \EndIf}
+	  \EndFor}
+	\EndFunction
+	\end{algorithmic}
+	\end{algorithm}
+\end{minipage}%
+\begin{minipage}{0.27\textwidth}%
+\visible<6->{%
+\begin{ticalc}[3.5cm]
+	PROGRAM\:WIEWINT2\\%
+	\:Prompt\,L\sub{1}\\%
+	\:max(L\sub{1})\>M\\%
+	\:Disp\,\qt WINNERS\:\qt\\%
+	\:For(I\comma1\comma dim(L\sub{1}))\\%
+	\:If\,M=L\sub{1}(I)\:Then\\%
+	\:Disp\,I\\%
+	\:End\\%
+	\:End
+\end{ticalc}
+}
+
+\visible<8->{%
+\begin{ticalc}
+	prgmWIEWINT2\\%
+	L\sub{1}=?\{5\comma3\comma5\comma2\\%
+	WINNERS\:\\%
+	\hfill 1\\%
+	\hfill 3\\%
+	\hfill Done
+\end{ticalc}
+}
+\end{minipage}%
+
+\visible<7->{Van 33 regels voor 4 spelers, naar slechts 8 regels voor een \textbf{onbeperkt} aantal spelers!
+Kun je de kracht van loops en lists al waarderen?}
+
+
+\addtocounter{algorithm}{-1} % Prevents the algorithm number to increase every frame
+\end{frame}
+\addtocounter{algorithm}{1} % Make sure the number increases for a new algorithm on a different slide
+
+
+
+
+\subsection{Matrix datatype}
+
+\begin{frame}
+\frametitle{Sidenote: Matrix datatype}
+
+\visible<1->{\ticalcfig{
+	\ticalcfigCircleSecond
+	\ticalcfigCircle[\ticalcfigCircleNumButtonsize]{\ticalcfigCircleColOne}{0.56}% 1
+}} % Matrix
+
+\begin{itemize}
+  \item<1-> Een List is een \'e\'en-dimensionale lijst van getallen
+  \item<2-> Zonder in details te treden, een Matrix is een twee-dimensionale lijst van getallen.
+  \item<3-> Matrices vind je onder \tiSecond\tiXInv=\tiMATRIX
+  \item<4-> Dit kan nuttig zijn voor je data opslag.
+\end{itemize}
+
+\end{frame}

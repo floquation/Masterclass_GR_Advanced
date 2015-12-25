@@ -1,1 +1,398 @@
 \section{Exercises}
+\subsection{Exercises}
+
+
+\begin{frame}
+\frametitle{\tifonttxt{WIEWINT3}: Wie worden er tweede en derde?}
+
+Breid \tifonttxt{WIEWINT2} uit door ook te weergeven wie tweede en derde zijn geworden.
+
+\underline{Tip}: Er bestaat geen ``max2'' functie of iets dergelijks voor het vinden van het op-\'e\'en-na maximum,
+dus je zult iets anders moeten bedenken met behulp van \tifonttxt{max}, of zelfs iets totaal anders.
+
+\begin{ticalc}[3.5cm]
+	PROGRAM\:WIEWINT2\\%
+	\:Prompt\,L\sub{1}\\%
+	\:max(L\sub{1})\>M\\%
+	\:Disp\,\qt WINNERS\:\qt\\%
+	\:For(I\comma1\comma dim(L\sub{1}))\\%
+	\:If\,M=L\sub{1}(I)\:Then\\%
+	\:Disp\,I\\%
+	\:End\\%
+	\:End
+\end{ticalc}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Exercises}
+
+\begin{enumerate}
+  \item Maak \inlineticalc{FORDISP} na, maar gebruik `\tifonttxt{While}' i.p.v. `\tifonttxt{For}'!
+	\begin{itemize}
+	  \item Zie je de gelijkenis? Beide statements zorgen voor herhaling.
+	\end{itemize}
+  \item Zelfde vraag, maar gebruik nu \tifonttxt{Goto} en \tifonttxt{Lbl}.
+	\begin{itemize}
+	  \item Dat kost veel moeite\ldots Gelukkig bestaan \tifonttxt{For} en \tifonttxt{While}!
+	\end{itemize}
+  \item Vind hoe vaak 2 in \inlineticalc{Prompt\,X} past. 
+	\begin{itemize}
+	  \item Bijv.: in het getal $40$ past `$2$' $3$x.
+	\end{itemize}
+  \item Vind alle priemgetallen kleiner dan \inlineticalc{Prompt\,X}.
+	\begin{itemize}
+	  \item Een priemgetal is alleen (integer) deelbaar door $1$ en zichzelf. ($2,3,5,7,11,13,17,19,23,\ldots$)
+	\end{itemize}
+  \item Ontbind het getal \inlineticalc{Prompt\,X}\,in priemgetallen. {\tiny{(Prime Factorisation)}}
+	\begin{itemize}
+	  \item Bijv.: $84=2^2\cdot3\cdot7$.
+	  \tiny{\item Zie ook: http://www.2dtx.com/prime/prime84.html}
+	\end{itemize}
+  \item \lenitem[0.7\linewidth]{Schrijf het `risk dobbelstenen' programma van de lecture over pseudocode m.b.v. Lists.}
+\end{enumerate}
+MAAK ALTIJD EERST PSEUDOCODE!
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
+	{%
+	\begin{ticalc}
+		PROGRAM\:FORDISP\\%
+		\:For(I\comma1\comma3\comma1)\\%
+		\:Disp \qt FOR\qt\\%
+		\:End
+	\end{ticalc}
+	};
+\end{tikzpicture}
+
+
+
+\end{frame}
+
+
+
+\subsection{Answers}
+
+
+\begin{frame}
+\frametitle{\tifonttxt{WIEWINT3}: Wie worden er tweede en derde?}
+\framesubtitle{Een mogelijk antwoord (er zijn zoals altijd meer manieren!)}
+
+\vspace{-0.5cm}
+\hspace{-1cm}
+\begin{minipage}{0.83\textwidth}
+	\begin{algorithm}[H]
+	\caption{``WieWint3? met Lists''}
+	\begin{algorithmic}[1]
+	\Function{WieWint}{$\mathrm{L}_{1}$: list met scores}
+	  \State Init. $\mathrm{L}_{2}$ als $\mathrm{L}_{1}$: iedereen doet mee voor rank 1
+	  \For{rank 1, 2, 3}
+		  \State Vindt punten voor huidige rank (uit $\mathrm{L}_{2}$): M
+		  \State Clear $\mathrm{L}_{2}$ voor hergebruik
+		  \For{alle spelers uit $\mathrm{L}_{1}$}
+		  \If{punten = M} Deze speler wint!
+		  \ElsIf{punten < M}
+		  	\State Deze speler is wellicht een rank lager!
+		  	\State Voeg hem toe aan $\mathrm{L}_{2}$
+		  \EndIf
+		  \EndFor \, Pause
+	  \EndFor
+	\EndFunction
+	\end{algorithmic}
+	\end{algorithm}
+\end{minipage}
+\begin{minipage}{0.15\textwidth}%
+\begin{ticalc}[3.25cm]	
+	PROGRAM\:WIEWINT3\\%
+	\:Prompt\,L\sub{1}\\%
+	\:L\sub{1}\>L\sub{2}\\%
+	\:For(J\comma1\comma3)\\%
+	\:max(L\sub{2})\>M\\%
+	\:\{min(L\sub{1}\>L\sub{2}\\%
+	\:Disp\,\qt RANK\:\qt\comma J\\%
+	\:Disp\,\qt PEOPLE\:\qt\\%
+	\:For(I\comma1\comma dim(L\sub{1}))\\%
+	\:If\,M=L\sub{1}(I)\:Then\\%
+	\:Disp\,I\\%
+	\:Else\\%
+	\:If\,M>L\sub{1}(I)\:Then\\%
+	\:augment(L\sub{2}\comma\{L\sub{1}(I )\})\>L\sub{2}\\%
+	\:End
+	\:End
+	\:End\\%
+	\:Pause
+	\:End
+\end{ticalc}
+
+\begin{minipage}{2.2\linewidth}
+\scriptsize{(augment = samenvoegen)}
+\end{minipage}
+\end{minipage}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Antwoord: \tifonttxt{FORDISP}}
+
+\begin{minipage}{0.68\textwidth}
+\begin{itemize}
+  \item Deze opdracht is een mooi voorbeeld voor het principe ``the right tool for the job''.
+  \item Merk op dat ``vroeger'' mensen geen \tifonttxt{For} en \tifonttxt{While} hadden. De computer begreep alleen \tifonttxt{Goto}. Lucky you!
+  \item Het gebruik van \tifonttxt{Goto} op onderstaande manier is ``bad practice'' (don't do it).
+  \begin{itemize}
+    \item ``Using a Goto to exit any block of code requiring an End command causes a memory leak,
+    	which will not be usable until the program finishes running or executes a Return command, and which will slow your program down.''
+    \item \tiny{Zie ook: http://tibasicdev.wikidot.com/goto}
+  \end{itemize}
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+\begin{ticalc}
+	PROGRAM\:FORDISP\\%
+	\:For(I\comma1\comma3\comma1)\\%
+	\:Disp \qt FOR\qt\\%
+	\:End\:Pause\\%
+	\:\\%
+	\:1\>I\\%
+	\:While\,I\le3\\%
+	\:Disp\,\qt WHILE\qt\\%
+	\:I+1\>I\\%
+	\:End\:Pause\\%
+	\:\\%
+	\:1\>I\\%
+	\:Lbl\,A\\%
+	\:Disp\,\qt GOTO\qt\\%
+	\:I+1\>I\\%
+	\:If\,I\le3\:Then\\%
+	\:Goto\,A\\%
+	\:End	
+\end{ticalc}
+\end{minipage}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Antwoord: Hoe vaak past $2$ in \tifonttxt{X}?}
+
+\vspace{-0.5cm}
+\hspace{-1cm}
+\begin{minipage}{0.8\textwidth}
+	\begin{algorithm}[H]
+	\caption{``Hoe vaak past 2 in $X$?''}
+	\begin{algorithmic}[1]
+	\Function{HoeVaak2}{$X$}
+	  \State Doe wat sanity-checks \& initialiseer
+	  \While{X is een geheel getal ($\equiv$integer)}
+	    \State Vervang $X$ door $X/2$.
+	    \State Houd een tellertje bij, \tifonttxt{I}.
+	  \EndWhile
+	\EndFunction
+	\end{algorithmic}
+	\end{algorithm}
+\end{minipage}
+\begin{minipage}{0.15\textwidth}%
+\begin{ticalc}
+	PROGRAM\:HOEVAAK2\\%
+	\:Prompt\,X\\%
+	\:If\,fPart(X)\!0\,or\,X=0
+	\:Then\\%
+	\:Disp\,0\\%
+	\:Stop\\%
+	\:End\\%
+	\:\\%
+	\:\min 1\>I\\%
+	\:While\,fPart(X)= 0\\%
+	\:X/2\>X\\%
+	\:I+1\>I\\%
+	\:End\\%
+	\:Disp\,I
+\end{ticalc}
+\end{minipage}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Antwoord: Vind alle priemgetallen \tifonttxt{\le X}}
+
+\vspace{-0.5cm}
+\hspace{-1cm}
+\begin{minipage}{0.83\textwidth}
+	\begin{algorithm}[H]
+	\caption{``Vind alle priemgetallen $\le X$.''}
+	\begin{algorithmic}[1]
+	\Function{Primes}{$X$: max. waarde om te checken}
+	  \State Init. een list, $\mathrm{L}_1$, om de primes bij te houden
+	  \For{\tifonttxt{I}: Alle integers $\le X$}
+	    \State Neem \`a priori aan dat \tifonttxt{I} prime is.
+	    \For{\tifonttxt{J}: Alle primes kleiner dan \tifonttxt{I}}
+	      \If{\tifonttxt{I} deelbaar is door $\mathrm{L}_1(J)$}
+	        \State \tifonttxt{I} is \underline{geen} prime. Break loop.
+	      \EndIf
+	    \EndFor
+	    \State Indien \tifonttxt{I} niet `geen prime' is, voeg toe aan $\mathrm{L}_1$
+	  \EndFor
+	\EndFunction
+	\end{algorithmic}
+	\end{algorithm}
+\end{minipage}
+\begin{minipage}{0.15\textwidth}%
+\begin{ticalc}
+	PROGRAM\:PRIMES\\%
+	\:Prompt\,X\\%
+	\:\{2\}\>L\sub{1}\\%
+	\:For(I\comma3\comma X)\\%
+	\:1\>P\\%
+	\:For(J\comma1\comma dim(L\sub{1}))\\%
+	\:If\,fPart(I/L\sub{1}(J ))=0\:Then\\%
+	\:0\>P\\%
+	\:dim(L\sub{1})+1\>J\\%
+	\:End\\%
+	\:End\\%
+	\:If\,P\:Then\\%
+	\:augment(L\sub{1},\{I\}) \>L\sub{1}\\%
+	\:End\:End\\%
+	\:Disp\,L\sub{1}
+\end{ticalc}
+\end{minipage}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Antwoord: Prime Factorisation van \tifonttxt{X}}
+
+
+\vspace{-0.5cm}
+\hspace{-1cm}
+\begin{minipage}{0.82\textwidth}
+	\begin{algorithm}[H]
+	\caption{Pseudocode Prime Factorisation}
+	\begin{algorithmic}[1]
+	\Function{PrimeFac}{$X$: het te factoriseren getal}
+	  \For{\tifonttxt{P}: Alle primes $<\sqrt{X}$ \textbf{OF} Alle natuurlijke getallen $<\sqrt{X}$} \Comment{\small{Beide opties geven hetzelfde resultaat.
+	  												Het eerste is sneller voor grote $X$, het tweede voor kleine $X$. De tweede optie is makkelijker.}}
+	    \If{$X$ deelbaar door \tifonttxt{P}}
+	      \State Store (=Onthoud/Bewaar) \tifonttxt{P}
+	      \State Ga verder met \tifonttxt{X/P}
+	      \State Herhaal de loop voor \tifonttxt{P}
+	    \EndIf
+	  \EndFor
+	\EndFunction
+	\end{algorithmic}
+	\end{algorithm}
+\end{minipage}
+\begin{minipage}{0.15\textwidth}%
+\begin{ticalc}
+	PROGRAM\:PRIMEFAC\\%
+	\:Prompt\,X\\%
+	\:If\,X=0\:Then\\%
+	\:\{0\}\>L\sub{1}
+	\:Disp\,L\sub{1}\\%
+	\:Stop
+	\:End\\%
+	\:X/abs(X)\>S\\%
+	\:XS\>Y\\%
+	\:\\%
+	\:\{S\}\>L\sub{1}\\%
+	\:For(P\comma2\comma int(\sqrt(Y) ))\\%
+	\:Y/P\>Z\\%
+	\:If\,fPart(Z)=0\\%
+	\:Then\\%
+	\:augment(L\sub{1}\comma\{P\}) \>L\sub{1}\\%
+	\:Z\>Y
+	\:P-1\>P\\%
+	\:End\:End\\%
+	\:Disp\,L\sub{1}
+\end{ticalc}
+\end{minipage}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Antwoord: Risk Dobbelstenen I}
+
+\begin{algorithm}[H]
+\caption{Pseudocode Risk Dobbelstenen}
+\begin{algorithmic}[1]
+% Risk dobbelstenen
+\Function{RiskDice}{$N_{att}$}
+	\State Maak $N_{att}$ random getallen tussen $1$ en $6$
+	\State Vraag of $N_{def}$ $1$ of $2$ is
+	\State Maak $N_{def}$ random getallen tussen $1$ en $6$
+	\State Sorteer beide setten van hoog naar laag
+	\If{Getal 1 van set 1 > Getal 1 van set 2}  $p_1=p_1+1$
+	\Else \hspace{0.4cm} $p_2=p_2+1$
+	\EndIf
+	\If{Getal 2 van set 1 > Getal 2 van set 2}  $p_1=p_1+1$
+	\Else \hspace{0.4cm} $p_2=p_2+1$
+	\EndIf
+	\State Display de scores: $p_1$ en $p_2$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Antwoord: Risk Dobbelstenen II}
+
+\vspace{-0.5cm}
+\hspace{-1cm}
+\begin{minipage}{0.5\textwidth}
+\begin{ticalc}[4cm]
+	PROGRAM\:RISKDICE\\%
+	\:0\>A\:0\>D\\%
+	\:While\,A<1\,or\,A>3\\%
+	\:Input\,\qt NATT?\,\qt\comma A\\%
+	\:End\\%
+	\:seq(randInt(1\comma6)\comma X \comma1\comma A\comma1)\>L\sub{1}\\%
+	\:SortD(L\sub{1})\\%
+	\:Disp\,L\sub{1}\\%
+	\:\\%
+	\:While\,D<1\,or\,D>A\,or\,D>2\\%
+	\:Input\,\qt NDEF?\,\qt\comma D\\%
+	\:End\\%
+	\:seq(randInt(1\comma6)\comma X \comma1\comma D\comma1)\>L\sub{2}\\%
+	\:SortD(L\sub{2})\\%
+	\:Disp\,L\sub{2}\\%
+	\:
+\end{ticalc}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}%
+\begin{ticalc}[4.2cm]
+	\:0\>P\:0\>Q\\%
+	\:If\,L\sub{1}(1)>L\sub{2}(1)\\%
+	\:Then\:P+1\>P\\%
+	\:Else\:Q+1\>Q\\%
+	\:End\\%
+	\:If\,D>1\:Then\\%
+	\:If\,L\sub{1}(2)>L\sub{2}(2)\\%
+	\:Then\:P+1\>P\\%
+	\:Else\:Q+1\>Q\\%
+	\:End\:End\\%
+	\:\\%
+	\:ClrHome\\%
+	\:Disp\,L\sub{1}\comma L\sub{2}\\%
+	\:Disp\,\qt ATT\,LOSES\:\qt\comma Q\\%
+	\:Disp\,\qt DEF\,LOSES\:\qt\comma P	
+\end{ticalc}
+\end{minipage}
+
+\end{frame}
