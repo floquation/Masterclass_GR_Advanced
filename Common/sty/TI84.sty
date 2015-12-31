@@ -114,12 +114,12 @@
 	\def\arrowdown{\kern-0.5em\lower-0.85em\hbox{\scalebox{0.98}{%
 		\rotatebox{-90}{\kern-0.025em\scalebox{1.35}[1]{-}\llap{\kern-0.2em\hbox{\lower0.131em\hbox{`}\llap{\lower0.374em\hbox{\reflectbox{`}}\kern0.125em}}}}%
 		}}\kern0.1em}% Arrow pointing downwards (used in menus to indicate that there is something below)
-	\def\arrowup{\kern-0.01em\lower-0.86em\hbox{\reflectbox{\rotatebox{180}{\arrowdown}}}}% Arrow pointing downwards (used in menus to indicate that there is something below)
+	\def\arrowup{\kern-0.01em\lower-0.86em\hbox{\reflectbox{\rotatebox{180}{\arrowdown}}}}% Arrow pointing downwards (used in menus to indicate that there is something above)
 	\def\:{\kern-0.05em:\kern0.25em}% Increase kerning behind the colon (:)
 	\def\+{\kern0.13em}% Increase spacing between previous and next character: 'kerning'.
 	\def\one{1\+}% 1 with increased kerning
 	\def\E{\kern0.25ex\hbox{\scalebox{0.75}{E}}}% EE (10 to the power ...)
-	\def\.{\kern0.05em\hbox{.}\kern0.2em}% . shifted to the left, since the default is too far to the right
+	\def\.{\kern0.05em\hbox{.}\kern0.2em}% . (dot) shifted to the left, since the default is too far to the right
 	\def\comma{\kern0.05em\hbox{,}\kern0.2em}% comma (,) shifted to the left, since the default is too far to the right
 	\def\ge{\XeTeXglyph66\llap{\scalebox{1.24}[0.7]{\lower-0.33em\hbox{>}\kern-0.02em}}}% Greater than or equal to
 	\def\le{\XeTeXglyph66\llap{\scalebox{1.24}[0.7]{\lower-0.33em\hbox{<}\kern-0.02em}}}% Less than or equal to
@@ -145,7 +145,11 @@
 	\def\tau{{\XeTeXglyph168}}% tau
 	\def\phi{{\XeTeXglyph169}}% phi
 	\def\xi{{\XeTeXglyph170}}% xi
-	\def\ldots{{\XeTeXglyph171}}% ldots
+	\def\ldots{{\XeTeXglyph171}}% ldots ...
+	\def\vldots{\kern0.3em\lower-0.1em\hbox{\rotatebox{90}{\XeTeXglyph171}\kern0.3em}}% vldots ...  BETA
+	\def\pausedots{\hfill\kern0.3em\lower0.1em%
+		\hbox{\scalebox{1}[1.3]{\rotatebox{90}{\scalebox{0.5}[1]{\XeTeXglyph171\XeTeXglyph171}}}}%
+	\kern-0.3em}% Vertical dots hfilled to the right to represent a paused program. Use this on the first visible line.
 	\def\percent{{\XeTeXglyph8}}% %
 	\def\dollar{{\XeTeXglyph7}}% $
 	\def\and{{\XeTeXglyph9}}% &
@@ -158,8 +162,15 @@
  	\def\sub##1{\scalebox{0.6}{##1}\scalebox{0.4}{ }}% subscript, e.g. to create Y1 with a small 1.
 %  	\def\underscore{\lower0.375em\hbox{\scalebox{1}[1]{-}}}% Underscore line %TODO: Kerning at the bottom is too big.
  	\def\min{\hbox{\kern0.29em\scalebox{0.5}[1]{\lower-0.13em\hbox{-}\kern0.18em}}}% The minus sign below ANS, used for negative numbers.
-%  	\setlength{\columnsep}{15pt}
  	\def\,{\hspace{1.2ex}}% Custom spacebar size, useful for strings.
+	\def\ftriangleright{\,\lower-0.127em%
+		\llap{\scalebox{1}[0.7143]{|}\kern0.375em\lower-0.127em%
+			\llap{\scalebox{1}[0.4286]{|}\kern0.265em\lower-0.127em%
+				\llap{\scalebox{1}[0.143]{|}\kern0.155em%
+				}%
+			}%
+		}%
+	}% Filled Triangle, pointing to the right. Useful for the selected item in the catalog.
  	\def\select##1{\fboxrule0pt\fboxsep0.2pt% Select the text
 		\fcolorbox{black}{green!0!black!100}{%
 			\color{TIBG}{##1}%
@@ -168,6 +179,7 @@
 		\fcolorbox{black}{green!0!black!100}{%
 			\color{TIBG}{##1}\kern-0.15em%
 		}\kern0.15em}% Colors the background as the text and text as the background: 'selection box'.
+	\def\hline{{\noindent\lower-0.9em\hbox{\makebox[\linewidth]{\rule{\linewidth}{1pt}}}}\vspace{-0.9em}}%% hline, Horizontal line within the TI environment
 }%
 
 \newfontfamily\tifont[Path=../../Common/font/]{TI83_font.ttf} %TODO: How to get the link working...?
@@ -230,7 +242,7 @@
 % Menu buttons
 \newcommand{\tiQUIT}		{\tibuttonnum{24}}
 \newcommand{\tiINS}			{\tibuttonnum{25}}
-\newcommand{\tiALOCK}		{\tibuttonnum{26}}
+\newcommand{\tiALOCK}		{\tibuttonnum{26}} % Alpha Lock, AlphaLock
 \newcommand{\tiLINK}		{\tibuttonnum{27}}
 \newcommand{\tiLIST}		{\tibuttonnum{28}}
 \newcommand{\tiTEST}		{\tibuttonnum{29}}
@@ -287,7 +299,9 @@
 \newcommand{\tiProduct}		{\tibuttonnum{145}} % a x b -> product
 \newcommand{\tiMultiply}	{\tibuttonnum{145}} % a x b -> product
 \newcommand{\tiMinus}		{\tibuttonnum{155}} % a - b -> subtraction
+\newcommand{\tiSubtract}	{\tibuttonnum{155}} % a - b -> subtraction
 \newcommand{\tiPlus}		{\tibuttonnum{165}} % a + b -> addition
+\newcommand{\tiAdd}			{\tibuttonnum{165}} % a + b -> addition
 \newcommand{\tiDivide}		{\tibuttonnum{135}} % a / b -> division
 \newcommand{\tiDivision}	{\tibuttonnum{135}} % a / b -> division
 \newcommand{\tiOver}		{\tibuttonnum{135}} % a / b -> division

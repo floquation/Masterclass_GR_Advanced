@@ -1,0 +1,150 @@
+\section{Advanced I/O}
+
+\begin{frame}
+\frametitle{Basic I/O}
+
+\begin{itemize}
+  \item<1-> We hebben al de volgende I/O (input/output) functies gezien:
+  \begin{itemize}
+    \item<2-> \tifonttxt{Disp} voor simpele output
+    \item<3-> \tifonttxt{Prompt} voor simpele input
+    \item<4-> \tifonttxt{Input} voor iets uitgebreidere input
+  \end{itemize}
+  \item<5-> Maar er zijn er nog veel meer!
+\end{itemize}
+
+\end{frame}
+
+\subsection{Menu}
+
+\begin{frame}
+\frametitle{Advanced input: Menu's}
+
+\hspace{-1cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item<1-> Indien er voor \tifonttxt{Prompt} of \tifonttxt{Input} slechts een handjevol waardes is toegestaan
+    (bijv. 1, 2 of 3, zoals bij de risk dobbelstenen),
+    dan is \tifonttxt{Menu} zeer nuttig.
+  \item<2-> De gebruiker kan dan tussen deze toegestane waardes kiezen.
+  \item<3-> Dit hoeven overigens geen getallen te zijn, de gebruiker kan ook bijv. kiezen tussen \tifonttxt{AFLEIDEN} en \tifonttxt{INTEGREREN}.
+  \begin{itemize}
+    \item<4-> Afhankelijk van de keuze doet je \tifonttxt{prgm} wat anders.
+  \end{itemize}
+  \item<5-> \lenitem[0.8\linewidth]{De keuze die de gebruiker maakt werkt als een \inlineticalc{Goto} statement:}
+  \begin{itemize}
+    \item<6-> \lenitem[0.75\linewidth]{De code springt naar een \inlineticalc{Lbl} statement,
+      zoals gegeven in het argument van \tifonttxt{Menu}}
+  \end{itemize}
+\end{itemize}
+\end{minipage}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<1-4>{%
+		\begin{ticalc}
+			\select{CTL}\,I/O\,EXEC \\%
+			9\:Lbl \\%
+			0\:Goto \\%
+			A\:IS>( \\%
+			B\:DS<( \\%
+			\selectitem{C\:}Menu( \\%
+			D\:prgm \\%
+			E\arrowdown Return
+		\end{ticalc}
+	}%
+	\only<5-6>{%
+		\begin{ticalc}
+			Menu(\\%
+			\hline\\%
+			(\qt title\qt\comma\qt text\one\qt\\%
+			\hbox{\comma \only<-5>{label\one}\only<6->{\select{label\one}}[\comma \.\.\.\comma\qt}{ }
+			text7\qt\comma label7])\\%
+			\hfill\\%
+			\hfill\\%
+			\hline
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{\tifonttxt{Menu} voorbeeld}
+
+\begin{minipage}{0.48\textwidth}
+\begin{ticalc}
+	PROGRAM\:FRSTMENU\\%
+	\:\hbox{Menu(\qt WHAT\,PIE?}{ }
+	\hbox{\qt\comma\qt APPLE\qt\comma0\comma\qt ABR}{ }
+	ICOT\qt\comma\one\comma\qt BLUEBER\\%
+	RY\qt\comma2)\\%
+	\:Lbl\,0\\%
+	\:Disp\,\qt YOU\,CHOSE\,APPLE\qt\\%
+	\:Stop\\%
+	\:Lbl\,\one\\%
+	\:Disp\,\qt YOU\,CHOSE\,ABRICOT\qt\\%
+	\:Stop\\%
+	\:Lbl\,2\\%
+	\:Disp\,\qt YOU\,CHOSE\,BLUEBERRY\qt
+\end{ticalc}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+\only<2>{%
+\begin{ticalc}%
+	\select{WHAT\,PIE?}\\%
+	\selectitem{\one\:}APPLE\\%
+	2\:ABRICOT\\%
+	3\:BLUEBERRY%
+\end{ticalc}%
+}%
+
+\only<1>{%
+\begin{ticalc}%
+	prgmFRSTMENU\\%
+	\hfill\\%
+	\hfill\\%
+	\hfill%
+\end{ticalc}%
+}%
+
+\only<3>{%
+\begin{ticalc}%
+	prgmFRSTMENU\\%
+	YOU\,CHOSE\,APPLE\\%
+	\hfill Done\\%
+	\hfill
+\end{ticalc}%
+}%
+\end{minipage}
+
+\end{frame}
+
+
+
+
+
+
+\subsection{Output}
+
+\begin{frame}
+\frametitle{Advanced output: formateer je scherm}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Nuttig samen met \tifonttxt{Output}: \tifonttxt{ClrHome}}
+
+
+
+
+\end{frame}

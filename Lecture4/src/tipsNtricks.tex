@@ -1,0 +1,337 @@
+\section{Tips 'n Tricks}
+
+\subsection{Random tips}
+
+\begin{frame}
+\frametitle{Trial 'n Error}
+
+\begin{itemize}
+  \item<1-> Soms is het lastig om te beredeneren of er nu \tifonttxt{A+1\>A} moet staan, of juist \tifonttxt{A-1\>A}.
+  \item<2-> Of is de juiste initialisatie nou \tifonttxt{\min 1\>A} of \tifonttxt{0\>A}?
+  \item<3-> In dit soort gevallen kan de ``Trial 'n Error'' tactiek nuttig zijn:
+  \begin{itemize}
+    \item<4-> ``Probeer gewoon wat, en zie wat er gebeurt!''
+    \item<5-> W\'e\'et wat de uitkomst van je \tifonttxt{prgm} moet zijn, en corrigeer de code indien het resultaat niet klopt.
+  \end{itemize}
+  \item<6-> Let wel: Test genoeg cases om zeker te weten dat je \tifonttxt{prgm} nu klopt!
+    Immers, je hebt je code `gegokt', niet bedacht.
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{\tiCLEAR\,om een menu te sluiten}
+
+\only<1-2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColTwo}{0.805}}}
+\only<3->{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColFive}{0.636}}}
+
+\begin{itemize}
+  \item<1-> \lenitem{Ik heb altijd de neiging om \tiSecond\tiMODE=\tiQUIT\,te gebruiken om een menu te sluiten.}
+  \item<2-> \lenitem{Klinkt logisch, maar indien je dit doet in een \tifonttxt{prgm},
+    dan sluit je zowel het menu als het \tifonttxt{prgm} en moet je je \tifonttxt{prgm} weer overnieuw openen\ldots}
+  \item<3-> De correcte manier om een menu te sluiten is daarom dus ook de \tiCLEAR-knop. Dit sluit elk menu, maar sluit niet je \tifonttxt{prgm}.
+  \item<4-> Let wel: clear niet per ongeluk een regel van je \tifonttxt{prgm} door 2x te drukken op \tiCLEAR.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{\tiALPHA-scrolling}
+
+
+\only<1>{\ticalcfig{\ticalcfigCircleDown}}
+\only<2>{\ticalcfig{\ticalcfigCircleAlpha\ticalcfigCircleDown}}
+\only<3>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircleAlpha}}
+
+\begin{itemize}
+  \item<1-> \lenitem{Naarmate je \tifonttxt{prgm} langer wordt, wordt het vervelender om door je \tifonttxt{prgm} te navigeren.}
+  \item<2-> \lenitem{Door \tiALPHA\tiDown\,te gebruiken i.p.v. \tiDown\,, scroll je significant sneller.}
+  \item<3-> Met behulp van \tiSecond\tiALPHA=\tiALOCK\,, kun je herhaaldelijk snel scrollen. Try it yourself!
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+\subsection{Debugging}
+
+\begin{frame}
+\frametitle{Wat is ``debugging''?}
+
+\begin{itemize}
+  \item<1-> Wat is een `bug'?
+  \begin{itemize}
+    \item<2-> Wikipedia: ``A software bug is an error, flaw, failure, or fault in a computer program or system
+      that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.''
+    \item<3-> Oftewel, je \tifonttxt{prgm} doet niet wat je wilt.
+  \end{itemize}
+  \item<4-> Waar komen die beesten vandaan?
+  \begin{itemize}
+    \item<5-> Wikipedia: ``Most bugs arise from mistakes and errors made by people in either a program's source code or its design.''
+    \item<6-> Oftewel, een programmeer- of denkfout.
+  \end{itemize}
+  \item<7-> Debugging is ``het verwijderen van bugs''
+  \item<8-> Indien je de `Trial 'n Error' tactiek gebruikt, dan maak je met opzet bugs om ze vervolgens gelijk te verwijderen.
+\end{itemize}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,yshift=0.6cm] at (BL)
+	{%
+	\only<1-4>{\includegraphics[height=0.45\textheight]{../figures/bugs.png}}
+	\only<5-7>{\includegraphics[height=0.28\textheight]{../figures/bugs.png}}
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Hoe kun je debuggen?}
+
+\begin{itemize}
+  \item<1-> Test je \tifonttxt{prgm} vaak, en negeer onverwachtte resultaten niet: als iets \'e\'en keer gebeurt, dan zal het vaker gebeuren.
+  \item<2-> Traceer stap voor stap:
+  \begin{itemize}
+    \item<3-> welke input waardes tot het probleem leiden \tifonttxt{\>} test cases.
+	\item<4-> waar in je \tifonttxt{prgm} alles nog klopt {\tiny{(zie volgende slide)}}, en waarna er iets mis gaat = onverwachtte waardes.
+  \end{itemize}
+  \item<5-> Het helpt om het \tifonttxt{prgm} zelf (in je hoofd - brain power) uit te voeren. Doet je rekenmachine hetzelfde als jij met de hand doet?
+    Zo niet, dan werkt een functie anders dan je dacht.
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[] (BL) at (current page.south east){ };
+	\node [anchor=south east,yshift=0.6cm] at (BL)
+	{%
+	\only<1->{\includegraphics[height=0.28\textheight]{../figures/debugging.jpg}}
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{\tifonttxt{Pause} statement: Localiseer de bug}
+
+\visible<3>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColOne}{0.128}}} % ON button
+
+\vspace{-1cm}
+\hspace{-1cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item<1-> \lenitem[0.9\linewidth]{Om een bug te localiseren (=vinden waar in je \tifonttxt{prgm} de fout zit), is het handig om \inlineticalc{Pause} te gebruiken.}
+  \item<2-> \lenitem[0.9\linewidth]{Zo kun je je \tifonttxt{prgm} breaken (=middenin zijn executie stoppen) waar je wilt.}
+  \item<3-> \lenitem[0.9\linewidth]{Dit doe je door op de \tiON-knop te drukken terwijl je \tifonttxt{prgm} gepauseerd is.}
+  \item<4-> Kies dan \tifonttxt{Quit}. (\tifonttxt{Goto} kan ook nuttig zijn - probeer het zelf.)
+  \item<5-> Nu kun je alle variabelen bekijken. Is de waarde wat je verwacht had? Zo niet? Dan moet de bug \emph{boven} je \tifonttxt{Pause} statement zitten!
+\end{itemize}
+\end{minipage}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
+	{%
+		\begin{ticalc}
+			PROGRAM\:PAUSETST\\%
+			\:0\>A\\%
+			\:Pause\\%
+			\:1\>A
+		\end{ticalc}
+	};
+	\node [anchor=south east,xshift=-3.5cm] (BL3) at (BL)
+	{%
+		\only<3,5->{%
+			\begin{ticalc}%
+				prgmPAUSETST\visible<-3>{\pausedots}\\%
+				\visible<5->{%
+				A\\%
+				\hfill 0%
+				}%
+			\end{ticalc}%
+		}%
+		\only<4>{%
+			\begin{ticalc}%
+				ERR\:BREAK\\%
+				\select{1\+\:}Quit\\%
+				2\:Goto%
+			\end{ticalc}%
+		}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Example: Debug deze code}
+
+\hspace{-0.8cm}
+\begin{minipage}{0.7\textwidth}
+Hier is de \tifonttxt{BIRTHDAY} \tifonttxt{prgm} van les 2. Alleen\ldots Ik heb een fout gemaakt! Debug de code m.b.v. test cases.
+Bekijk extreme gevallen:
+
+\visible<2->{Wat gebeurt er als ik geboren ben op
+\begin{itemize}
+  \item 1 Januari 0 en het is 10 Februari 1?
+  \only<-5>{\visible<2-5>{\begin{itemize}
+    \visible<3-5>{\item \tifonttxt{A=1}}
+    \visible<4-5>{\item \tifonttxt{M<N}, dus \tifonttxt{A} blijft \tifonttxt{1}.}
+    \visible<5-5>{\item Dat is wat je verwacht: 1 jaar oud.}
+  \end{itemize}}}
+  \item<6-> 1 Januari 0 en het is 10 Januari 1?
+  \only<6-8>{\begin{itemize}
+     \visible<6-8>{\item \tifonttxt{A=1}}
+     \visible<7-8>{\item \tifonttxt{M=N} en \tifonttxt{E>D}, dus \tifonttxt{A} blijft \tifonttxt{1}.}
+     \visible<8-8>{\item Dat is wat je verwacht: 1 jaar oud.}
+  \end{itemize}}
+  \item<9-> 5 Januari 0 en het is 1 Januari 1?
+  \only<9-12>{\begin{itemize}
+    \visible<9-12>{\item \tifonttxt{A=1}}
+    \visible<10-12>{\item \tifonttxt{M=N} en \tifonttxt{D>E}, dus \tifonttxt{A} wordt \tifonttxt{2}.}
+    \visible<11-12>{\item Maar je verwacht \tifonttxt{0} jaar! Een bug!}
+    \visible<12-12>{\item Waarschijnlijk moet hier \tifonttxt{A-1\>A} staan!}
+  \end{itemize}}
+\end{itemize}
+}
+\end{minipage}
+\begin{minipage}{0.28\textwidth}
+\begin{ticalc}[3.5cm]
+	PROGRAM\:BIRTHDAY\\%
+	\:Input\,\qt YOU\,Y\qt\comma Y\\%
+	\:Input\,\qt YOU\,M\qt\comma M\\%
+	\:Input\,\qt YOU\,D\qt\comma D\\%
+	\:Input\,\qt CUR\,Y\qt\comma Z\\%
+	\:Input\,\qt CUR\,M\qt\comma N\\%
+	\:Input\,\qt CUR\,D\qt\comma E\\%
+	\:\\%
+	\only<1-2,4-5,7-8,10->{\:Z-Y\>A\\}%
+	\only<3,6,9>{\select{\:Z-Y\>A}\\}%
+	\:If\,M>N\:Then\\%
+	\:A+1\>A\\%
+	\:Else\\%
+	\only<1-6,8-9,11->{\:If\,M=N\,and\,D>E\\}%
+	\only<7,10>{\:If\,\select{M=N\,and\,D>E}\\}%
+	\:Then\\%
+	\only<1-9>{\:A+1\>A\\}%
+	\only<10-12>{\select{\:A+1\>A}\\}%
+	\:End\\%
+	\:End\\%
+	\:Disp\,A
+\end{ticalc}
+\end{minipage}
+
+
+\end{frame}
+
+
+
+
+
+
+\subsection{Catalog \& CatalogHelp}
+
+\begin{frame}
+\frametitle{De bibliotheek}
+
+\only<1-2>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColTwo}{0.053}}} % Catalog
+\only<3-4>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColTwo}{0.628}}} % Apps
+\only<5>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColOne}{0.64}}} % math menu
+\only<6->{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColFive}{0.225}}} % +
+
+\hspace{-1cm}
+\vspace{2cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item<1-> \lenitem[0.9\linewidth]{\textbf{Alle} functies van de rekenmachine staan alfabetisch in de catalogus: \tiSecond\tiZero=\tiCATALOG.}
+  \item<2-> \lenitem[0.9\linewidth]{Dit zijn \textbf{meer functies} dan in de menu's staan!\\ Check it out yourself!}
+  \item<3-> \lenitem[0.9\linewidth]{Een nuttige app (\tiAPPS) is \tifonttxt{CtlgHelp}.}\\%
+    {\footnotesize{(Download van het internet, of link met iemand die hem heeft.)}}
+  \begin{itemize}
+    \item<4-> Voer de app uit. De hulpfunctie is nu actief.
+    \item<5-> Blader naar een functie naar keuze.\\
+      Bijvoorbeeld \tifonttxt{randInt(}.
+    \item<6-> Druk nu op \tiPlus\,voor hulp.
+    \item<7-> \lenitem[0.7\linewidth]{Je ziet nu de argumenten van de \tifonttxt{randInt(}-functie: wat de GR van je verwacht.}
+    \item<8-> \lenitem[0.7\linewidth]{Alles tussen blokhaken (\tifonttxt{[]}) is optioneel (=niet verplicht).}
+  \end{itemize}
+\end{itemize}
+\end{minipage}
+
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<1>{%
+		\begin{ticalc}
+			CATALOG\\%
+			\ftriangleright abs(\\%
+			\,and\\%
+			\,angle(\\%
+			\,ANOVA(\\%
+			\,Ans\\%
+			\,Archive\\%
+			\,Asm(
+		\end{ticalc}
+	}%
+	\only<2>{%
+		\begin{ticalc}
+			CATALOG\\%
+			\,Get(\\%
+			\,GetCalc(\\%
+			\ftriangleright getDate\\%
+			\,getDtFmt\\%
+			\,getDtStr(\\%
+			\,getTime\\%
+			\,getTmFmt
+		\end{ticalc}
+	}%
+	\only<5>{%
+		\begin{ticalc}[3.4cm]
+			MATH\,NUM\,CPX\,\select{PRB} \\%
+			\one\:rand( \\%
+			2\:nPr \\%
+			3\:nCr \\%
+			4\:! \\%
+			\selectitem{5\:}randInt( \\%
+			6\:randNorm( \\%
+			7\arrowdown randBin(
+		\end{ticalc}
+	}%
+	\only<6->{%
+		\begin{ticalc}
+			randInt(
+			\hline\\%
+			(lower\comma upper[\comma nu
+			mtrials])\\%
+			\hfill\\%
+			\hfill\\%
+			\hfill\\%
+			\hfill\\%
+			\hline
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
