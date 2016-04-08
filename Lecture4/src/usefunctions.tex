@@ -1,0 +1,294 @@
+\section{Functions}
+
+\begin{frame}
+\frametitle{Wat is een functie?}
+
+\begin{itemize}
+  \item<1-> In ``echte'' programmeertalen op de computer heb je functies/methodes
+  \item<2-> Dit zijn kleine stukjes code die iets doen wat je heel vaak nodig hebt
+  \item<3-> Het gebruik van een functie zorgt ervoor dat je die stukjes code makkelijk kunt herbruiken
+  \item<4-> Op de rekenmachine zijn er voorgeprogrammeerde functies:
+  \begin{enumerate}
+    \item<5-> \tifonttxt{abs(} berekent de absolute waarde van een getal
+    \item<6-> \tifonttxt{max(} geeft de grootste waarde van twee getallen
+  \end{enumerate}
+  \item<7-> \underline{Algemeen}: je stopt er getallen in, en je krijgt er berekende getallen uit
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<5>{%
+		\begin{ticalc}
+			abs(\min 5)\\%
+			\hfill 5\\%
+			abs(6)\\%
+			\hfill 6
+		\end{ticalc}
+	}%
+	\only<6>{%
+		\begin{ticalc}
+			max(\min10\comma10)\\%
+			\hfill 10\\%
+			max(42\comma3)\\%
+			\hfill 42
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BL)
+	{%
+	\only<5>{%
+		\begin{ticalc}
+			\:If\,X>0\\%
+			\:Then\\%
+			\:Disp\,X\\%
+			\:Else\\%
+			\:Disp\,\min X\\%
+			\:End
+		\end{ticalc}
+	}%
+	\only<6>{%
+		\begin{ticalc}
+			\:If\,X>Y\\%
+			\:Then\\%
+			\:Disp\,X\\%
+			\:Else\\%
+			\:Disp\,Y\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Je eigen functie defini\"eren}
+
+\begin{itemize}
+  \item<1->  Het is zeer nuttig om je eigen functies te defini\"eren voor kleine stukjes code die je wenst te herhalen
+\end{itemize}
+\begin{itemize}
+  \item<2->  Hoe doe je dat?
+  \visible<3->{
+  \begin{itemize}
+    \item Kort antwoord: het \textbf{kan niet}.
+    \begin{itemize}
+      \item<4-> Ok, dat is deprimerend\ldots
+    \end{itemize}
+    \visible<5->{\item Lang antwoord: we kunnen iets soortgelijks maken!}
+  \end{itemize}
+  }
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Je eigen functie defini\"eren}
+
+
+\begin{itemize}
+  \item<1-> Dit doen we door een los \tifonttxt{prgm} te maken, die geen I/O heeft.
+  \begin{itemize}
+    \item<2-> Hij vraagt de gebruiker \underline{niet} om input (e.g. \tifonttxt{Prompt})
+    \item<3-> Hij weergeeft ook \underline{geen} output (e.g. \tifonttxt{Disp})
+  \end{itemize}
+  \item<4-> Het \tifonttxt{prgm} communiceert met andere \tifonttxt{prgm}'s door variabelen aan te passen
+  \item<5-> Onderstaand (nutteloos) voorbeeld illustreert hoe we dit kunnen doen
+  \item<6-> De naam van het functie-\tifonttxt{prgm} begint met een \tifonttxt{\theta} om het \tifonttxt{prgm} te onderscheiden van een ``executable''. (Optioneel.)
+\end{itemize}
+
+\vspace{2.5cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<5->{%
+		\begin{ticalc}
+			PROGRAM\:\theta ADD1\\%
+			\:X+1\>X
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BL)
+	{%
+	\only<5->{%
+		\begin{ticalc}
+			PROGRAM\:COUNT10\\%
+			\:Prompt\,X\\%
+			\:While\,X\le10\\%
+			\:prgm\theta ADD1\\%
+			\:Disp\,X\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-7.195cm] at (BL)
+	{%
+	\only<5->{%
+		\begin{ticalc}
+			prgmCOUNT10\\%
+			X=?6\\%
+			\hfill7\\%
+			\hfill8\\%
+			\hfill9\\%
+			\hfill10\\%
+			\hfill Done
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Functie voorbeeld}
+
+\begin{itemize}
+  \item De volgende functie eist dat de input waarde van \tifonttxt{N} positief is.
+  \item Zo niet, dan crashed het \tifonttxt{prgm} met een error.
+  \item Het voordeel van hiervoor een aparte functie-\tifonttxt{prgm} gebruiken, is dat het functie-\tifonttxt{prgm} herbruikt kan worden:
+  \begin{itemize}
+    \item Indien er bijv. twee input waarden zijn die positief moeten zijn.
+    \item Of voor andere \tifonttxt{prgm}s!
+  \end{itemize}
+\end{itemize}
+
+\vspace{2.5cm}
+
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:\theta MUSTGT0\\%
+			\:If\,X\le0\\%
+			\:Then\\%
+			\:Disp\,\qt VALUE\,MUST\,BE\,>0\comma\,BUT\,WAS\:\qt\comma X\\%
+			\:Stop\\%
+			\:Else\\%
+			\:Return\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BL)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:THROWDIC\\%
+			\:\qt THROW\,N\,DICE\,Disp\,SUM\\%
+			\:Prompt\,N\\%
+			\:N\>X\\%
+			\:prgm\theta MUSTGT0\\%
+			\:Disp\,sum(randInt(1\comma6 \comma N))
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-7.195cm] at (BL)
+	{%
+	\only<1>{%
+		\begin{ticalc}
+			prgmTHROWDIC\\%
+			N=?6\\%
+			\hfill21\\%
+			\hfill Done
+		\end{ticalc}
+	}%
+	\only<2>{%
+		\begin{ticalc}
+			prgmTHROWDIC\\%
+			N=?\min3\\%
+			VALUE\,MUST\,BE\,>0\comma\,BUT\,WAS\:\\%
+			\hfill \min3\\%
+			\hfill Done
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Functie awesomerest voorbeeld}
+
+\vspace{-2.5cm}
+\hspace{-1cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item Het volgende \tifonttxt{prgm} vraagt je naar een functie (e.g. $y=x^2$).
+  \item Daarna vraagt hij wat jij denkt dat de afgeleide van die functie is (e.g. $y=2x$).
+  \item \lenitem{Vervolgens plot hij de \textbf{echte} afgeleide, en jouw afgeleide tegelijkertijd.}
+  \item Zo kun je jouw antwoord grafisch controleren!
+\end{itemize}
+\end{minipage}
+
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:\theta PLTDERV\\%
+			\:Disp\,\qt Y\sub{1}=FUNC\\%
+			\:Disp\,\qt Y\sub{2}=YOUR\,DERIV\\%
+			\:FnOff\,1\comma2\\%
+			\:GraphStyle(8\comma7)\\%
+			\:GraphStyle(9\comma5)\\%
+			\:\qt nDeriv(Y\sub{1}\comma X\comma X) \qt\>Y\sub{8}\\%
+			\:Equ\ftriangleright String(Y\sub{2} \comma Str0)\\%
+			\:Str0\>Y\sub{9}\\%
+			\:ZoomFit
+			\:DispGraph
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BL)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:PLTDERIV\\%
+			\:Disp\,\qt START\,WITH\,QUOTE\:\qt\\%
+			\:Disp\,\qt ORIG\,FUNC\:\qt\\%
+			\:Prompt\,Y\sub{1}\\%
+			\:Disp\,\qt YOUR\,DERIVATIVE\:\qt\\%
+			\:Prompt\,Y\sub{2}\\%
+			\:prgm\theta PLTDERV
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+
+
+
+\end{frame}
+
+
+
+
+

@@ -132,9 +132,54 @@
 \subsection{Output}
 
 \begin{frame}
-\frametitle{Advanced output: formateer je scherm}
+\frametitle{Advanced output: formateer je scherm met \tifonttxt{Output}}
 
+\begin{itemize}
+  \item<1-> \tifonttxt{Disp} weergeeft een string van links naar rechts op de eerstvolgende regel
+  \item<2-> \tifonttxt{Output} weergeeft een string op een plek die je zelf kan kiezen
+\end{itemize}
 
+\begin{itemize}
+  \item<3-> Het scherm van je rekenmachine bestaat uit 8 rijen en 16 kolommen
+  \item<4-> Probeer het volgende voorbeeld zelf:
+  \begin{itemize}
+    \item<5-> \tifonttxt{ABC} verschijnt links-bovenin en overschrijft ``\tifonttxt{prgmOutput}''
+    \item<6-> \tifonttxt{G} verschijnt rechts-in-het-midden; \tifonttxt{HI} op de volgende regel
+    \item<7-> \tifonttxt{XY} verschijnt rechts-onderin;\\ \tifonttxt{Z} valt buiten het scherm
+  \end{itemize} 
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<4->{%
+		\begin{ticalc}
+			\only<-4>{prgmOutput}\only<5->{pABCOutput}\\%
+			\,\\%
+			\,\\%
+			\hfill \visible<6->{G}\\%
+			\visible<6->{HI}\\%
+			\,\\%
+			\,\\%
+			\hfill \visible<7->{XY}
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BL)
+	{%
+	\only<4->{%
+		\begin{ticalc}[3.75cm]
+			PROGRAM\:OUTPUT\\%
+			\:Output(1\comma2\comma\qt ABC\qt)\\%
+			\:Output(4\comma16\comma\qt GHI\qt)\\%
+			\:Output(8\comma15\comma\qt XYZ\qt)
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
 
 
 \end{frame}
@@ -144,7 +189,160 @@
 \begin{frame}
 \frametitle{Nuttig samen met \tifonttxt{Output}: \tifonttxt{ClrHome}}
 
+\begin{itemize}
+  \item<1-> ``With great power, comes great responsibility''
+  \item<2-> Het is handig om het scherm eerst te legen, voordat je alles gaat overschrijven.
+  \item<3-> Dit is precies wat \tifonttxt{ClrHome} doet
+\end{itemize}
 
+\vspace{1.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<3>{%
+		\begin{ticalc}
+			CTL\,\select{I/O}\,EXEC \\
+			2\:Prompt \\
+			3\:Disp \\
+			4\:DispGraph \\
+			5\:DispTable \\
+			6\:Output( \\
+			7\:getKey \\
+			\selectitem{8\arrowdown} ClrHome
+		\end{ticalc}
+	}%
+	\only<4->{%
+		\begin{ticalc}
+			PROGRAM\:CLRHOME\\%
+			\:Disp\,\qt A\qt\\%
+			\:Pause\\%
+			\:ClrHome\\%
+			\:Output(4,4,\qt HELL O\qt)
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BL)
+	{%
+	\only<4>{%
+		\begin{ticalc}
+			2+2\pausedots\\%
+			\hfill 4\\%
+			2*2\\%
+			\hfill 4\\%
+			prgmCLRHOME\\%
+			A\\%
+			\,\\%
+			\,
+		\end{ticalc}
+	}%
+	\only<5->{%
+		\begin{ticalc}
+			\,\\%
+			\,\\%
+			\,\\%
+			\,\,\,HELLO\\%
+			\,\\%
+			\,\\%
+			\,\\%
+			\,
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
 
 
 \end{frame}
+
+
+
+
+
+
+\subsection{num2str}
+
+\begin{frame}
+\frametitle{num2str}
+
+\begin{itemize}
+  \item<1-> Om mooie output te krijgen, is het handig om getallen naar strings te converteren
+  \item<2-> Zo kun je als antwoord \inlineticalc{\sqrt(2)} laten zien,\\%
+  			i.p.v. op meerdere regels:
+\end{itemize}
+\visible<2->{
+\begin{ticalc}
+	\sqrt(\\%
+	\hfill 2
+\end{ticalc}
+}
+\begin{itemize}
+  \item<3-> Op de TI84 gaat dit zeer ongemakkelijk\ldots
+  \item<4-> Maar met behulp van een custom functie hoeven we het slechts 1 keer te maken!
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{num2str}
+
+\begin{itemize}
+  \item \tifonttxt{\theta NUM2STR} zet het getal \tifonttxt{X} om in een string \tifonttxt{Str1}.
+  \item \tifonttxt{DISPSQRT} weergeeft het getal \tifonttxt{X} in een wortel-teken.
+  \item<2-> Nadeel is wel: de variabelen \tifonttxt{X}, \tifonttxt{Y\sub{0}} en \tifonttxt{Str1} worden overschreven door het \tifonttxt{prgm}.
+  \item<3-> \lenitem[0.6\linewidth]{Merk op: de comments geven aan wat de functie overschrijft!\\%
+  			Handig als je later terug kijkt!}
+\end{itemize}
+
+\vspace{3cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node[yshift=0.6cm] (BL) at (current page.south west){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4.2cm]
+			PROGRAM\:\theta NUM2STR\\%
+			\:\qt IN\:\,X\\%
+			\:\qt OUT\:\,Str1\\%
+			\:\qt USES\:\,Y\sub{0}\\%
+			\:\{X\comma X\>\tiL NSY\\%
+			\:\{0\comma 1\>\tiL NSX\\%
+			\:LinReg(a+bx)\,\tiL NSX\comma\\%
+				\tiL NSY\comma Y\sub{0}\\%
+			\:Equ\ftriangleright String(Y\sub{0}\comma Str1)\\%
+			\:sub(Str1\comma 1\comma length( Str1)-3)\>Str1
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-4.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:DISPSQRT\\%
+			\:REQ\:prgm\theta NUM2STR\\%
+			\:Prompt\,X\\%
+			\:prgm\theta NUM2STR\\%
+			\:Disp\,\qt\sqrt(\qt+ Str1+\qt)\qt
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south west,xshift=-0.1cm] at (BL)
+	{%
+	\only<1->{%
+		\begin{ticalc}[3cm]
+			prgmDISPSQRT\\%
+			X=?2\\%
+			\sqrt(2)
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+
+\end{frame}
+

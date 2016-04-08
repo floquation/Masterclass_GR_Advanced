@@ -46,7 +46,7 @@
 	\node[] (BL) at (current page.south east){ };
 	\node [anchor=south east,xshift=0.195cm,yshift=0.6cm] at (BL)
 	{%
-	\only<1,6>{%
+	\only<1>{%
 		\begin{ticalc}
 			PROGRAM\:FIRSTFOR\\%
 			\:For(I\comma 1\comma 5)\\%
@@ -54,12 +54,12 @@
 			\:End
 		\end{ticalc}
 	}%
-	\only<2-4>{%
+	\only<2-4,6>{%
 		\begin{ticalc}
 			PROGRAM\:FIRSTFOR\\%
-			\:For(I\comma 3\comma 9\comma 3)\\%
+			\:\only<4-6>{\select{For(I\comma 3\comma 9\comma 3)}}\only<-3>{For(I\comma 3\comma 9\comma 3)}\\%
 			\:Disp\,I\\%
-			\:End
+			\:\only<6>{\select{End}}\only<-5>{End}
 		\end{ticalc}
 	}%
 	\only<5>{%
