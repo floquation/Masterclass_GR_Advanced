@@ -234,7 +234,7 @@
 
 \hspace{-0.8cm}
 \begin{minipage}{0.7\textwidth}
-Hier is de \tifonttxt{BIRTHDAY} \tifonttxt{prgm} van les 2. Alleen\ldots Ik heb een fout gemaakt! Debug de code m.b.v. test cases.
+Hier is het \tifonttxt{BIRTHDAY} \tifonttxt{prgm} van les 2. Alleen\ldots Ik heb een fout gemaakt! Debug de code m.b.v. test cases.
 Bekijk extreme gevallen:
 
 \visible<2->{Wat gebeurt er als ik geboren ben op
@@ -310,7 +310,7 @@ Bekijk extreme gevallen:
 \begin{minipage}{\textwidth}
 \begin{itemize}
   \item<1-> \lenitem[0.9\linewidth]{\textbf{Alle} functies van de rekenmachine staan alfabetisch in de catalogus: \tiSecond\tiZero=\tiCATALOG.}
-  \item<2-> \lenitem[0.9\linewidth]{Dit zijn \textbf{meer functies} dan in de menu's staan!\\ Check it out yourself!}
+  \item<2-> \lenitem[0.9\linewidth]{Dit zijn \textbf{meer functies} dan in de menus staan!\\ Check it out yourself!}
   \item<3-> \lenitem[0.9\linewidth]{Een nuttige app (\tiAPPS) is \tifonttxt{CtlgHelp}.}\\%
     {\footnotesize{(Download van het internet, of link met iemand die hem heeft.)}}
   \begin{itemize}
@@ -385,6 +385,191 @@ Bekijk extreme gevallen:
 \end{frame}
 
 
+
+
+
+
+
+\subsection{Precisie en afrondingsfouten}
+
+\begin{frame}
+\frametitle{Precisie}
+
+\begin{itemize}
+  \item<1-> Je rekenmachine slaat \underline{niet} oneindig veel getallen van een rationeel getal op.
+  \item<2-> Om precies te zijn, hij slaat 14 getallen op:
+\end{itemize}
+\visible<2->{
+\begin{ticalc}[3.5cm]
+	1/9\\%
+	\hfill 0.111 111 111 111 11
+\end{ticalc}
+}
+\begin{itemize}
+  \item<3-> Dit kan leiden tot afrondingsfouten.
+  \item<4-> Zo is \inlineticalc{1/9*9=0.99999999999999\!1}\ldots
+  \item<5-> Wat geeft de volgende functie? \visible<6->{\tifonttxt{\>} Niet \tifonttxt{1}, wat je wel wilt\ldots!}
+\end{itemize}
+\visible<5->{
+\begin{ticalc}[3.5cm]
+	int(1/9*9)\\%
+	\hfill \visible<6->{0}
+\end{ticalc}
+}
+
+\begin{itemize}
+  \item<7-> Gelukkig geeft \inlineticalc{\:If\,1/9*9=1} \underline{wel} gewoon ``true''!
+  \item<8-> Enig idee hoe we met afrondingsfouten kunnen omgaan?
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{\tifonttxt{iPart} en \tifonttxt{fPart}}
+
+\visible<2->{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColOne}{0.635}}} % Math
+
+\begin{itemize}
+  \item<1-> Eerst, hoe weet ik dat er 14 getallen zijn?
+  \item<2-> Dit kan bewezen worden m.b.v. \tifonttxt{fPart}.
+  \item<3-> \lenitem{Dit weergeeft de fraction-part van een getal (alles rechts van de punt).}
+  \item<4-> \lenitem{Similarly, \tifonttxt{iPart} is de integer-part (links van de punt).}
+\end{itemize}
+
+\begin{itemize}
+  \item<5-> \lenitem[0.65\linewidth]{Door de punt te verschuiven, kunnen we tellen hoeveel getallen de rekenmachine op slaat! 14!}
+\end{itemize}
+		
+\vspace{2cm}
+		
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}[3.4cm]
+			MATH\,\select{NUM}\,CPX\,PRB \\
+			\one\:abs( \\
+			2\:round( \\
+			\selectitem{3\:}iPart( \\
+			\selectitem{4\:}fPart( \\
+			5\:int( \\
+			6\:min( \\
+			7\arrowdown max(
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.7cm] at (BR)
+	{%
+	\only<3-4>{%
+		\begin{ticalc}
+			fPart(2.5431)\\%
+			\hfill 0.5431\\%
+			iPart(2.5431)\\%
+			\hfill 2
+		\end{ticalc}
+	}%
+	\only<5>{%
+		\begin{ticalc}
+			fPart(1.2345678 901234567*1\E10)\\%
+			\hfill 0.23\selectitem{4}
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Hoe wordt \tifonttxt{1/9*9} weer gelijk aan \tifonttxt{1}?}
+
+\begin{itemize}
+  \item Hoe kun je \inlineticalc{\:If\,X=1} aanpassen om met afrondingsfouten om te gaan?
+\end{itemize}
+
+\visible<2->{
+\begin{itemize}
+  \item Dan moeten we een ``ongeveer gelijk aan'' zelf maken\ldots
+  \item<3-> Dat kan op veel verschillende manieren! Dit is de makkelijkste:
+\end{itemize}
+
+	\visible<3->{
+	\begin{ticalc}[10cm]
+	\:1/9*9\>X\\%
+	\:1\>Y\\%
+	\:If\,X/Y+1\E\min9\ge1\,and\,X/Y-1\E\min9\le1\\%
+	\:If\,abs(X-Y)+1\E\min9\ge0\,and\,abs(X-Y)-1\E\min9\le0
+	\end{ticalc}
+	}
+	
+\begin{itemize}
+  \item<4-> Maar \underline{niet} (Waarom?):
+\end{itemize}
+
+	\visible<4->{
+	\begin{ticalc}[10cm]
+	\:If\,X+1\E\min9\ge Y\,and\,X-1\E\min9\le Y\\%
+	\end{ticalc}
+	}
+}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Integer checking}
+
+\begin{itemize}
+  \item Wat is een integer (NL: geheel getal)?
+\end{itemize}
+
+\visible<2->{
+\begin{itemize}
+  \item<2-> Een integer heeft een \tifonttxt{fPart} van 0. Dus:
+\end{itemize}
+\visible<2->{
+\begin{ticalc}[3.5cm]
+	\:If\,fPart(X)=0\\%
+	\:Then\\%
+	\:\qt X\,INTEGER\\%
+	\:Else\\%
+	\:\qt X\,RATIONAL\\%
+	\:End
+\end{ticalc}
+}\visible<4->{
+\begin{ticalc}[6cm]
+	\:If\,fPart(abs(X)+1\E\min9)<1\E\min7\\%
+	\:Then\\%
+	\:\qt X\,INTEGER\\%
+	\:Else\\%
+	\:\qt X\,RATIONAL\\%
+	\:End
+\end{ticalc}
+}
+
+\begin{itemize}
+  \item<3-> Door afrondingsfouten gaat dit echter mis, zoals in het voorbeeld: \inlineticalc{fPart(1/9*9)=0.999...=1\!0}
+  \item<4-> Dit kun je afvangen door een heel klein getal bij \tifonttxt{X} op te tellen:
+  \item<5-> Interesting fact: In de wetenschap doet men iets soortgelijks wanneer het mogelijk is dat een getal \tifonttxt{X=0} wordt,
+			maar je er toch door wilt kunnen delen: \inlineticalc{Y/(X+1\E\min30)}
+\end{itemize}
+
+
+}
+
+
+\end{frame}
 
 
 

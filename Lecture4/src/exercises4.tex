@@ -4,18 +4,277 @@
 \begin{frame}
 \frametitle{Exercises}
 
-% 1) Schrijf frac2str based on num2str
-% 
-% 2) Schrijf plotintegral met fnInt
-% -> gebruik ctlgHelp of google om argumenten van fnInt te vinden
+Voeg comments toe aan alle \tifonttxt{prgm}s die je maakt!
+\begin{enumerate}
+  \item Gebruik \tifonttxt{\theta NUM2STR} om een functie-\tifonttxt{prgm} (\tifonttxt{\theta FRC2STR}) te schrijven dat de getallen \tifonttxt{X} en \tifonttxt{Y} neemt,
+  		en het omzet in een string van de vorm: \tifonttxt{X/Y}. Bijv. \tifonttxt{Str1=7/5} indien \tifonttxt{X=7} en \tifonttxt{Y=5}.
+  \item Soortgelijk aan \tifonttxt{\theta PLTDERV}, schrijf een \tifonttxt{prgm} dat de primitieve functie plot.
+  		(Hint: gebruik \tifonttxt{fnInt} i.p.v. \tifonttxt{nDeriv}; gebruik Google of \tifonttxt{CtlgHelp} om te uit te zoeken hoe \tifonttxt{fnInt} werkt.)
+  \item Schrijf een functie-\tifonttxt{prgm} \tifonttxt{\theta ISINT} die controleert of \tifonttxt{X} integer is. Return \tifonttxt{X=1} indien ``true'', \tifonttxt{X=0} indien ``false''.
+\end{enumerate}
+
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Exercises}
+
+Voeg comments toe aan alle \tifonttxt{prgm}s die je maakt!
+\begin{enumerate}
+  \item Maak een spiek\tifonttxt{prgm} waarin de gebruiker de afgeleide van een functie kan opvragen. Gebruik hiervoor een \tifonttxt{Menu} met items als $x^n$, $a^x$, $\cos{x}$, etc.
+  \item Maak met behulp van \tifonttxt{Output} een tekening met letters EN/OF Gebruik \tifonttxt{Output} om te weergeven dat \tifonttxt{2+2=5}.
+  \item Schrijf een functie-\tifonttxt{prgm} (\tifonttxt{\theta NUM2SQR}) dat \tifonttxt{X} omzet in de vorm \tifonttxt{N\sqrt(M)}, waarbij $x=n\sqrt{m}$ en $n$ en $m$ integer zijn.\\%
+  		(Hint: schrijf $x^2=n^2m$ en loop over alle mogelijke waarde van $n$. Begin bij de grootst mogelijke waarde van $n$ en tel af. Kijk vervolgens of $x^2/n^2$ een integer is.)
+\end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercises: Debugging}
+
+\begin{enumerate}
+  \item Debug het volgende \tifonttxt{prgm}
+\end{enumerate}
+
+\vspace{3cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node[yshift=0.6cm] (BL) at (current page.south west){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4.2cm]
+			PROGRAM\:PRIMES\\%
+			\:Prompt\,X\\%
+			\:\{2\}\>L\sub{1}\\%
+			\:For(I\comma3\comma X)\\%
+			\:\qt CHECK\,IF\,I\,PRIME\\%
+			\:1\>P\\%
+			\:For(J\comma1\comma dim(L\sub{1}))\\%
+			\:If\,fPart(I/L\sub{1}(J ))=0\:Then\\%
+			\:\qt I\,NOT\,PRIME\\%
+			\:dim(L\sub{1})+1\>J\\%
+			\:End\\%
+			\:End\\%
+			\:If\,P\:Then\\%
+			\:augment(L\sub{1},\{I\}) \>L\sub{1}\\%
+			\:End\:End\\%
+			\:Disp\,L\sub{1}
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-4.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4cm]
+			prgmPRIMES\\%
+			X=?5\\%
+			\hfill\{2\,3\,4\,5\}\\%
+			\hfill Done\\%
+			prgmPRIMES\\%
+			X=?9\\%
+			\hfill\{2\,3\,4\,5\,6\,7\,8\,9\}\\%
+			\hfill Done
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
 
 \subsection{Answers}
 
 
+\begin{frame}
+\frametitle{Answers}
+
+\begin{ticalc}[4.5cm]
+	PROGRAM\:\theta ISINT\\%
+	\:\qt IN\:X\\%
+	\:\qt OUT\:X=1\,If\,X\,INTEGER\,Else\,0\\%
+	\:\\%
+	\:If\,fPart(abs(X)+1\E\min9) <1\E\min7\\%
+	\:Then\\%
+	\:\qt X\,INTEGER\\%
+	\:1\>X\\%
+	\:Else\\%
+	\:\qt X\,RATIONAL\\%
+	\:0\>X\\%
+	\:End
+\end{ticalc}
+\begin{ticalc}[4.5cm]
+	PROGRAM\:\theta FRC2STR\\%
+	\:\qt IN\:X/Y\\%
+	\:\qt OUT\:Str1\\%
+	\:\qt USE\:Str0\\%
+	\:\qt REQ\:prgm\theta NUM2STR\\%
+	\:\\%
+	\:prgm\theta NUM2STR\\%
+	\:If\,Y\!1\:Then\\%
+	\:Str1\>Str0\\%
+	\:Y\>X\\%
+	\:prgm\theta NUM2STR\\%
+	\:Str0+\qt/\qt+Str1\>Str1\\%
+	\:End
+\end{ticalc}
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Answers}
+
+\begin{ticalc}[6cm]
+	PROGRAM\:AFGELYDN\\%
+	\:Lbl\,0\\%
+	\:ClrHome\\%
+	\:Menu(\qt KIES\:\qt\comma \qt X\^N\qt\comma 1\comma \qt cos(X)\\%
+		\qt\comma 2\comma \qt sin(X)\qt\comma 3\comma \qt e\^X\qt\comma 4\comma \qt EXIT\,PROGRAM\qt\comma 99)\\%
+	\:Lbl\,1\\%
+	\:Output(1\comma1\comma\qt C*X\^N\:\qt)\\%
+	\:Output(2\comma1\comma\qt C*N*X\^(N-1)\qt)\\%
+	\:Output(4\comma1\comma\qt C*(AX)\^N\:\qt)\\%
+	\:Output(5\comma1\comma\qt C*AN*(AX)\^(N-1)= C*(A\^N)*N*X\^(N-1)\qt)\\%
+	\:Goto\,0\\%
+	\:Lbl\,2\\%
+	\:Output(1\comma1\comma\qt C*cos(X)\:\qt)\\%
+	\:Output(2\comma1\comma\qt C*sin(X)\qt)\\%
+	\:Output(4\comma1\comma\qt C*cos(AX)\:\qt)\\%
+	\:Output(5\comma1\comma\qt C*A*sin(AX)\qt)\\%
+	\:Goto\,0\\%
+	\:Lbl\,3\\%
+	\:\qt EN\,NU\,ZO\,DOORGAAN...\\%
+	\:Lbl\,99
+\end{ticalc}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Answers}
+
+Dit kan op veel verschillende manieren\ldots Onderstaande maakt gebruikt van \tifonttxt{prgm\theta ISINT}.
+
+\begin{ticalc}
+	PROGRAM\:\theta NUM2SQR\\%
+	\:\qt IN\:X\\%
+	\:\qt OUT\:N\sqrt(M)\,or\,M=0\,IF\,NOT\,\sqrt(\\%
+	\:\qt REQ\:prgm\theta ISINT\\%
+	\:\qt USES\:Y\\%
+	\:\\%
+	\:X\>Y\\%
+	\:X\sq\>X\\%
+	\:prgm\theta ISINT\\%
+	\:If\,X=0\:Then\\%
+	\:\qt X\,NOT\,\sqrt(\,BC\,X\sq\,NOT\,INT\\%
+	\:Y\>N\:0\>M\\%
+	\:Return\\%
+	\:End\\%
+	\:Y\>X
+\end{ticalc}
+\begin{ticalc}
+	\:\\%
+	\:\qt X\sq=N\sq M?\\%
+	\:int(X)+1\>N\\%
+	\:X\sq\>Y\\%
+	\:0\>X\\%
+	\:While\,X=0\\%
+	\:N-1\>N\\%
+	\:Y/N\sq\>M\\%
+	\:M\>X\\%
+	\:prgm\theta ISINT\\%
+	\:End
+\end{ticalc}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Answers: Debugging}
+
+De redenering is als volgt:
+\begin{itemize}
+  \item We zien dat de output van het \tifonttxt{prgm} alle getallen bevat van \tifonttxt{2} t/m \tifonttxt{X}, i.p.v. alle priemgetallen \tifonttxt{\le X}. DUS:
+  \begin{itemize}
+  	\item Het \tifonttxt{prgm} checked incorrect voor priemgetallen.
+  	\item Of het weergeeft te veel.
+  \end{itemize}
+  \item Controleer het makkelijkste eerst: ``het weergeeft te veel''. Wat weergeeft het \tifonttxt{prgm?}
+  \begin{itemize}
+    \item Het weergeeft \tifonttxt{L\sub{1}}.
+  \end{itemize}
+  \item Waar wordt \tifonttxt{L\sub{1}} gemaakt?
+  \begin{itemize}
+    \item Bij de \tifonttxt{augment} functie\ldots Maar alleen als \tifonttxt{P\!0}.
+  \end{itemize}
+  \item Maar \tifonttxt{P} kan nergens \tifonttxt{0} worden in het \tifonttxt{prgm}! Daar is iets mis\ldots
+  \item We missen \inlineticalc{0\>P} onder de comment \inlineticalc{\qt I\,NOT\,PRIME}.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Answers: Debugging}
+
+\begin{itemize}
+  \item Corrigeer de fout.
+  \item \lenitem[0.55\linewidth]{En controleer of het \tifonttxt{prgm} nu doet wat je verwacht!}
+  \item Yup! Awesome!
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node[yshift=0.6cm] (BL) at (current page.south west){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4.2cm]
+			PROGRAM\:PRIMES\\%
+			\:Prompt\,X\\%
+			\:\{2\}\>L\sub{1}\\%
+			\:For(I\comma3\comma X)\\%
+			\:\qt CHECK\,IF\,I\,PRIME\\%
+			\:1\>P\\%
+			\:For(J\comma1\comma dim(L\sub{1}))\\%
+			\:If\,fPart(I/L\sub{1}(J ))=0\:Then\\%
+			\:\qt I\,NOT\,PRIME\\%
+			\selectitem{\:0\>P}\\%
+			\:dim(L\sub{1})+1\>J\\%
+			\:End\\%
+			\:End\\%
+			\:If\,P\:Then\\%
+			\:augment(L\sub{1},\{I\}) \>L\sub{1}\\%
+			\:End\:End\\%
+			\:Disp\,L\sub{1}
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-4.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4cm]
+			prgmPRIMES\\%
+			X=?5\\%
+			\hfill\{2\,3\,5\}\\%
+			\hfill Done\\%
+			prgmPRIMES\\%
+			X=?9\\%
+			\hfill\{2\,3\,5\,7\}\\%
+			\hfill Done
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
 
 \end{frame}

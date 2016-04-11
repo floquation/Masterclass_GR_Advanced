@@ -201,7 +201,7 @@
 	\node[yshift=0.6cm] (BL) at (current page.south east){ };
 	\node [anchor=south east,xshift=0.195cm] at (BL)
 	{%
-	\only<3>{%
+	\only<3->{%
 		\begin{ticalc}
 			CTL\,\select{I/O}\,EXEC \\
 			2\:Prompt \\
@@ -213,6 +213,9 @@
 			\selectitem{8\arrowdown} ClrHome
 		\end{ticalc}
 	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BL)
+	{%
 	\only<4->{%
 		\begin{ticalc}
 			PROGRAM\:CLRHOME\\%
@@ -223,7 +226,7 @@
 		\end{ticalc}
 	}%
 	};
-	\node [anchor=south east,xshift=-3.5cm] at (BL)
+	\node [anchor=south east,xshift=-7.195cm] at (BL)
 	{%
 	\only<4>{%
 		\begin{ticalc}
@@ -315,7 +318,8 @@
 			\:LinReg(a+bx)\,\tiL NSX\comma\\%
 				\tiL NSY\comma Y\sub{0}\\%
 			\:Equ\ftriangleright String(Y\sub{0}\comma Str1)\\%
-			\:sub(Str1\comma 1\comma length( Str1)-3)\>Str1
+			\:sub(Str1\comma 1\comma length( Str1)-3)\>Str1\\%
+			\:FnOff\,0 
 		\end{ticalc}
 	}%
 	};
