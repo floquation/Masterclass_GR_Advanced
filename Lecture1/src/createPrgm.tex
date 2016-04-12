@@ -59,9 +59,106 @@ Om het programma nu weer te openen, doe:
 \end{itemize}
 \end{frame}
 
+
+
+
 \begin{frame}
 \frametitle{Deleten/Archiveren van een \tiPRGM}
-	TODO?
+\visible<2-4,6-7>{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColFive}{0.228}}}
+\visible<5>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.802}}}
+\visible<8>{\ticalcfig{\ticalcfigCircleEnter}}
+
+Indien je een \tifonttxt{prgm} wilt verwijderen:
+\begin{itemize}
+  \item<2-> Druk op \tiSecond\tiPlus=\tiMEM
+  \item<3-> Kies \inlineticalc{Mem\,Mgmt/Del\ldots}
+  \item<4-> Kies \inlineticalc{Prgm\ldots}
+  \item<5-> Blader naar het te-deleten-\tifonttxt{prgm} en druk op \tiDEL.
+  \item<6-> Yes\ldots Of course we are sure\ldots
+  \item<7-> En weg is 'ie!
+\end{itemize}
+  
+\begin{itemize}
+  \item<8-> Om te archiveren druk je op \tiENTER\\
+  	i.p.v. \tiDEL.
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<2-3>{%
+		\begin{ticalc}%
+			\select{MEMORY} \\%
+			\only<2>{\selectitem{\one\:}}\only<3->{\one\:}About \\%
+			\only<3->{\selectitem{2\:}}\only<2>{2\:}Mem\,Mgmt/Del\ldots \\%
+			3\:Clear\,Entries \\%
+			4\:ClrAllLists \\%
+			5\:Archive \\%
+			6\:UnArchive \\%
+			7\arrowdown Reset\ldots%
+		\end{ticalc}%
+	}%
+	\only<4>{%
+		\begin{ticalc}%
+			RAM\,FREE\hfill5144 \\%
+			ARC\,FREE\hfill24861 \\%
+			2\arrowup Real\ldots \\%
+			3\:Complex\ldots \\%
+			4\:List\ldots \\%
+			5\:Matrix\ldots \\%
+			6\:Y-Vars\ldots \\%
+			\selectitem{7\arrowdown} Prgm\ldots%
+		\end{ticalc}%
+	}%
+	\only<5>{%
+		\begin{ticalc}%
+			RAM\,FREE\hfill5144 \\%
+			ARC\,FREE\hfill24861 \\%
+			\,\,ABC\hfill530\\%
+			\,\,AFGELYDN\hfill724\\%
+			\,\,EXACTOR\hfill352\\%
+			\ftriangleright\,JUNK\hfill34\\%
+			\,\,SKRKNSGM\hfill1238\\%
+			\,\,\theta NUM2FRA\hfill502%
+		\end{ticalc}%
+	}%
+	\only<6>{%
+		\begin{ticalc}%
+			\select{Are\,You\,Sure?}\\%
+			\one\:No\\%
+			\selectitem{2\:}Yes%
+		\end{ticalc}%
+	}%
+	\only<7>{%
+		\begin{ticalc}%
+			RAM\,FREE\hfill5110 \\%
+			ARC\,FREE\hfill24861 \\%
+			\,\,ABC\hfill530\\%
+			\,\,AFGELYDN\hfill724\\%
+			\,\,EXACTOR\hfill352\\%
+			\ftriangleright\,SKRKNSGM\hfill1238\\%
+			\,\,\theta NUM2FRA\hfill502\\%
+			\,\,\theta NUM2SQR\hfill275%
+		\end{ticalc}%
+	}%
+	\only<8>{%
+		\begin{ticalc}%
+			RAM\,FREE\hfill6348 \\%
+			ARC\,FREE\hfill23623 \\%
+			\,\,ABC\hfill530\\%
+			\,\,AFGELYDN\hfill724\\%
+			\,\,EXACTOR\hfill352\\%
+			\ftriangleright*SKRKNSGM\hfill1238\\%
+			\,\,\theta NUM2FRA\hfill502\\%
+			\,\,\theta NUM2SQR\hfill275%
+		\end{ticalc}%
+	}%
+	};
+\end{tikzpicture}
+
 \end{frame}
 
 
