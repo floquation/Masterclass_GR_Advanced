@@ -1,0 +1,500 @@
+\section{Dynamic input}
+
+\subsection{getKey}
+
+% getKey command
+\begin{frame}
+\frametitle{Check for key presses}
+
+\visible<1>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % prgm
+
+\begin{itemize}
+  \item<1-> \lenitem[0.75\linewidth]{Met \tifonttxt{getKey} kun je de \emph{laatste} knop die ingedrukt is opvragen.}
+  \item<2-> \lenitem[0.75\linewidth]{Je krijgt een getal, welk naar een knop verwijst (zie figuur).}
+\end{itemize}
+
+
+
+\vspace{2.5cm}
+
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{tikzonimage}[width=3.2cm]{./TI84_getkey.jpg}
+			\only<6>{\ticalcfigCircle{0.822}{0.113}}
+		\end{tikzonimage}
+	}
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			CTL\,\select{I/O}\,EXEC \\
+			1\+\:Input \\
+			2\:Prompt \\
+			3\:Disp \\
+			4\:DispGraph \\
+			5\:DispTable \\
+			6\:Output( \\
+			\selectitem{7\arrowdown} getKey
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-7.195cm] at (BR)
+	{%
+	\only<3->{%
+		\begin{ticalc}
+			getKey\\%
+			\hfill0\\%
+			\visible<4->{getKey\\%
+			\hfill0\\}%
+			\visible<5->{getKey\\%
+			\hfill0\\}%
+			\visible<6->{getKey\\%
+			\hfill105}
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+\subsection{wait for input}
+
+% use getKey, freeze prgm until button press
+
+
+\begin{frame}
+\frametitle{Wait for keypress}
+
+
+\begin{itemize}
+  \item<1-> \lenitem[0.75\linewidth]{\tifonttxt{prgmGETKEY1} wacht tot een knop ingedrukt wordt.}
+  \item<2-> \lenitem[0.75\linewidth]{\tifonttxt{prgmGETKEY2} blijft loopen totdat er op \tiENTER\,gedrukt wordt.}
+\end{itemize}
+
+
+
+\vspace{3cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{tikzonimage}[width=3.2cm]{./TI84_getkey.jpg}
+			\only<2>{\ticalcfigCircle{0.822}{0.113}}
+		\end{tikzonimage}
+	}
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:GETKEY1\\%
+			\:Repeat\,Ans\\%
+			\:getKey\>X\\%
+			\:Disp\,X\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-7.195cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}
+			PROGRAM\:GETKEY2\\%
+			\:0\>K\\%
+			\:While\,K\!105\\%
+			\:getKey\>K\\%
+			\:If\,K\!0
+			\:Disp\,K\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+% \subsection{event --> action}
+
+
+\begin{frame}
+\frametitle{Hoe reageer je op specifieke input?}
+
+\vspace{-1cm}
+
+\begin{itemize}
+  \item \lenitem[0.7\linewidth]{Hoe kunnen we onze kennis van \tifonttxt{getKey} gebruiken om te reageren op specifieke knoppen?}
+  \begin{itemize}
+    \item Bijv. reageer op pijltoetsen voor game/menu.
+  \end{itemize}
+\end{itemize}
+
+\vspace{3cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<3->{%
+		\begin{tikzonimage}[width=3.2cm]{./TI84_getkey.jpg}
+			\ticalcfigCircle{0.75}{0.568} % Up
+			\ticalcfigCircle{0.628}{0.53} % Left
+% 			\ticalcfigCircle{0.822}{0.113} % Enter
+		\end{tikzonimage}
+	}
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}
+			PROGRAM\:AROWKEY1\\%
+			\:0\>K\:Repeat\,K\\%
+			\:getKey\>X\\%
+			\:If\,K=25\:Then\\%
+			\:Disp\,\qt MOVE\,UP\\%
+			\:End\\%
+			\:If\,K=24\:Then\\%
+			\:Disp\,\qt MOVE\,<-\\%
+			\:End\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-7.195cm] at (BR)
+	{%
+	\only<4->{%
+		\begin{ticalc}
+			PROGRAM\:AROWKEY2\\%
+			\:Lbl\,0
+			\:0\>K\\%
+			\:Repeat\,K\\%
+			\:getKey\>K\\%
+			\:End\\%
+			\:If\,K=25\:Then\\%
+			\:Disp\,\qt MOVE\,UP\\%
+			\:Else\\%
+			\:If\,K=24\:Then\\%
+			\:Disp\,\qt MOVE\,<-\\%
+			\:End\:End\\%
+			\:Goto\,0
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Event \tifonttxt{\>} Action programming}
+
+\vspace{-1cm}
+
+\begin{itemize}
+  \item<2-> \lenitem[0.7\linewidth]{Een betere manier is \tifonttxt{PROGRAM\:AROWKEY3}.}
+  \item<3-> Merk op hoe raar de \tifonttxt{End}'s staan
+  \begin{itemize}
+    \item<4-> \tifonttxt{Goto} springt in het programma, dus klopt wel!
+  \end{itemize}
+\end{itemize}
+
+\vspace{3cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{tikzonimage}[width=3.2cm]{./TI84_getkey.jpg}
+			\ticalcfigCircle{0.75}{0.568} % Up
+			\ticalcfigCircle{0.628}{0.53} % Left
+ 			\only<2->{\ticalcfigCircle{0.822}{0.113}} % Enter
+		\end{tikzonimage}
+	}
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:AROWKEY1\\%
+			\:0\>K\:Repeat\,K\\%
+			\:getKey\>X\\%
+			\:If\,K=25\:Then\\%
+			\:Disp\,\qt MOVE\,UP\\%
+			\:End\\%
+			\:If\,K=24\:Then\\%
+			\:Disp\,\qt MOVE\,<-\\%
+			\:End\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-7.195cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}
+			PROGRAM\:AROWKEY3\\%
+			\:If\,1=1\:Then\\%
+			\:\only<-3>{Lbl\,0}\only<4->{\select{Lbl\,0}}
+			\:\only<-2>{End}\only<3->{\select{End}}\\%
+			\:getKey\>K\\%
+			\:If\,K=0\:Then\\%
+			\:Goto\,0
+			\:End\\%
+			\:\only<-3>{If\,K=25\:Then}\only<4->{\select{If\,K=25}\:\select{Then}}\\%
+			\:Disp\,\qt MOVE\,UP\\%
+			\:\only<-3>{Goto\,0}\only<4->{\select{Goto\,0}}
+			\:End\\%
+			\:If\,K=24\:Then\\%
+			\:Disp\,\qt MOVE\,<-\\%
+			\:Goto\,0
+			\:End\\%
+			\:If\,K\!105\:Then\\%
+			\:Goto\,0
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\subsection{Memory Leaks}
+
+
+\begin{frame}
+\frametitle{Intermezzo: Memory Leaks}
+
+\vspace{-1cm}
+\hspace{-1cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item<2-> \lenitem[\linewidth]{Als je in een block statement (zoals \tifonttxt{If} of \tifonttxt{While}) gaat, onthoud de rekenmachine hoe diep je bent: dit heet de `stack'.}
+  \item<3-> \lenitem[0.75\linewidth]{Wanneer je met \tifonttxt{Goto} naar buiten springt, ga je steeds dieper en dieper.}
+  \item<4-> \lenitem[0.75\linewidth]{Dit kost memory\ldots\visible<5->{Vertraagt je \tifonttxt{prgm}\ldots}\\\visible<6->{En uiteindelijk crashed je \tifonttxt{prgm}\ldots}}
+  \item<7-> \lenitem[0.8\linewidth]{De memory leak verdwijnt pas zodra \tifonttxt{prgm} eindigt.}
+  \item<8-> \lenitem[0.75\linewidth]{http://tibasicdev.wikidot.com/memory-leaks}
+\end{itemize}
+\end{minipage}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+% 	\only<1->{%
+% 		\begin{tikzonimage}[width=3.2cm]{./TI84_getkey.jpg}
+% 			\ticalcfigCircle{0.75}{0.568} % Up
+% 			\ticalcfigCircle{0.628}{0.53} % Left
+%  			\only<2->{\ticalcfigCircle{0.822}{0.113}} % Enter
+% 		\end{tikzonimage}
+% 	}
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:AROWKEY3\\%
+			\:If\,1=1\:Then\\%
+			\:Lbl\,0
+			\:\select{End}\\%
+			\:getKey\>K\\%
+			\:If\,K=0\:Then\\%
+			\:Goto\,0
+			\:End\\%
+			\:If\,K=25\:Then\\%
+			\:Disp\,\qt MOVE\,UP\\%
+			\:Goto\,0
+			\:End\\%
+			\:If\,K=24\:Then\\%
+			\:Disp\,\qt MOVE\,<-\\%
+			\:Goto\,0
+			\:End\\%
+			\:If\,K\!105\:Then\\%
+			\:Goto\,0
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<3->{%
+		\begin{ticalc}
+			\:PROGRAM\:MEMLEAK\\%
+			\:Lbl\,A\\%
+			\:While\,1\\%
+			\:Goto\,A\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-7.195cm] at (BR)
+	{%
+	\only<4->{%
+		\begin{ticalc}
+			prgmMEMLEAK\\%
+			\visible<6->{ERR\:MEMORY}
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Exercise}
+
+\lenitem[0.7\linewidth]{Maak een ``custom menu'': een menu getekent met \tiDRAW-functies bestuurt via \tifonttxt{getKey}.}
+
+\lenitem[0.7\linewidth]{\flushleft{Maak het zo fancy als je wilt (cursor met animatie :)?), maar \underline{begin simpel}.}}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{tikzonimage}[width=3.2cm]{./TI84_getkey.jpg}
+			\ticalcfigCircle{0.75}{0.568} % Up
+			\ticalcfigCircle{0.75}{0.488} % Down
+ 			\ticalcfigCircle{0.822}{0.113} % Enter
+		\end{tikzonimage}
+	}
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			\tiny{WHAT\,PIE?}\\%
+			\tiny{\visible<1>{-}\,APPLE}\\%
+			\tiny{\visible<2>{-}\,BANANA\,CREAM}\\%
+			\tiny{\visible<3>{-}\,CHERRY}
+		\end{ticalc}
+	}%
+	};
+% 	\node [anchor=south east,xshift=-7.195cm] at (BR)
+% 	{%
+% 	\only<4->{%
+% 		\begin{ticalc}
+% 			prgmMEMLEAK\\%
+% 			\visible<6->{ERR\:MEMORY}
+% 		\end{ticalc}
+% 	}%
+% 	};
+\end{tikzpicture}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Answer}
+
+\hspace{-1cm}
+\begin{minipage}{0.44\textwidth}
+	\begin{ticalc}[6.7cm]
+		PROGRAM\:CUSTMENU\\%
+		\:ClrDraw\:0\>I\\%
+		\:Text(10\comma20\comma\qt APPLE\\%
+		\:Text(20\comma20\comma\qt BANANA\,CREAM\\%
+		\:Text(30\comma20\comma\qt CHERRY\\%
+		\:Text(40\comma20\comma\qt DERBY\\%
+		\:Text(50\comma20\comma\qt EMPANADA\\%
+		\:0\>K\:Repeat\,K=105\\%
+		\:getKey\>K\\%
+		\:I\>J\\%
+		\:If\,K=25\:I-1\>I\\%
+		\:If\,K=34\:I+1\>I\\%
+		\:min(4\comma max(0\comma I\>I\\%
+		\:\\%
+		\:Text(10+10I\comma10\comma\qt-\\%
+		\:If\,I\!J\:Text(10+10J\comma10\comma\qt\tiSpace\tiSpace\tiSpace\\%
+		\:End\\%
+		\:Disp\,\qt YOU\,CHOSE\qt\comma I+1
+	\end{ticalc}
+\end{minipage}
+\fcolorbox{black}{white}{%
+\begin{minipage}{0.52\textwidth}
+	Met simpele animatie (8 frames):
+	
+	\begin{ticalc}[5.3cm]
+		\:\ldots\\%
+		\:ClrDraw\:0\>I\:0\>A\\%
+		\:\ldots\\%
+		\:8fPart((A+1)/8\>A\\%
+		\:Text(10+10I\comma10\comma\qt-\\%
+		\:Text(10+10I\comma6+A\comma\qt\tiSpace\tiSpace\\%
+		\:\ldots
+	\end{ticalc}
+\end{minipage}
+}
+
+
+
+\end{frame}
+
+
+% 	\node [anchor=south east,xshift=-7.195cm] at (BR)
+% 	{%
+% 	\only<4->{%
+% 		\begin{ticalc}
+% 			PROGRAM\:AROWKEY2\\%
+% 			\:Lbl\,0
+% 			\:0\>X\\%
+% 			\:Repeat\,X\\%
+% 			\:getKey\>X\\%
+% 			\:End\\%
+% 			\:If\,X=25\:Then\\%
+% 			\:Disp\,\qt MOVE UP\qt\\%
+% 			\:Else\\%
+% 			\:If\,X=105\:Then\\%
+% 			\:Disp\,\qt END\qt\\%
+% 			\:End
+% 			\:End\\%
+% 			\:Goto\,0
+% 		\end{ticalc}
+% 	}%
+% 	};
+
+% use getKey, continue prgm and process input if buton was pressed
+% pseudocode!
+
+
+
+% 1: in een real-time game wil je niet wachten op button press
+%    je wilt game afspelen en iets speciaals doen (action) wanneer er een button ingedrukt wordt (event)
+
+% 2: code
+
+
+
+
+% Intermediate exercise: make a custom menu!
+
+

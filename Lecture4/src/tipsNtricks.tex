@@ -82,25 +82,37 @@
   \item<2-> Dit zijn kleine notes die uitleggen wat je code doet.
   \item<3-> Indien je later weer naar je code kijkt, helpen die je begrijpen wat je code doet.
   \item<4-> Dit kun je met behulp van een string doen: \inlineticalc{\qt COMMENT}
+  \item<5-> WARNING: Dit overschrijft de waarde van \tifonttxt{Ans}!
 \end{itemize}
 
+\vspace{1.5cm}
 
-\visible<4->{
 \begin{tikzpicture}[overlay,remember picture]
 	\node[yshift=0.6cm] (BL) at (current page.south east){ };
 	\node [anchor=south east,xshift=0.195cm] (BL2) at (BL)
 	{%
+	\only<4>{%
 		\begin{ticalc}[5cm]
 			PROGRAM\:ABC\\%
-			\:\qt SOLVE\,AX\sq+BX+C=0
+			\:\qt SOLVE\,AX\sq+BX+C=0\\%
 			\:Prompt\,A\comma B\comma C\\%
 			\:B\sq-4AC\>D\\%
 			\:Disp (\min B+\sqrt(D))/(2A)\\%
 			\:Disp (\min B-\sqrt(D))/(2A)
 		\end{ticalc}
+	}%
+	\only<5->{%
+		\begin{ticalc}[5cm]
+			PROGRAM\:ABC\\%
+			\:Prompt\,A\comma B\comma C\\%
+			\:\qt SOLVE\,AX\sq+BX+C=0\\%
+			\:B\sq-4AC\>D\\%
+			\:Disp (\min B+\sqrt(D))/(2A)\\%
+			\:Disp (\min B-\sqrt(D))/(2A)
+		\end{ticalc}
+	}%
 	};
 \end{tikzpicture}
-}
 
 
 \end{frame}

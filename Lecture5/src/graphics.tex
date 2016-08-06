@@ -1,0 +1,990 @@
+\section{Graphics}
+
+\subsection{Friendly window}
+
+\begin{frame}
+\frametitle{Friendly window}
+
+\visible<5>{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColThree}{0.944}}} % zoom
+\visible<6->{\ticalcfig{\ticalcfigCircle{\ticalcfigCircleColFour}{0.62}}} % vars
+
+\begin{itemize}
+  \item<1-> Om iets te tekenen, hebben we coordinaten nodig.
+  \item<2-> Een mooi coordinatenstelsel is handig!
+  \item<3-> Kies zodat elke pixel ``1'' waard is.
+  \begin{itemize}
+    \item<4-> Coordinaten $x\in[0,94]$ en $y\in[0,62]$
+  \end{itemize}
+  \item<7-> See also: \\
+  	http://tibasicdev.wikidot.com/friendly-window
+\end{itemize}
+
+\vspace{3cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<4->{%
+		\begin{ticalc}
+			\:ZStandard\\%
+			\:84\>Xmin\\%
+			\:72\>Ymax\\%
+			\:ZInteger
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<5>{%
+		\begin{ticalc}
+			\select{ZOOM}\,MEMORY\\%
+			3\arrowup Zoom\,Out\\%
+			4\:ZDecimal\\%
+			5\:ZSquare\\%
+			\selectitem{6\:}ZStandard\\%
+			7\:ZTrig\\%
+			\selectitem{8\:}ZInteger\\%
+			9\arrowdown ZoomStat
+		\end{ticalc}
+	}%
+	\only<6->{%
+		\begin{ticalc}
+			\select{VARS}\,Y-VARS\\%
+			\selectitem{\one\:}Window\ldots\\%
+			2\:Zoom\ldots\\%
+			3\:GDB\ldots\\%
+			4\:Picture\ldots\\%
+			5\:Statistics\ldots\\%
+			6\:Table\ldots\\%
+			7\:String\ldots
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-7.195cm] at (BR)
+	{%
+	\only<6->{%
+		\begin{ticalc}
+			\select{X/Y}\,T/\theta\,U/V/W\\%
+			\selectitem{\one\:}Xmin\\%
+			2\:Xmax\\%
+			3\:Xscl\\%
+			4\:Ymin\\%
+			\selectitem{5\:}Ymax\\%
+			6\:Yscl\\%
+			7\arrowdown Xres
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{\tifonttxt{prgm\theta FWINDOW}}
+
+\visible<1->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColThree}{0.944}}} % format
+
+\begin{itemize}
+  \item \lenitem{Het is handig om een subprogramma te maken om een friendly window te activeren.}
+  \item \lenitem{Maak dit \tifonttxt{prgm} na!}
+\end{itemize}
+
+\vspace{3cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[3.5cm]
+			PROGRAM\:\theta FWINDOW\\%
+			\:FnOff\\%
+			\:GridOff\\%
+			\:AxesOff\\%
+			\:ZStandard\\%
+			\:84\>Xmin\\%
+			\:72\>Ymax\\%
+			\:ZInteger\\%
+			\:ClrDraw
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\subsection{Basic drawing functions}
+
+% 1) shapes (line,circle,..)
+% 2) pixel on/off
+
+\begin{frame}
+\frametitle{Schermgrootte \& Draw line}
+
+\visible<3->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % draw
+
+\begin{itemize}
+  \item<1-> TI-84: 96x64 pixels
+	  \begin{itemize}
+	  	\item<2-> \lenitem{Om te tekenen: $x\in[0,94]$ en $y\in[0,62]$}
+	  \end{itemize}
+  \item<3-> In het \tiDRAW-menu staan functies om te tekenen.
+  \item<4-> \tifonttxt{prgmOUTLINE} kleurt alle buitenste pixels.
+\end{itemize}
+
+\vspace{2cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<3->{%
+		\begin{ticalc}
+			\select{DRAW}\,POINTS\,STO\\%
+			\one\:ClrDraw\\%
+			\selectitem{2\:}Line(\\%
+			3\:Horizontal\\%
+			4\:Vertical\\%
+			5\:Tangent(\\%
+			6\:DrawF\\%
+			7\arrowdown Shade(
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<4->{%
+		\begin{ticalc}[3.5cm]
+			PROGRAM\:OUTLINE
+			\:ZStandard\\%
+			\:84\>Xmin\\%
+			\:72\>Ymax\\%
+			\:ZInteger\\%
+			\:Line(0\comma0\comma0\comma62)\\%
+			\:Line(0\comma0\comma94\comma0)\\%
+			\:Line(0\comma62\comma94\comma62)\\%
+			\:Line(94\comma0\comma94\comma62)
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Let's draw!}
+
+\visible<1->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % draw
+
+\vspace{-1.8cm}
+
+\begin{itemize}
+  \item<1-> Alles om te tekenen staat in het \tiDRAW-menu.
+  \item<2-> Teken eens:
+  \begin{enumerate}
+    \item Een lijn \tifonttxt{\>} een driehoek
+    \item Een cirkel
+    \item Een smily
+    \item Wat je wilt!
+  \end{enumerate}
+  \item<3-> Let op hoe snel/handig alle functies zijn.
+  \item<4-> \lenitem{Dit hoeft niet in een \tifonttxt{prgm}: kan gewoon op het hoofdscherm.}
+\end{itemize}
+
+\vspace{1cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			\select{DRAW}\,POINTS\,STO\\%
+			\one\:ClrDraw\\%
+			2\:Line(\\%
+			3\:Horizontal\\%
+			4\:Vertical\\%
+			5\:Tangent(\\%
+			6\:DrawF\\%
+			7\arrowdown Shade(
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}[4.7cm]
+			\:Line(5\comma5\comma35\comma35)\\%
+			\:Circle(20\comma20\comma10)\\%
+			\:DrawF\,X\^1.1\\%
+			\:Shade(X\comma X\sq\comma0\comma10\comma1\comma1)\\%
+			\:Shade(X\comma X\sq\comma10\comma20\comma1\comma2)\\%
+			\:Shade(X\comma X\sq\comma20\comma30\comma1\comma4)\\%
+			\:Shade(X\comma X\sq\comma30\comma40\comma2\comma4)\\%
+			\:Shade(X\comma X\sq\comma40\comma99\comma3\comma7)
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-8.645cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			\:ZStandard\\%
+			\:84\>Xmin\\%
+			\:72\>Ymax\\%
+			\:ZInteger
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+  
+\end{frame}
+
+
+\begin{frame}
+\frametitle{\tiDRAW}
+
+\visible<1->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % draw
+
+\begin{itemize}
+  \item<1-> Alles om te tekenen staat in het \tiDRAW-menu.
+  \item<2-> Een lijn tekenen is vrij snel\ldots
+  \item<3-> Maar de \tifonttxt{Circle(} functie is zeer langzaam!
+  \begin{itemize}
+    \item<4-> Ongeschikt voor games!
+  \end{itemize}
+\end{itemize}
+
+\vspace{2cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			\select{DRAW}\,POINTS\,STO\\%
+			\one\:ClrDraw\\%
+			2\:Line(\\%
+			3\:Horizontal\\%
+			4\:Vertical\\%
+			5\:Tangent(\\%
+			6\:DrawF\\%
+			7\arrowdown Shade(
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Per pixel drawing}
+
+\visible<1->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % draw
+
+\begin{itemize}
+  \item<1-> \lenitem{Je kunt ook pixels/punten individueel aan en uit zetten.}
+  \item<2-> Dit bevind zich onder \inlineticalc{POINTS} in het \tiDRAW-menu.
+  \item<3-> Waarom je dit ooit zou doen?
+  \visible<4->{\begin{itemize}
+    \item<4-> Veel sneller!! Je wilt een real-time game!
+  \end{itemize}}
+  \item<5-> Maar kost veel geheugen om iets te tekenen\ldots
+\end{itemize}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1>{%
+		\begin{ticalc}
+			\select{DRAW}\,POINTS\,STO\\%
+			\selectitem{\one\:}ClrDraw\\%
+			2\:Line(\\%
+			3\:Horizontal\\%
+			4\:Vertical\\%
+			5\:Tangent(\\%
+			6\:DrawF\\%
+			7\arrowdown Shade(
+		\end{ticalc}
+	}%
+	\only<2->{%
+		\begin{ticalc}
+			DRAW\,\select{POINTS}\,STO\\%
+			\selectitem{\one\:}Pt-On(\\%
+			2\:Pt-Off(\\%
+			3\:Pt-Change(\\%
+			4\:Pxl-On(\\%
+			5\:Pxl-Off(\\%
+			6\:Pxl-Change(\\%
+			7\:pxl-Test(
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Per pixel drawing}
+
+\visible<1->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % draw
+
+\begin{itemize}
+  \item<1-> Punten (x,y) beginnen linksonderin.
+  \item<2-> Pixels (R,C) beginnen linksbovenin.
+  \begin{itemize}
+    \item R (rij) telt verticaal \underline{van} boven \underline{naar} beneden!
+    \item C (kolom) telt horizontaal
+  \end{itemize}
+  \item<3-> Bij welk punt hoort pixel (R,C)? (Tip: $y_{max}=62$)
+  \visible<5->{\begin{itemize}
+    \item Punt (C,62-R)
+  \end{itemize}}
+  \item<4-> En bij welke pixel hoort punt (x,y)? 
+  \visible<5->{\begin{itemize}
+    \item Pixel (62-y,x)
+  \end{itemize}}
+\end{itemize}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			DRAW\,\select{POINTS}\,STO\\%
+			\only<2-3,5>{\one\:}\only<1,4>{\selectitem{\one\:}}Pt-On(\\%
+			2\:Pt-Off(\\%
+			3\:Pt-Change(\\%
+			\only<1,4,5>{4\:}\only<2-3>{\selectitem{4\:}}Pxl-On(\\%
+			5\:Pxl-Off(\\%
+			6\:Pxl-Change(\\%
+			7\:pxl-Test(
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+
+
+\subsection{Sprites}
+
+% Background image: StorePic & RecallPic
+% Plot sprites
+% 2*4 digits = line
+% Animating a sprite
+
+
+
+\begin{frame}
+\frametitle{Sprite: Meerdere lijnen}
+
+\begin{itemize}
+  \item<1-> In een game wil je vaak een object tekenen, zoals pacman.
+  \item<2-> Zo'n object heet een ``sprite''.
+  \item<3-> Op de TI84 is het een combinatie van meerdere pixels of lijnen.
+\end{itemize}
+
+\vspace{3cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<4->{%
+		\begin{ticalc}[3.5cm]
+			PROGRAM\:SPRITE\\%
+			\:prgm\theta FWINDOW\\%
+			\:Line(10\comma10\comma20\comma20\\%
+			\:Line(20\comma20\comma30\comma10\\%
+			\:Line(30\comma10\comma20\comma15\\%
+			\:Line(20\comma15\comma10\comma10
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.75cm] at (BR)
+	{%
+	\only<4->{%
+		\begin{ticalc}[3.5cm]
+			PROGRAM\:\theta FWINDOW\\%
+			\:FnOff\\%
+			\:GridOff\\%
+			\:AxesOff\\%
+			\:ZStandard\\%
+			\:84\>Xmin\\%
+			\:72\>Ymax\\%
+			\:ZInteger\\%
+			\:ClrDraw
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Plot Sprites}
+
+\begin{itemize}
+  \item<1-> Hoe kan dit effici\"enter?
+  \visible<2->{\item<2-> Store alle getallen in een list!
+  \item<3-> Met ``Plot'' kun je \textbf{maximaal 3} sprites maken.
+  \item<4-> Voordeel: Sprite makkelijk te bewerken en bewegen.
+  \item<5-> Nadeel: \tifonttxt{DispGraph} overschrijft het hele scherm.}
+\end{itemize}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[3.5cm]
+			PROGRAM\:SPRITE\\%
+			\:prgm\theta FWINDOW\\%
+			\:Line(10\comma10\comma20\comma20\\%
+			\:Line(20\comma20\comma30\comma10\\%
+			\:Line(30\comma10\comma20\comma15\\%
+			\:Line(20\comma15\comma10\comma10
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.7cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:SPRITEPL\\%
+			\:prgm\theta FWINDOW\\%
+			\:\{10\comma20\comma30\comma20\comma10\>L\sub{1}\\%
+			\:\{10\comma20\comma10\comma15\comma10\>L\sub{2}\\%
+			\visible<3->{\:Plot1(xyLine\comma L\sub{1}\comma L\sub{2}\\%
+			\:DispGraph}
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-8.1cm] at (BR)
+	{%
+	\only<4->{%
+		\begin{ticalc}[4cm]
+			\qt TRANSLEER\,X\:\\%
+			L\sub{1}+5\>L\sub{1}\\%
+			\qt ROTEER\:\\%
+			L\sub{1}cos(\theta)-L\sub{2}sin(\theta)\>L\sub{3}\\%
+			L\sub{1}sin(\theta)+L\sub{2}cos(\theta)\>L\sub{2}\\%
+			L\sub{3}\>L\sub{1}
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Looping Line Sprites}
+
+\begin{itemize}
+  \item<2-> We kunnen ook zelf met \tifonttxt{Line} over een list loopen!
+  \item<3-> Voordeel: Cleared het scherm niet, unlike \tifonttxt{DispGraph}.
+  \item<3-> Nadeel: Tekent langzamer\ldots
+  \item<4-> Voor kleine sprites kun je ook met pixels tekenen.
+\end{itemize}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[3.5cm]
+			PROGRAM\:SPRITE\\%
+			\:prgm\theta FWINDOW\\%
+			\:Line(10\comma10\comma20\comma20\\%
+			\:Line(20\comma20\comma30\comma10\\%
+			\:Line(30\comma10\comma20\comma15\\%
+			\:Line(20\comma15\comma10\comma10
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.75cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}[3.8cm]
+			PROGRAM\:SPRITELL\\% loop line
+			\:prgm\theta FWINDOW\\%
+			\:\{\one0\comma20\comma30\comma20\comma\one0\>L\sub{\one}\\%
+			\:\{\one0\comma20\comma\one0\comma\one5\comma\one0\>L\sub{2}\\%
+			\:For(X\comma1\comma dim(L\sub{1})-1\\%
+			\:Line(L\sub{1}(X)\comma L\sub{2}(X)\comma\\%
+				L\sub{1}(X+1)\comma L\sub{2}(X+1\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-8cm] at (BR)
+	{%
+	\only<4->{%
+		\begin{ticalc}[3.8cm]
+			PROGRAM\:SPRITELP\\% loop point
+			\:prgm\theta FWINDOW\\%
+			\:\{\one0\comma20\comma30\comma20\>L\sub{\one}\\%
+			\:\{\one0\comma20\comma\one0\comma\one5\>L\sub{2}\\%
+			\:For(X\comma1\comma dim(L\sub{1})-1\\%
+			\:Pt-On(L\sub{1}(X)\comma L\sub{2}(X
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Compressed Lines}
+
+\begin{itemize}
+  \item<2-> In al het voorgaande werd een sprite getekend met aaneengesloten lijnen.
+  \item<3-> Alternatief: compressie van een lijn in een enkel getal.
+  \item<4-> Voordeel: flexibel en slechts 1 list.
+  \item<4-> Nadeel: lastiger om mee te werken.
+\end{itemize}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<3->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:SPRITES1\\%
+			\:prgm\theta FWINDOW\\%
+			\:\{10102020\comma20203010
+				\comma30102015\comma20151010\\%
+			\:For(X\comma1\comma dim(Ans\\%
+			\:Line(iPart(Ans(X)\\%
+				/\E6),iPart(\E2fPart(\\%
+				Ans(X)/\E6)),iPart(\E2\\%
+				fPart(Ans(X)/\E4)),\E2\\%
+				fPart(Ans(X)/\E2\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-4.25cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[3.8cm]
+			PROGRAM\:SPRITELL\\%
+			\:prgm\theta FWINDOW\\%
+			\:\{\one0\comma20\comma30\comma20\comma\one0\>L\sub{\one}\\%
+			\:\{\one0\comma20\comma\one0\comma\one5\comma\one0\>L\sub{2}\\%
+			\:For(X\comma1\comma dim(L\sub{1})-1\\%
+			\:Line(L\sub{1}(X)\comma L\sub{2}(X)\comma\\%
+				L\sub{1}(X+1)\comma L\sub{2}(X+1\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-8.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[3.5cm]
+			PROGRAM\:SPRITE\\%
+			\:prgm\theta FWINDOW\\%
+			\:Line(10\comma10\comma20\comma20\\%
+			\:Line(20\comma20\comma30\comma10\\%
+			\:Line(30\comma10\comma20\comma15\\%
+			\:Line(20\comma15\comma10\comma10
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Compressed Lines}
+
+\begin{itemize}
+  \item<1-> Dezelfde \tifonttxt{For}-loop kan gebruikt worden voor \textit{elke} sprite!
+\end{itemize}
+
+\vspace{4cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:SPRITES1\only<2->{a}\\%
+			\:prgm\theta FWINDOW\\%
+			\:\{10102020\comma20203010
+				\comma30102015\comma20151010\\%
+			\:For(X\comma1\comma dim(Ans\\%
+			\:Line(iPart(Ans(X)\\%
+				/\E6),iPart(\E2fPart(\\%
+				Ans(X)/\E6)),iPart(\E2\\%
+				fPart(Ans(X)/\E4)),\E2\\%
+				fPart(Ans(X)/\E2\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-4.25cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:SPRITES1\only<2->{b}\\%
+			\:prgm\theta FWINDOW\\%
+			\:\{10102020\comma20203010
+				\comma30102015\comma20151010\\%
+			\:prgm\theta DRAWSPT
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-4.25cm,yshift=1.85cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:\theta DRAWSPT\\%
+			\:For(X\comma1\comma dim(Ans\\%
+			\:Line(iPart(Ans(X)\\%
+				/\E6),iPart(\E2fPart(\\%
+				Ans(X)/\E6)),iPart(\E2\\%
+				fPart(Ans(X)/\E4)),\E2\\%
+				fPart(Ans(X)/\E2\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Animation 1}
+
+\begin{itemize}
+  \item<1-> Een animatie is niets anders dan steeds een andere sprite tekenen (of andere positie/rotatie/\ldots).
+  \item<2-> Wat doet deze animatie?
+  \item<3-> \visible<3->{PROBLEEM: Je ziet alle vorige sprites ook\ldots}
+\end{itemize}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:SPRITES2\\%
+			\:prgm\theta FWINDOW\\%
+			\:\{10102020\comma20203010
+				\comma30102015\comma20151010\>L\sub{1}\\%
+			\:For(I\comma\one\comma10\\%
+			\:\qt UPDATE\\%
+			\:L\sub{1}+2(\E4+1)\>L\sub{1}\\%
+			\:\qt DRAW\\%
+			\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-4.25cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:\theta DRAWSPT\\%
+			\:For(X\comma1\comma dim(Ans\\%
+			\:Line(iPart(Ans(X)\\%
+				/\E6),iPart(\E2fPart(\\%
+				Ans(X)/\E6)),iPart(\E2\\%
+				fPart(Ans(X)/\E4)),\E2\\%
+				fPart(Ans(X)/\E2\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Animation 2}
+
+\hspace{-1cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item<2-> OPLOSSING: Gum in een lijn
+  \item<3-> PROBLEEM: Overschrijft de achtergrond
+\end{itemize}
+\end{minipage}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:SPRITES2\\%
+			\:prgm\theta FWINDOW\\%
+			\:\{10102020\comma20203010
+				\comma30102015\comma20151010\>L\sub{1}\\%
+			\:For(I\comma\one\comma10\\%
+			\:\qt UPDATE\\%
+			\:L\sub{1}+2(\E4+1)\>L\sub{1}\\%
+			\:\qt DRAW\\%
+			\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-4.25cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:\theta DRAWSPT\\%
+			\:For(X\comma1\comma dim(Ans\\%
+			\:Line(iPart(Ans(X)\\%
+				/\E6),iPart(\E2fPart(\\%
+				Ans(X)/\E6)),iPart(\E2\\%
+				fPart(Ans(X)/\E4)),\E2\\%
+				fPart(Ans(X)/\E2\select{)\comma B}\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=0.195cm,yshift=3.55cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:SPRITES3\\%
+			\:prgm\theta FWINDOW\\%
+			\:\{10102020\comma20203010
+				\comma30102015\comma20151010\>L\sub{1}\\%
+			\:For(I\comma\one\comma10\\%
+			\:\qt UPDATE\\%
+			\:\select{0\>B}\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:L\sub{1}+2(\E4+1)\>L\sub{1}\\%
+			\:\qt DRAW\\%
+			\:\select{1\>B}\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Background image: \tifonttxt{StorePic}}
+
+\visible<2->{\ticalcfig{\ticalcfigCircleSecond\ticalcfigCircle{\ticalcfigCircleColThree}{0.615}}} % draw
+
+\begin{itemize}
+  \item<1-> \lenitem{Indien je iets stilstaands hebt, zoals een title screen of een background, dan wil je vaak dat het niet overschreven kan worden.}
+  \item<2-> \lenitem{Met \tifonttxt{StorePic} kun je het opslaan in een plaatje (alleen mogelijk met het \textit{hele} scherm).}
+  \item<3-> \lenitem{Met \tifonttxt{RecallPic} kun je dat plaatje weer tekenen (bovenop wat er al op je scherm staat).}
+  \item<4-> \lenitem{Je kunt maximaal 10 \tifonttxt{Pic}s opslaan.}
+\end{itemize}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}
+			DRAW\,POINTS\,\select{STO}\\%
+			\only<3->{\one\:}\only<2>{\selectitem{\one\:}}StorePic\\%
+			\only<2>{2\:}\only<3->{\selectitem{2\:}}RecallPic\\%
+			3\:StoreGDB(\\%
+			4\:RecallGDB
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}[3.5cm]
+			PROGRAM\:SPRITEBG\\%
+			\:prgm\theta FWINDOW\\%
+			\:Circle(10\comma10\comma30\\%
+			\:StorePic\,\only<4>{\select{4}}\only<-3>{4}\\%
+			\visible<3->{\:\ldots do\,stuff\ldots\\%
+			\:RecallPic\,\only<4>{\select{4}}\only<-3>{4}}
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Caching}
+
+\hspace{-1cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item<1-> `Caching' is het opslaan van een plaatje voor later gebruik.
+  \item<2-> Stel dat je sprite over het scherm beweegt:
+  \begin{itemize}
+    \item<3-> Indien je blijft tekenen zie je een heel spoor waar je sprite geweest is.
+    \item<4-> Zijn vorige positie moeten we clearen!
+  \end{itemize}
+  \item<5-> Dit kan met `caching':\\
+  			\tifonttxt{StorePic} en \tifonttxt{RecallPic}.
+\end{itemize}
+\end{minipage}
+
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:SPRITES4\\%
+			\:prgm\theta FWINDOW\\%
+			\:Circle(10\comma10\comma30\\%
+			\:\only<-4>{StorePic\,4}\only<5->{\select{StorePic\,4}}\\%
+			\:\{10102020\comma20203010
+				\comma30102015\comma20151010\>L\sub{1}\\%
+			\:For(I\comma\one\comma10\\%
+			\:\qt UPDATE\\%
+			\:L\sub{1}+2(\E4+1)\>L\sub{1}\\%
+			\:\qt DRAW\\%
+			\visible<5->{\:\select{ClrDraw\:RecallPic\,4}\\}%
+			\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Animation 3: Clear small sprites}
+
+\begin{itemize}
+  \item<1-> Small sprites kunnen gecleared worden door spaties bovenop de sprite te tekenen.
+  \item<2-> PROBLEEM: Werkt alleen makkelijk\\
+  			voor kleine sprites (max. 5 pixels hoog):\\
+  			Waardeloos voor dit voorbeeld!
+  \item<3-> PROBLEEM: Achtergrond verdwijnt.
+\end{itemize}
+
+\vspace{2.5cm}
+
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}[4cm]
+			PROGRAM\:SPRITES5\\%
+			\:prgm\theta FWINDOW\\%
+			\:Circle(10\comma10\comma30\\%
+			\:\{10102020\comma20203010
+				\comma30102015\comma20151010\>L\sub{1}\\%
+			\:For(I\comma\one\comma10\\%
+			\:\qt UPDATE\\%
+			\:L\sub{1}+2(\E4+1)\>L\sub{1}\\%
+			\:\qt DRAW\\%
+			\:Text(62-10\comma10\comma\\%
+				\qt\tiSpace\tiSpace\tiSpace\tiSpace\tiSpace\tiSpace\tiSpace\tiSpace\tiSpace\\%
+			\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Exercise}
+
+
+Maak zelf een simpele sprite die langzaam van links naar rechts beweegt.
+
+
+\end{frame}
+
+
+
+
+

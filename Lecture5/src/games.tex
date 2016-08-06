@@ -1,0 +1,424 @@
+\section{Games!}
+
+\subsection{Game Loop}
+
+% Game Loop
+
+\begin{frame}
+\frametitle{Game Loop}
+
+\begin{itemize}
+  \item<1-> In tegenstelling tot veel van het voorgaande, wil je dat een game blijft spelen tot de gebruiker het afsluit.
+  \item<2-> Dit kun je bereiken met een `infinite loop'.
+  \item<3-> Daarin moet een aantal dingen gebeuren:
+  \begin{enumerate}
+    \item<4-> \visible<4->{Input (handle key presses)}
+    \item<5-> \visible<5->{Update (rekenen)}
+    \item<6-> \visible<6->{Draw (tekenen)} 
+  \end{enumerate}
+  \item<7-> Precieze vorm is afhankelijk van gametype:\\%
+  			turn-based, real-time
+\end{itemize}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<3->{%
+		\begin{ticalc}
+			PROGRAM\:GAMELOOP\\%
+			\:\qt INIT\,GAME\\%
+			\:While\,1\\%
+			\:\visible<4->{\qt INPUT\\%
+			\:getKey\>K\\%
+			\:If\,K=\ldots\\%
+			\:\ldots}\\%
+			\:\visible<5->{\qt UPDATE\\%
+			\:L\sub{1}+UT(\E6+\E2)+\\%
+				VT(\E4+1)\>L\sub{1}}\\%
+			\:\visible<6->{\qt DRAW\\%
+			\:L\sub{1}\:prgm\theta DRAWSPT}\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<2->{%
+		\begin{ticalc}
+			PROGRAM\:INFILOOP\\%
+			\:While\,1\\%
+			\:do stuff\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Real-Time Games}
+
+\hspace{-1.2cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item \lenitem[0.45\linewidth]{In een real-time game gaat de game door, of je nou op een knop drukt of niet.}
+\end{itemize}
+\end{minipage}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			\:If\,K=105\:Then\\%
+			\:Goto\,X\\%
+			\:\qt UPDATE\\%
+			\:Lbl\,UD
+			\:End\\%
+			\:L\sub{1}+U(\E6+\E2)+\\%
+				V(\E4+1)\>L\sub{1}\\%
+			\:\qt DRAW\\%
+			\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:End\\%
+			\:Lbl\,X\\%
+			\:\only<1>{Clean stuff up here, reset graph axis etc.}\only<2->{\select{Clean stuff up}\\\select{here, reset graph}\\\select{axis etc.}}
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:REALTIME\\%
+			\:\qt INIT\,GAME\\%
+			\:While\,1\\%
+			\:\qt INPUT\\%
+			\:getKey\>K\\%
+			\:\select{If\,K=0}\:Then\\%
+			\:Goto\,UD
+			\:End\\%
+			\:If\,K=25\:Then\\%
+			\:V+1\>V\\%
+			\:Goto\,UD
+			\:End\\%
+			\:If\,K=34\:Then\\%
+			\:V-1\>V\\%
+			\:Goto\,UD
+			\:End\\%
+			\:If\,K=24\,or\,K=26\:Then\\%
+			\:U-25+K\>U\\%
+			\:Goto\,UD
+			\:End\\%
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Turn-Based Games}
+
+\hspace{-1.2cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item \lenitem[0.45\linewidth]{In een turn-based game gebeurt er alleen iets nieuws wanneer er op de knop wordt gedrukt.}
+\end{itemize}
+\end{minipage}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			\:If\,K=105\:Then\\%
+			\:Goto\,X\\%
+			\:\qt UPDATE\\%
+			\:Lbl\,UD
+			\:End\\%
+			\:L\sub{1}+U(\E6+\E2)+\\%
+				V(\E4+1)\>L\sub{1}\\%
+			\:0\>U\:0\>V\\%
+			\:\qt DRAW\\%
+			\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:End\\%
+			\:Lbl\,X\\%
+			\:\only<1>{Clean stuff up here, reset graph axis etc.}\only<2->{\select{Clean stuff up}\\\select{here, reset graph}\\\select{axis etc.}}
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:TURNGAME\\%
+			\:\qt INIT\,GAME\\%
+			\:While\,1\\%
+			\:\qt INPUT\\%
+			\:\select{Repeat\,Ans}\\%
+			\:getKey\>K\\%
+			\:\select{end}\\%
+			\:If\,K=25\:Then\\%
+			\:1\>V\\%
+			\:Goto\,UD
+			\:End\\%
+			\:If\,K=34\:Then\\%
+			\:\min\one\>V\\%
+			\:Goto\,UD
+			\:End\\%
+			\:If\,K=24\,or\,K=26\:Then\\%
+			\:K-25\>U\\%
+			\:Goto\,UD
+			\:End\\%
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Turn-Based Games with Animations}
+
+\hspace{-1.2cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item \lenitem[0.45\linewidth]{Indien animaties door moeten gaan, moet je iets slimmer zijn\ldots}
+\end{itemize}
+\end{minipage}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			\:If\,K=105\:Then\\%
+			\:Goto\,X\\%
+			\:Lbl\,UD
+			\:End\\%
+			\:\qt PROCESS\,TURN\\%
+			\:L\sub{1}+U(\E6+\E2)+\\%
+				V(\E4+1)\>L\sub{1}\\%
+			\:0\>U\:0\>V\\%
+			\:\select{End}\\%
+			\:\qt ANIMATE\\%
+			\:Update sprite animation here\\%
+			\:\qt DRAW\\%
+			\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:End\\%
+			\:Lbl\,X\\%
+			\:Clean stuff up here, reset graph axis etc.
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:TURNGAM2\\%
+			\:\qt INIT\,GAME\\%
+			\:While\,1\\%
+			\:\qt INPUT\\%
+			\:getKey\>K\\%
+			\:\select{If\,K\!0\:Then}\\%		
+			\:If\,K=25\:Then\\%
+			\:1\>V\\%
+			\:Goto\,UD
+			\:End\\%
+			\:If\,K=34\:Then\\%
+			\:\min\one\>V\\%
+			\:Goto\,UD
+			\:End\\%
+			\:If\,K=24\,or\,K=26\:Then\\%
+			\:K-25\>U\\%
+			\:Goto\,UD
+			\:End\\%
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Turn-Based Games: Wait for Animation}
+
+\hspace{-1.2cm}
+\begin{minipage}{\textwidth}
+\begin{itemize}
+  \item<1-> \lenitem[0.45\linewidth]{Het kan logisch zijn om te wachten tot een animatie klaar is in een turn-based game, voordat de volgende zet gedaan mag worden.}
+  \item<2-> \lenitem[0.45\linewidth]{Dit voorbeeld negeert de input (\tifonttxt{K}) totdat de animatie (\tifonttxt{A}) klaar is.}
+\end{itemize}
+\end{minipage}
+
+\vspace{2.5cm}
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BR) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			\:If\,K=105\:Then\\%
+			\:Goto\,X\\%
+			\:Lbl\,UD
+			\:End\\%
+			\:\qt PROCESS\,TURN\\%
+			\:L\sub{1}+U(\E6+\E2)+\\%
+				V(\E4+1)\>L\sub{1}\\%
+			\:0\>U\:0\>V\\%
+			\:\select{End}\\%
+			\:\qt ANIMATE\\%
+			\:Update sprite animation here\\%
+			\:\visible<2->{\select{If\,animation}\\\select{finished\:0\>A}}\\%
+			\:\qt DRAW\\%
+			\:L\sub{1}\:prgm\theta DRAWSPT\\%
+			\:End\\%
+			\:Lbl\,X\\%
+			\:Clean stuff up here, reset graph axis etc.
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BR)
+	{%
+	\only<1->{%
+		\begin{ticalc}
+			PROGRAM\:TURNGAM3\\%
+			\:\qt INIT\,GAME\\%
+			\:While\,1\\%
+			\:\qt INPUT\\%
+			\:getKey\>K\\%
+			\:\visible<2->{\select{If\,A=1\:K=0}}\\%
+			\:\select{If\,K\!0\:Then}\\%
+			\:\visible<2->{\select{1\>A}}\\%
+			\:If\,K=25\:Then\\%
+			\:1\>V\\%
+			\:Goto\,UD
+			\:End\\%
+			\:If\,K=34\:Then\\%
+			\:\min\one\>V\\%
+			\:Goto\,UD
+			\:End\\%
+			\:If\,K=24\,or\,K=26\:Then\\%
+			\:K-25\>U\\%
+			\:Goto\,UD
+			\:End\\%
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+\subsection{Towards multiplayer\ldots}
+
+% Kort hoe ze verder kunnen om games multiplayer te maken:
+% - Belangrijkste overwegingen
+% - Limitaties
+
+
+\begin{frame}
+\frametitle{Wat is een multiplayer game?}
+
+\begin{itemize}
+  \item<1-> Meerdere spelers spelen hetzelfde spel:
+  \begin{itemize}
+    \item<2-> Tegen elkaar (PvP)
+    \item<2-> Samen met elkaar (coop)
+  \end{itemize}
+  \item<3-> Meerdere manieren:
+  \begin{itemize}
+    \item<4-> One Device
+    \item<4-> Two Devices
+  \end{itemize}
+  \item<5-> Ik geef slechtst een korte overview. Details staan hier:
+  \begin{itemize}
+    \item<5-> http://tibasicdev.wikidot.com/multiplayer
+  \end{itemize}  
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Multiplayer: One Device}
+
+\begin{itemize}
+  \item<1-> Dit is vrijwel hetzelfde als een single player game, maar nu:
+  \begin{itemize}
+    \item<2-> Andere knoppen besturen andere sprites: meer \inlineticalc{If\,K=\ldots} statements.
+  \end{itemize}
+  \item<3-> BELANGRIJK: Slechts 1 knop kan tegelijk ingedrukt worden.
+  \begin{itemize}
+    \item<4-> PROBLEEM: Indien je \tifonttxt{prgm} langzaam is, dan komen niet beide spelers aan de beurt; alleen degene die het snelste drukt.
+    \item<5-> PAS OP: Pijltoetsen kunnen ingedrukt worden gehouden. Gebruik die knoppen dus NIET.
+    \item<6-> Geen probleem voor turn-based games!\\
+    		  Turn-based is een aanrader voor multiplayer!
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Multiplayer: Two Devices}
+
+\begin{itemize}
+  \item<1-> Het principe is simpel:
+  \begin{itemize}
+    \item<2-> Connect een linkabel.
+    \item<3-> Beide spelers starten hetzelfde \tifonttxt{prgm}.
+    \item<4-> Beide spelers kunnen hun eigen knoppen gebruiken.
+  \end{itemize}
+  \item<5-> Linken van variabelen gaat via de \tifonttxt{GetCalc(varname)} functie.
+  \item<6-> PROBLEEM: Linken kan alleen wanneer \'e\'en rekenmachine niets doet, bijvoorbeeld door \tifonttxt{Pause}.
+  \item<7-> Daarom \underline{alleen mogelijk voor turn-based games}.
+  \begin{itemize}
+    \item<8-> Maar dat kan net zo goed op \'e\'en device\ldots
+  \end{itemize}  
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+

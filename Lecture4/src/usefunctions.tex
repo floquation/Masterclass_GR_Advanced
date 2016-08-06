@@ -97,7 +97,7 @@
 
 
 \begin{frame}
-\frametitle{Je eigen functie defini\"eren}
+\frametitle{Je eigen functie defini\"eren: ``subprogram''}
 
 
 \begin{itemize}
@@ -156,6 +156,62 @@
 
 
 \end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Use \tifonttxt{Ans}}
+
+\begin{itemize}
+  \item<1-> In plaats van variabelen door te pasen\ldots
+  \item<2-> kun je ook \tifonttxt{Ans} gebruiken!
+  \item<3-> Voordeel: Je overschrijft variabelen niet onnodig.
+\end{itemize}
+\visible<4->{%
+\begin{itemize}
+  \item<4-> Zie ook: http://tibasicdev.wikidot.com/subprograms
+\end{itemize}%
+}
+
+
+\vspace{2cm}
+
+
+\begin{tikzpicture}[overlay,remember picture]
+	\node[yshift=0.6cm] (BL) at (current page.south east){ };
+	\node [anchor=south east,xshift=0.195cm] at (BL)
+	{%
+	\only<2->{%
+		\begin{ticalc}
+			PROGRAM\:\theta ADD1\\%
+			\:Ans+1
+		\end{ticalc}
+	}%
+	};
+	\node [anchor=south east,xshift=-3.5cm] at (BL)
+	{%
+	\only<2->{%
+		\begin{ticalc}
+			PROGRAM\:COUNT10\\%
+			\:Prompt\,X\\%
+			\:While\,X\le10\\%
+			\:X
+			\:prgm\theta ADD1\\%
+			\:Ans\>X\\%
+			\:Disp\,X\\%
+			\:End
+		\end{ticalc}
+	}%
+	};
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+
 
 
 \subsection{Voorbeelden}
